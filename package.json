@@ -7,15 +7,17 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.4.5",
     "path": "^0.12.7",
-    "unplugin-vue-components": "^0.17.15",
-    "unplugin-vue2-script-setup": "^0.9.1",
     "v-codyhouse-componentz": "^1.0.16",
-    "vite-plugin-vue2": "^1.4.0",
     "vue": "^2.6.12"
   },
   "devDependencies": {
     "unplugin-auto-import": "^0.5.11",
-    "vite": "^2.0.5"
+    "unplugin-vue-components": "^0.17.15",
+    "unplugin-vue2-script-setup": "^0.9.1",
+    "vite": "^2.0.5",
+    "vite-plugin-vue2": "^1.9.3",
+    "vue-template-compiler": "^2.6.14"
   }
 }
