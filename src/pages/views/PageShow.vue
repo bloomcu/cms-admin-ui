@@ -8,7 +8,16 @@
             <p>Slug: {{ store.page.slug }}</p>
         </div>
         
-        <button @click="destroy()" class="btn btn--sm">Delete</button>
+        <div class="margin-bottom-md">
+            <button @click="destroy()" class="btn btn--sm">Delete</button>
+        </div>
+        
+        <div class="margin-bottom-md">
+            <button @click="store.toggleSettings = true" class="btn btn--sm">Settings</button>
+            <AppModal v-if="store.toggleSettings" @close="store.toggleSettings = false">
+                <PageSettings/>
+            </AppModal>
+        </div>
     </div>
 </template>
 
@@ -28,3 +37,28 @@ const destroy = () => {
     router.push({ name: 'pageIndex' })
 }
 </script>
+
+<style lang="scss" scoped>
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* fade-y */
+.fade-y-enter,
+.fade-y-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-y-enter-active,
+.fade-y-leave-active {
+  transition: opacity 0.3s, transform 0.5s;
+}
+</style>

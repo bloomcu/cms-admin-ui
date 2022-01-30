@@ -4,7 +4,13 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppModal: typeof import('./../components/AppModal.vue')['default']
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
+    PageSettings: typeof import('./../../pages/components/settings/PageSettings.vue')['default']
+    PageSettingsBlueprint: typeof import('./../../pages/components/settings/PageSettingsBlueprint.vue')['default']
+    PageSettingsGeneral: typeof import('./../../pages/components/settings/PageSettingsGeneral.vue')['default']
+    PageSettingsSearch: typeof import('./../../pages/components/settings/PageSettingsSearch.vue')['default']
+    PageSettingsSocialMedia: typeof import('./../../pages/components/settings/PageSettingsSocialMedia.vue')['default']
   }
 }
 

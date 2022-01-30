@@ -5,6 +5,7 @@ import { pageApi as PageApi } from '@/pages/api/pageApi'
 
 export const usePagesStore = defineStore('pageStore', {
     state: () => ({
+        toggleSettings: false,
         pages: [],
         page: {},
     }),
