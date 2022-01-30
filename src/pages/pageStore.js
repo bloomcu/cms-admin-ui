@@ -24,7 +24,16 @@ export const usePagesStore = defineStore('pageStore', {
         },
         
         store() {},
-        show() {},
+        
+        show(id) {
+            PageApi.show(id)
+            .then(response => {
+                this.page = response.data.data
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        
         update() {},
         destroy() {},
     }

@@ -32,6 +32,14 @@
 <script setup>
 import { Hero } from 'v-codyhouse-componentz'
 import { usePagesStore } from '@/pages/pageStore'
+// import { useRoute } from 'vue-router'
 
+// const route = useRoute()
 const store = usePagesStore()
+
+onMounted(() => {
+    store.show(2)
+})
+
+// console.log($route.name)
 </script>

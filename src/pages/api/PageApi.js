@@ -28,7 +28,7 @@ const pageApi = {
      * @return promise
      */
     show(id) {
-        return HttpClient.get(`/organizations/bloomcu/pages/${id}`)
+        return HttpClient.get(`/posts/${id}`)
     },
 
     /**
