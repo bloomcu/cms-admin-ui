@@ -7,7 +7,7 @@
         <div class="margin-bottom-md">
             <ul class="list list--border">
                 <li v-for="page in store.pages" :key="page.id">
-                    <RouterLink :to="{ name: 'pageShow', params: { pageId: page.id } }">{{ page.title }}</RouterLink>
+                    <RouterLink :to="{ name: 'pageShow', params: { page: page.id } }">{{ page.title }}</RouterLink>
                 </li>
             </ul>
         </div>

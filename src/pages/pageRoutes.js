@@ -9,7 +9,7 @@ export default [
         props: true,
     },
     {
-        path: "/pages/:pageId",
+        path: "/pages/:page",
         name: "pageShow",
         component: PageShow,
         props: true,
