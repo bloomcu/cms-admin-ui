@@ -6,6 +6,7 @@
 
         <!-- Close button -->
         <button @click="$emit('close')" class="reset modal__close-btn modal__close-btn--outer display@md">
+            <!-- TODO: Move icon to an app component so it's reusable -->
             <svg class="icon icon--sm" viewBox="0 0 24 24">
                 <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="3" x2="21" y2="21" /><line x1="21" y1="3" x2="3" y2="21" /></g>
             </svg>
