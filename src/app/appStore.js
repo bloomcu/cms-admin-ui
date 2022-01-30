@@ -1,6 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 
-export const useAppStore = defineStore('app-store', {
+export const useAppStore = defineStore('appStore', {
     state: () => ({
         count: 0,
     }),

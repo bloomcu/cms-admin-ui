@@ -2,13 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Import route groups
-import pagesRoutes from '@/pages/pages-routes.js'
-import appRoutes from '@/app/app-routes.js'
+import pageRoutes from '@/pages/pageRoutes.js'
+import appRoutes from '@/app/appRoutes.js'
 
 Vue.use(VueRouter)
 
 export const routes = [
-    ...pagesRoutes,
+    ...pageRoutes,
     ...appRoutes,
 ];
 

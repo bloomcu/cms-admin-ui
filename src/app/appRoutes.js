@@ -1,15 +1,15 @@
-import AppHome from './views/app-home.vue';
-import App404 from './views/app-404.vue';
+import AppHome from './views/AppHome.vue';
+import App404 from './views/App404.vue';
 
 export default [
     {
         path: "/",
-        name: "app-home",
+        name: "appHome",
         component: AppHome,
     },
     {
         path: "/:path(.*)",
-        name: "app-404",
+        name: "app404",
         component: App404,
     } 
 ]

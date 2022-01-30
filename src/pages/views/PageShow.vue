@@ -31,7 +31,7 @@
 
 <script setup>
 import { Hero } from 'v-codyhouse-componentz'
-import { usePagesStore } from '@/pages/pages-store'
+import { usePagesStore } from '@/pages/pageStore'
 
 const store = usePagesStore()
 </script>

@@ -1,7 +1,7 @@
 <template>
     <header class="margin-bottom-md">
         <div class="flex flex-row items-center gap-md">
-            <RouterLink to="/">
+            <RouterLink :to="{ name: 'appHome' }">
                 <img alt="Vite logo" src="@/app/assets/vite-logo.svg" width="36px" />
             </RouterLink>
 
@@ -20,6 +20,6 @@
 
 <script setup>
 const menu = [
-    { title: 'Pages', name: 'pages-index' },
+    { title: 'Pages', name: 'pageIndex' },
 ]
 </script>

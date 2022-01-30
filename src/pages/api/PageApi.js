@@ -1,6 +1,6 @@
-import { httpClient as Client } from '@/app/api/httpClient'
+import { httpClient as HttpClient } from '@/app/api/httpClient'
 
-export default {
+const pageApi = {
     /**
      * List pages
      *
@@ -8,7 +8,7 @@ export default {
      * @return promise
      */
     index(params) {
-        return Client.get('/pages', { params: params })
+        return HttpClient.get('/pages', { params: params })
     },
 
     /**
@@ -18,7 +18,7 @@ export default {
      * @return promise
      */
     store(page) {
-        return Client.post('/organizations/bloomcu/pages', page)
+        return HttpClient.post('/organizations/bloomcu/pages', page)
     },
 
     /**
@@ -28,7 +28,7 @@ export default {
      * @return promise
      */
     show(id) {
-        return Client.get(`/organizations/bloomcu/pages/${id}`)
+        return HttpClient.get(`/organizations/bloomcu/pages/${id}`)
     },
 
     /**
@@ -39,7 +39,7 @@ export default {
      * @return promise
      */
     update(id, page) {
-        return Client.put(`/organizations/bloomcu/pages/${id}`, page)
+        return HttpClient.put(`/organizations/bloomcu/pages/${id}`, page)
     },
 
     /**
@@ -49,7 +49,7 @@ export default {
      * @return promise
      */
     destroy(id) {
-        return Client.delete(`/organizations/bloomcu/pages/${id}`)
+        return HttpClient.delete(`/organizations/bloomcu/pages/${id}`)
     },
 
     /**
@@ -60,8 +60,10 @@ export default {
      * @return promise
      */
     replicate(id, is_blueprint) {
-        return Client.post(`/organizations/bloomcu/pages/${id}/replicate`, {
+        return HttpClient.post(`/organizations/bloomcu/pages/${id}/replicate`, {
             is_blueprint: is_blueprint
         })
     },
 }
+
+export { pageApi }
