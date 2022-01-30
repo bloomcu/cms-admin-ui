@@ -20,11 +20,11 @@
 </template>
 
 <script setup>
-import { usePagesStore } from '@/pages/store/pageStore'
+import { pageStore } from '@/pages/store/pageStore'
 
 const router = getCurrentInstance().proxy.$router
 const route = getCurrentInstance().proxy.$route
-const store = usePagesStore()
+const store = pageStore()
 
 onMounted(() => {    
     store.show(route.params.page)

@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import { usePagesStore } from '@/pages/store/pageStore'
+import { pageStore } from '@/pages/store/pageStore'
 
-const store = usePagesStore()
+const store = pageStore()
 
 onMounted(() => {
     store.index()

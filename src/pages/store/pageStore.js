@@ -3,7 +3,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 import { postApi as PostApi } from '@/app/api/postApi'
 import { pageApi as PageApi } from '@/pages/api/pageApi'
 
-export const usePagesStore = defineStore('pageStore', {
+export const pageStore = defineStore('pageStore', {
     state: () => ({
         pages: [],
         page: {},
@@ -80,5 +80,5 @@ export const usePagesStore = defineStore('pageStore', {
  * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
  */
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(usePagesStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(pageStore, import.meta.hot))
 }
