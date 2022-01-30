@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Import route groups
-import pageRoutes from '@/pages/pageRoutes.js'
-import appRoutes from '@/app/appRoutes.js'
+import pageRoutes from '@/pages/routes/pageRoutes.js'
+import appRoutes from '@/app/routes/appRoutes.js'
 
 Vue.use(VueRouter)
 

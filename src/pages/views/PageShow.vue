@@ -14,7 +14,8 @@
 </template>
 
 <script setup>
-import { usePagesStore } from '@/pages/pageStore'
+import { usePagesStore } from '@/pages/store/pageStore'
+
 const route = getCurrentInstance().proxy.$route
 const store = usePagesStore()
 

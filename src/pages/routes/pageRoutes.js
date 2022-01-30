@@ -1,5 +1,5 @@
-import PageIndex from './views/PageIndex.vue';
-import PageShow from './views/PageShow.vue';
+import PageIndex from '@/pages/views/PageIndex.vue';
+import PageShow from '@/pages/views/PageShow.vue';
 
 export default [
     {
