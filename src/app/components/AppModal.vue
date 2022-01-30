@@ -3,8 +3,6 @@
         <div class="modal__content">
             <slot/>
         </div>
-
-        <!-- Close button -->
         <button @click="$emit('close')" class="reset modal__close-btn modal__close-btn--outer display@md">
             <!-- TODO: Move icon to an app component so it's reusable -->
             <svg class="icon icon--sm" viewBox="0 0 24 24">
@@ -15,8 +13,9 @@
 </template>
 
 <script setup>
-defineProps({ open: { type: Boolean } })
-defineEmits(['close'])
+defineProps({ 
+    open: { type: Boolean, default: false } 
+})
 </script>
 
 <style lang="scss" scoped>

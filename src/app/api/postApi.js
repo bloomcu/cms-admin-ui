@@ -20,6 +20,8 @@ const postApi = {
      * @return promise
      */
     store(post) {
+        post = JSON.parse(JSON.stringify(post))
+        
         return HttpClient.post('/posts', post)
     },
 
@@ -41,6 +43,8 @@ const postApi = {
      * @return promise
      */
     update(id, post) {
+        post = JSON.parse(JSON.stringify(post))
+        
         return HttpClient.put(`/posts/${id}`, post)
     },
 

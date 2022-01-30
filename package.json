@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@vue/composition-api": "^1.4.5",
+    "@vueuse/core": "^7.5.5",
     "axios": "^0.25.0",
     "codyhouse-framework": "^3.0.4",
     "pinia": "^2.0.8",

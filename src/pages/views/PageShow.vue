@@ -9,14 +9,12 @@
         </div>
         
         <div class="margin-bottom-md">
-            <button @click="destroy()" class="btn btn--sm">Delete</button>
+            <button @click="destroy()" class="btn">Delete</button>
         </div>
         
         <div class="margin-bottom-md">
-            <button @click="store.toggleSettings = true" class="btn btn--sm">Settings</button>
-            <AppModal v-if="store.toggleSettings" @close="store.toggleSettings = false">
-                <PageSettings/>
-            </AppModal>
+            <button @click="store.isShowingSettings = true" class="btn">Settings</button>
+            <PageSettingsModal />
         </div>
     </div>
 </template>
