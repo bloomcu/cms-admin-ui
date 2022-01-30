@@ -1,22 +1,14 @@
 <template>
-    <div class="grid gap-sm">
-        <!-- <AppCard
-            title="Pages"
-            text="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-            url="/pages"
-            class="col-6@xs col-4@lg"
-        />
-        <AppCard
-            title="Blocks"
-            text="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-            url="/"
-            class="col-6@xs col-4@lg"
-        />
-        <AppCard
-            title="Files"
-            text="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
-            url="/"
-            class="col-6@xs col-4@lg"
-        /> -->
+    <div class="text-component">
+        <p>Count is {{ store.count }}</p>
+        <p>Count doubled is {{ store.doubleCount }}</p>
+        <p>Count trippled is {{ store.trippleCount }}</p>
+        <button @click="store.increment">Increment</button>
     </div>
 </template>
+
+<script setup>
+import { useAppStore } from '@/app/app-store'
+
+const store = useAppStore()
+</script>

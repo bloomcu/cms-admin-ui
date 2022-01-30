@@ -33,7 +33,12 @@ export const usePagesStore = defineStore('pages-store', {
         },
     }),
     
+    getters: {},
+    
     actions: {
+        updateTitle(title) {
+            this.page.title = title
+        },
         index() {},
         store() {},
         show() {},

@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { usePagesStore } from '@/pages/store'
+import { usePagesStore } from '@/pages/pages-store'
 
 const store = usePagesStore()
 </script>

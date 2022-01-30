@@ -8,6 +8,8 @@
             <p>Slug: {{ store.page.slug }}</p>
         </div>
         
+        <button @click="store.updateTitle('Updated Title')">Update Title</button>
+        
         <!-- <Hero
           label="This is label"
           title="Lorem ipsum dolor sit amet consectetur adipisicing elit"
@@ -29,7 +31,7 @@
 
 <script setup>
 import { Hero } from 'v-codyhouse-componentz'
-import { usePagesStore } from '@/pages/store'
+import { usePagesStore } from '@/pages/pages-store'
 
 const store = usePagesStore()
 </script>
