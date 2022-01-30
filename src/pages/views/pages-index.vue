@@ -18,4 +18,8 @@
 import { usePagesStore } from '@/pages/pages-store'
 
 const store = usePagesStore()
+
+onMounted(() => {
+    store.index()
+})
 </script>

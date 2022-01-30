@@ -1,36 +1,10 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
+import PageApi from '@/pages/api/PageApi'
 
 export const usePagesStore = defineStore('pages-store', {
     state: () => ({
-        pages: [
-            {
-                'id': 1,
-                'title': 'Homepage',
-                'path': null,
-                'slug': 'homepage',
-                'url': '/homepage',
-                'is_published': null,
-                'categories': []
-            },
-            {
-                'id': 2,
-                'title': 'Checking Account',
-                'path': null,
-                'slug': 'checking',
-                'url': '/checking',
-                'is_published': null,
-                'categories': []
-            }
-        ],
-        page: {
-            'id': 1,
-            'title': 'Homepage',
-            'path': null,
-            'slug': 'homepage',
-            'url': '/homepage',
-            'is_published': null,
-            'categories': []
-        },
+        pages: [],
+        page: {},
     }),
     
     getters: {},
@@ -39,7 +13,16 @@ export const usePagesStore = defineStore('pages-store', {
         updateTitle(title) {
             this.page.title = title
         },
-        index() {},
+        
+        index(params) {
+            PageApi.index(params)
+            .then(response => {
+                this.pages = response.data.data
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        
         store() {},
         show() {},
         update() {},
