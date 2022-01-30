@@ -1,15 +1,13 @@
 <template>
-  <div id="app">
-      <HelloWorld msg="Hello Vue 2 + Vite" />
-      <Hero
-          label="This is label"
-          title="Lorem ipsum dolor sit amet consectetur adipisicing elit"
-          subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!"
-          :image="{
-            src: 'https://picsum.photos/id/10/1280/720',
-          }"
-      />
-  </div>
+  <!-- <div id="app">
+      <Hero />
+  </div> -->
+  <div class="container max-width-adaptive-lg padding-top-md">
+        <AppNavbar />
+        <main>
+            <RouterView />
+        </main>
+    </div>
 </template>
 
 <script setup>

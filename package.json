@@ -8,11 +8,15 @@
   },
   "dependencies": {
     "@vue/composition-api": "^1.4.5",
+    "codyhouse-framework": "^3.0.4",
     "path": "^0.12.7",
+    "pinia": "^2.0.8",
     "v-codyhouse-componentz": "^1.0.16",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.3"
   },
   "devDependencies": {
+    "sass": "^1.49.0",
     "unplugin-auto-import": "^0.5.11",
     "unplugin-vue-components": "^0.17.15",
     "unplugin-vue2-script-setup": "^0.9.1",

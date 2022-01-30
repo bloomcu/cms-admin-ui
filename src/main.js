@@ -1,17 +1,20 @@
 import Vue from 'vue'
 import VueCompositionApi from '@vue/composition-api'
 import App from '@/App.vue'
+import { createPinia, PiniaVuePlugin } from 'pinia'
+import router from '@/router'
+import '@/app/styles/styles.scss'
+
+Vue.use(VueCompositionApi)
+Vue.use(PiniaVuePlugin)
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
 
-Vue.use(VueCompositionApi)
+const pinia = createPinia()
 
 new Vue({
-  render: (h) => h(App),
+    router,
+    pinia,
+    render: (h) => h(App),
 }).$mount('#app');
-
-// const app = createApp({
-//   render: () => h(App),
-// })
-// app.mount('#app')
