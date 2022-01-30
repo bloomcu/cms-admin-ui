@@ -1,4 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
+
+import { postApi as PostApi } from '@/app/api/postApi'
 import { pageApi as PageApi } from '@/pages/api/pageApi'
 
 export const usePagesStore = defineStore('pageStore', {
@@ -26,16 +28,34 @@ export const usePagesStore = defineStore('pageStore', {
         store() {},
         
         show(id) {
-            PageApi.show(id)
-            .then(response => {
-                this.page = response.data.data
-            }).catch(error => {
-                console.log(error)
-            })
+            PostApi.show(id)
+                .then(response => {
+                    this.page = response.data.data
+                }).catch(error => {
+                    console.log(error)
+                })
         },
         
         update() {},
-        destroy() {},
+        
+        destroy(id) {
+            PostApi.destroy(id)
+                .then(response => {
+                    this.page = {}
+                    this.pages = this.pages.filter((page) => page.id !== id)
+                }).catch(error => {
+                    console.log(error)
+                })
+        },
+        
+        replicate(id) {
+            PostApi.replicate(id)
+                .then(response => {
+                    this.pages.unshift(response.data.data)
+                }).catch(error => {
+                    console.log(error)
+                })
+        },
     }
 })
 

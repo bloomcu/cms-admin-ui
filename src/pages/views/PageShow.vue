@@ -8,18 +8,23 @@
             <p>Slug: {{ store.page.slug }}</p>
         </div>
         
-        <!-- TODO: Remove, this is a test -->
-        <button @click="store.updateTitle('Updated Title')">Update Title</button>
+        <button @click="destroy()" class="btn btn--sm">Delete</button>
     </div>
 </template>
 
 <script setup>
 import { usePagesStore } from '@/pages/store/pageStore'
 
+const router = getCurrentInstance().proxy.$router
 const route = getCurrentInstance().proxy.$route
 const store = usePagesStore()
 
 onMounted(() => {    
     store.show(route.params.page)
 })
+
+const destroy = () => {
+    store.destroy(route.params.page)
+    router.push({ name: 'pageIndex' })
+}
 </script>
