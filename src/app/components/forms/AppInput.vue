@@ -12,9 +12,7 @@
 </template>
 
 <script setup>
-defineEmits(['update:modelValue'])
-
-defineProps({ 
+const props = defineProps({ 
     modelValue: { // Enables v-model behavior
         type: [String, Number],
         default: ''
@@ -28,4 +26,6 @@ defineProps({
         default: ''
     },
 })
+
+const emits = defineEmits(['update:modelValue'])
 </script>

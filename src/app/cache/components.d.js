@@ -12,6 +12,7 @@ declare module 'vue' {
     BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
     GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
     PostHeader: typeof import('./../../views/post/components/header/PostHeader.vue')['default']
+    PostOutline: typeof import('./../../views/post/components/outline/PostOutline.vue')['default']
     PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']

@@ -6,7 +6,7 @@
                 <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g fill="none"><path d="M9 19l1.41-1.41L5.83 13H22v-2H5.83l4.59-4.59L9 5l-7 7 7 7z" fill="#212121"></path></g></svg>
                 Back
             </router-link>
-            <p class="text-sm">{{ store.post.title }}</p>
+            <p class="text-bold">{{ store.post.title }}</p>
         </div>
 
         <!-- Status -->

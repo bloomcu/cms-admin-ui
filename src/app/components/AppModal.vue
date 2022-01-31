@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
         <div class="modal modal--is-visible">
-            <div class="modal__content">
+            <div class="modal__content" ref="target">
                 <button @click="$emit('close')" class="reset modal__close-btn modal__close-btn--inner">
                     <!-- TODO: Move icon to an app component so it's reusable -->
                     <svg class="icon icon--sm" viewBox="0 0 24 24">
@@ -15,9 +15,15 @@
 </template>
 
 <script setup>
-defineProps({ 
+import { onClickOutside } from '@vueuse/core'
+
+const props = defineProps({ 
     open: { type: Boolean, default: false } 
 })
+
+const target = ref(null)
+const emit = defineEmits(['close'])
+onClickOutside(target, (event) => emit('close'))
 </script>
 
 <style lang="scss" scoped>

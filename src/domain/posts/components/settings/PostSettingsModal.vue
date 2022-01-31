@@ -44,6 +44,7 @@ const route = getCurrentInstance().proxy.$route
 
 const destroy = () => {
     store.destroy(route.params.post)
+    store.isShowingSettings = false
     router.push({ name: `${store.post.type}Dashboard` })
 }
 </script>
