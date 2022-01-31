@@ -10,7 +10,15 @@ export const postStore = defineStore('postStore', {
         isShowingSettings: false,
     }),
     
-    // getters: {},
+    getters: {
+        getUrl: (state) => {
+            return [
+                'bloomcu.com', 
+                state.post.path, 
+                state.post.slug
+            ].filter(Boolean).join('/')
+        }
+    },
     
     actions: {
         index(type = 'pages', params = {}) {

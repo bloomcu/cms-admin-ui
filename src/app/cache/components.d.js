@@ -4,13 +4,15 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppInput: typeof import('./../components/forms/AppInput.vue')['default']
     AppModal: typeof import('./../components/AppModal.vue')['default']
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
+    AppSelect: typeof import('./../components/forms/AppSelect.vue')['default']
     BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
     GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
     PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
-    SearchSettings: typeof import('./../../domain/posts/components/settings/includes/SearchSettings.vue')['default']
+    SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
   }
 }

@@ -1,72 +1,50 @@
 <template>
-    <h4 class="margin-bottom-sm">Blueprint</h4>
+    <div>
+        <!-- Section -->
+        <!-- <div class="margin-bottom-sm text-component">
+            <h4>Bluprint Settings</h4>
+            <p class="text-sm">Configure blueprint settings. <a href="#">Learn More</a></p>
+        </div> -->
 
-    <p class="margin-bottom-md">
-        Configure blueprint settings. <a href="#">Learn More</a>
-    </p>
+        <!-- Framework -->
+        <!-- <div class="form-group margin-bottom-sm">
+            <label class="form-label margin-bottom-xxs">Framework</label>
+            <div class="select">
+                <select v-model="store.post.framework" name="status" id="status" class="select_input form-control width-100%">
+                    <option value="AIDA" key="AIDA" :selected="store.post.framework === 'AIDA'">AIDA</option>
+                    <option value="Bridge" key="Bridge" :selected="store.post.framework === 'Bridge'">Bridge</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+        </div> -->
 
-    <!-- Framework -->
-    <div class="margin-bottom-sm">
-        <app-select
-            label="Framework"
-            :options="['AIDA', 'Bridge']"
-        />
+        <!-- Use Case -->
+        <!-- <div class="form-group margin-bottom-lg">
+            <label class="form-label margin-bottom-xxs">Use Case</label>
+            <div class="select">
+                <select v-model="store.post.use_case" name="status" id="status" class="select_input form-control width-100%">
+                    <option value="Checking Account" key="Checking Account" :selected="store.post.use_case === 'Checking Account'">Checking Account</option>
+                    <option value="Savings Account" key="Savings Account" :selected="store.post.use_case === 'Savings Account'">Savings Account</option>
+                    <option value="Auto Loan" key="Auto Loan" :selected="store.post.use_case === 'Auto Loan'">Auto Loan</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+        </div> -->
+
+        <!-- Section -->
+        <div class="margin-bottom-md text-component">
+            <h4>Create Blueprint</h4>
+            <p class="text-sm">Create a new blueprint based on this page. <a href="#">Learn More</a></p>
+        </div>
+        
+        <button v-if="!store.post.is_blueprint" class="btn btn--subtle">
+            Create New Blueprint from Page
+        </button>
     </div>
-
-    <!-- Use Case -->
-    <div class="margin-bottom-lg">
-        <app-select
-            label="Use Case"
-            :options="['Checking Account', 'Savings Account', 'Auto Loan']"
-        />
-    </div>
-
-    <h4 class="margin-bottom-sm">New Blueprint</h4>
-
-    <p class="margin-bottom-md">
-        Create a new blueprint based on this page. <a href="#">Learn More</a>
-    </p>
-
-    <button v-if="!page.is_blueprint" @click="handleReplicate(page)" class="editor-settings__button btn btn--primary">
-        Create New Blueprint from Page
-    </button>
 </template>
 
-<script>
-import { useRouter } from 'vue-router'
+<script setup>
+import { postStore } from '@/domain/posts/store/postStore'
 
-// Components
-import AppInput from '@/App/components/form/AppInput.vue'
-import AppSelect from '@/App/components/form/AppSelect.vue'
-
-// Composables
-import useToggle from '@/App/composables/useToggle'
-import usePage from '@/Pages/composables/usePage'
-
-export default {
-    setup() {
-        const router = useRouter()
-        const { toggle } = useToggle()
-        const { page, showPage, replicatePage } = usePage()
-
-        function handleReplicate(page) {
-            replicatePage(page.id, true)
-            .then(response => {
-                router.push({ name: 'dashboard-page-blueprints' })
-            }).catch(error => {
-                console.log(error)
-            })
-        }
-
-        return {
-            page,
-            handleReplicate
-        }
-    },
-
-    components: {
-        AppInput,
-        AppSelect
-    }
-}
+const store = postStore()
 </script>

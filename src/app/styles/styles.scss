@@ -1,2 +1,31 @@
 @import 'node_modules/codyhouse-framework/main/assets/css/base';
 @import 'custom-style';
+
+/* --------------------------------
+
+File#: _1_custom-select
+Title: Custom Select
+Descr: Custom Select Control
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  // --default variation only 👇
+  --select-icon-size: 16px;
+  --select-icon-right-margin: var(--space-sm); // icon margin right
+  --select-text-icon-gap: var(--space-xxxs); // gap between text and icon
+}
+
+.select {
+  position: relative;
+}
+
+.select__icon {
+  width: var(--select-icon-size);
+  height: var(--select-icon-size);
+  pointer-events: none;
+  position: absolute;
+  right: var(--select-icon-right-margin);
+  top: 50%;
+  transform: translateY(-50%);
+}

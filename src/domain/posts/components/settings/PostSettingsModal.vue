@@ -20,12 +20,12 @@
             </div>
 
             <!-- Right column -->
-            <!-- <div v-if="page" class="column-right utility__scrollable">
-                <settings-general v-if="activeMenu === 'General'" />
-                <settings-blueprint v-if="activeMenu === 'Blueprint'" />
-                <settings-search v-if="activeMenu === 'SEO'" />
-                <settings-social-media v-if="activeMenu === 'Social Media'" />
-            </div> -->
+            <div class="column-right utility__scrollable">
+                <GeneralSettings v-if="activeMenu === 'General'" />
+                <BlueprintSettings v-if="activeMenu === 'Blueprint'" />
+                <SEOSettings v-if="activeMenu === 'SEO'" />
+                <SocialMediaSettings v-if="activeMenu === 'Social Media'" />
+            </div>
         </div>
     </AppModal>
 </template>
@@ -35,15 +35,6 @@ import { postStore } from '@/domain/posts/store/postStore'
 
 const store = postStore()
 const activeMenu = ref('General')
-
-// const { categories, getCategories } = useCategory()
-// const selectedCategory = ref()
-// 
-// getCategories()
-// 
-// function onCategorySelected(item) {
-//     selectedCategory.value = item.id
-// }
 </script>
 
 <style lang="scss" scoped>

@@ -7,7 +7,7 @@
         </div>
         
         <div class="margin-bottom-md">
-            <p>Slug: {{ store.post.slug }}</p>
+            <p>Url: {{ store.getUrl }}</p>
         </div>
             
         <PostSettingsModal />
