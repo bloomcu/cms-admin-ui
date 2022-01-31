@@ -7,11 +7,11 @@ declare module 'vue' {
     AppModal: typeof import('./../components/AppModal.vue')['default']
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
-    PageSettingsModalBlueprint: typeof import('./../../posts/components/settings/PageSettingsModalBlueprint.vue')['default']
-    PageSettingsModalGeneral: typeof import('./../../posts/components/settings/PageSettingsModalGeneral.vue')['default']
-    PageSettingsModalSearch: typeof import('./../../posts/components/settings/PageSettingsModalSearch.vue')['default']
-    PageSettingsModalSocialMedia: typeof import('./../../posts/components/settings/PageSettingsModalSocialMedia.vue')['default']
+    BlueprintSettings: typeof import('./../../posts/components/settings/includes/BlueprintSettings.vue')['default']
+    GeneralSettings: typeof import('./../../posts/components/settings/includes/GeneralSettings.vue')['default']
     PostSettingsModal: typeof import('./../../posts/components/settings/PostSettingsModal.vue')['default']
+    SearchSettings: typeof import('./../../posts/components/settings/includes/SearchSettings.vue')['default']
+    SocialMediaSettings: typeof import('./../../posts/components/settings/includes/SocialMediaSettings.vue')['default']
   }
 }
 
