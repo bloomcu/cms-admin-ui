@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PostEditorHeader/>
+        Hello
     </div>
 </template>
 
@@ -14,7 +14,3 @@ onMounted(() => {
     store.show(route.params.post)
 })
 </script>
-
-<style lang="scss" scoped>
-
-</style>

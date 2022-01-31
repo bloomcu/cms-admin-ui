@@ -15,7 +15,10 @@
                             {{ item }}
                         </div>
                     </div>
-                    <AppSaveButton @clicked="store.update()" :loading="store.isSaving">Save</AppSaveButton>
+                    <div class="flex flex-column gap-sm">
+                        <button @click="destroy()" class="btn">Delete</button>
+                        <AppSaveButton @clicked="store.update()" :loading="store.isSaving">Save</AppSaveButton>
+                    </div>
                 </div>
             </div>
 
@@ -35,6 +38,14 @@ import { postStore } from '@/domain/posts/store/postStore'
 
 const store = postStore()
 const activeMenu = ref('General')
+
+const router = getCurrentInstance().proxy.$router
+const route = getCurrentInstance().proxy.$route
+
+const destroy = () => {
+    store.destroy(route.params.post)
+    router.push({ name: `${store.post.type}Dashboard` })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -47,6 +58,7 @@ const activeMenu = ref('General')
         width: 300px;
         min-width: 300px;
         border-radius: var(--radius-md) 0 0 var(--radius-md);
+        border-right: 1px solid var(--color-contrast-lower);
 
         &__content {
             padding: var(--space-md);

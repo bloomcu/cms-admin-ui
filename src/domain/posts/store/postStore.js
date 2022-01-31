@@ -12,11 +12,7 @@ export const postStore = defineStore('postStore', {
     
     getters: {
         getUrl: (state) => {
-            return [
-                'bloomcu.com', 
-                state.post.path, 
-                state.post.slug
-            ].filter(Boolean).join('/')
+            return ['bloomcu.com', state.post.path, state.post.slug].filter(Boolean).join('/')
         }
     },
     

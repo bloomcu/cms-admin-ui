@@ -11,6 +11,7 @@ declare module 'vue' {
     AppSelect: typeof import('./../components/forms/AppSelect.vue')['default']
     BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
     GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
+    PostEditorHeader: typeof import('./../../views/post-editor/components/header/PostEditorHeader.vue')['default']
     PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
