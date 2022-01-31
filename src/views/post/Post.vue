@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PostEditorHeader/>
+        <PostHeader/>
     </div>
 </template>
 
