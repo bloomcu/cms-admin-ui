@@ -41,6 +41,7 @@ const config = defineConfig({
             ],
             imports: [
                 '@vue/composition-api',
+                '@vueuse/core',
                 'vue-router',
                 'pinia',
             ],

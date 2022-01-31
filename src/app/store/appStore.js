@@ -1,6 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 
-export const useAppStore = defineStore('appStore', {
+export const appStore = defineStore('appStore', {
     state: () => ({
         count: 0,
     }),
@@ -25,5 +25,5 @@ export const useAppStore = defineStore('appStore', {
  * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
  */
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(useAppStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(appStore, import.meta.hot))
 }

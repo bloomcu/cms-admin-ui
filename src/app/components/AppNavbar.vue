@@ -22,5 +22,9 @@
 const menu = [
     { title: 'Pages', name: 'pageDashboard' },
     { title: 'Articles', name: 'articleDashboard' },
+    { title: 'Blocks', name: 'pageDashboard' },
+    { title: 'Files', name: 'pageDashboard' },
+    { title: 'Menus', name: 'pageDashboard' },
+    { title: 'Settings', name: 'pageDashboard' },
 ]
 </script>
