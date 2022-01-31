@@ -1,16 +1,14 @@
 import { httpClient as HttpClient } from '@/app/api/httpClient'
 
-// TODO: Document the @return for each endpoint
-// Provide more useful information about what's returned
-const postApi = {
+const postApi = {    
     /**
      * List posts
      *
      * @param Object params [Key/value params to sort by]
      * @return promise
      */
-    index(params) {
-        return HttpClient.get('/posts', { params: params })
+    index(type, params) {
+        return HttpClient.get(`/${type}`, { params: params })
     },
     
     /**
@@ -22,7 +20,7 @@ const postApi = {
     store(post) {
         post = JSON.parse(JSON.stringify(post))
         
-        return HttpClient.post('/posts', post)
+        return HttpClient.post('/pages', post)
     },
 
     /**

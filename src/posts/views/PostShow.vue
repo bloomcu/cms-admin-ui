@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="margin-bottom-md">
-            <h1 class="text-md">{{ store.page.title }}</h1>
+            <h1 class="text-md">{{ store.post.title }}</h1>
         </div>
         
         <div class="margin-bottom-md">
-            <p>Slug: {{ store.page.slug }}</p>
+            <p>Slug: {{ store.post.slug }}</p>
         </div>
         
         <div class="margin-bottom-md">
@@ -14,25 +14,25 @@
         
         <div class="margin-bottom-md">
             <button @click="store.isShowingSettings = true" class="btn">Settings</button>
-            <PageSettingsModal />
+            <PostSettingsModal />
         </div>
     </div>
 </template>
 
 <script setup>
-import { pageStore } from '@/pages/store/pageStore'
+import { postStore } from '@/posts/store/postStore'
 
+const store = postStore()
 const router = getCurrentInstance().proxy.$router
 const route = getCurrentInstance().proxy.$route
-const store = pageStore()
 
 onMounted(() => {    
-    store.show(route.params.page)
+    store.show(route.params.post)
 })
 
 const destroy = () => {
-    store.destroy(route.params.page)
-    router.push({ name: 'pageIndex' })
+    store.destroy(route.params.post)
+    router.push({ name: `${store.post.type}Index` })
 }
 </script>
 

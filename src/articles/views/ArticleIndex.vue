@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="margin-bottom-md">
-            <h1 class="text-md">Pages</h1>
+            <h1 class="text-md">Articles</h1>
         </div>
         
         <div class="margin-bottom-md">
@@ -22,6 +22,6 @@ import { postStore } from '@/posts/store/postStore'
 const store = postStore()
 
 onMounted(() => {
-    store.index('pages')
+    store.index('articles')
 })
 </script>

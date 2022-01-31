@@ -7,11 +7,11 @@ declare module 'vue' {
     AppModal: typeof import('./../components/AppModal.vue')['default']
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
-    PageSettingsModal: typeof import('./../../pages/components/settings/PageSettingsModal.vue')['default']
-    PageSettingsModalBlueprint: typeof import('./../../pages/components/settings/PageSettingsModalBlueprint.vue')['default']
-    PageSettingsModalGeneral: typeof import('./../../pages/components/settings/PageSettingsModalGeneral.vue')['default']
-    PageSettingsModalSearch: typeof import('./../../pages/components/settings/PageSettingsModalSearch.vue')['default']
-    PageSettingsModalSocialMedia: typeof import('./../../pages/components/settings/PageSettingsModalSocialMedia.vue')['default']
+    PageSettingsModalBlueprint: typeof import('./../../posts/components/settings/PageSettingsModalBlueprint.vue')['default']
+    PageSettingsModalGeneral: typeof import('./../../posts/components/settings/PageSettingsModalGeneral.vue')['default']
+    PageSettingsModalSearch: typeof import('./../../posts/components/settings/PageSettingsModalSearch.vue')['default']
+    PageSettingsModalSocialMedia: typeof import('./../../posts/components/settings/PageSettingsModalSocialMedia.vue')['default']
+    PostSettingsModal: typeof import('./../../posts/components/settings/PostSettingsModal.vue')['default']
   }
 }
 

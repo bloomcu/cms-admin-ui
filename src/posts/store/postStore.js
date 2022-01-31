@@ -1,12 +1,10 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
+import { postApi as PostApi } from '@/posts/api/postApi'
 
-import { postApi as PostApi } from '@/app/api/postApi'
-import { pageApi as PageApi } from '@/pages/api/pageApi'
-
-export const pageStore = defineStore('pageStore', {
+export const postStore = defineStore('postStore', {
     state: () => ({
-        pages: [],
-        page: {},
+        posts: [],
+        post: {},
         isLoading: false,
         isSaving: false,
         isShowingSettings: false,
@@ -15,17 +13,13 @@ export const pageStore = defineStore('pageStore', {
     // getters: {},
     
     actions: {
-        updateTitle(title) {
-            this.page.title = title
-        },
-        
-        index(params) {
-            PageApi.index(params)
-            .then(response => {
-                this.pages = response.data.data
-            }).catch(error => {
-                console.log('Error', error.response.data)
-            })
+        index(type = 'pages', params = {}) {
+            PostApi.index(type, params)
+                .then(response => {
+                    this.posts = response.data.data
+                }).catch(error => {
+                    console.log('Error', error.response.data)
+                })
         },
         
         store() {},
@@ -33,7 +27,7 @@ export const pageStore = defineStore('pageStore', {
         show(id) {
             PostApi.show(id)
                 .then(response => {
-                    this.page = response.data.data
+                    this.post = response.data.data
                 }).catch(error => {
                     console.log('Error', error.response.data)
                 })
@@ -42,11 +36,11 @@ export const pageStore = defineStore('pageStore', {
         update() {
             this.isSaving = true
             
-            PostApi.update(this.page.id, this.page)
+            PostApi.update(this.post.id, this.post)
                 .then(response => {
                     setTimeout(() => {
                         this.isSaving = false
-                        this.page = response.data.data
+                        this.post = response.data.data
                     }, 500)
                 }).catch(error => {
                     this.isSaving = false
@@ -57,8 +51,8 @@ export const pageStore = defineStore('pageStore', {
         destroy(id) {
             PostApi.destroy(id)
                 .then(response => {
-                    this.page = {}
-                    this.pages = this.pages.filter((page) => page.id !== id)
+                    this.post = {}
+                    this.posts = this.posts.filter((page) => page.id !== id)
                 }).catch(error => {
                     console.log('Error', error.response.data)
                 })
@@ -67,7 +61,7 @@ export const pageStore = defineStore('pageStore', {
         replicate(id) {
             PostApi.replicate(id)
                 .then(response => {
-                    this.pages.unshift(response.data.data)
+                    this.posts.unshift(response.data.data)
                 }).catch(error => {
                     console.log('Error', error.response.data)
                 })
@@ -80,5 +74,5 @@ export const pageStore = defineStore('pageStore', {
  * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
  */
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(pageStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(postStore, import.meta.hot))
 }

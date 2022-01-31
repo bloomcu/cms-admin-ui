@@ -21,5 +21,6 @@
 <script setup>
 const menu = [
     { title: 'Pages', name: 'pageIndex' },
+    { title: 'Articles', name: 'articleIndex' },
 ]
 </script>

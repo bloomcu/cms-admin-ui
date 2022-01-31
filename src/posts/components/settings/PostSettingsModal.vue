@@ -31,9 +31,9 @@
 </template>
 
 <script setup>
-import { pageStore } from '@/pages/store/pageStore'
+import { postStore } from '@/posts/store/postStore'
 
-const store = pageStore()
+const store = postStore()
 const activeMenu = ref('General')
 
 // const { categories, getCategories } = useCategory()
