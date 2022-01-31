@@ -4,7 +4,8 @@ const postApi = {
     /**
      * List posts
      *
-     * @param Object params [Key/value params to sort by]
+     * @param String type [Type of posts, can be 'page' or 'article']
+     * @param Object params [Key/value params to filter by]
      * @return promise
      */
     index(type, params) {

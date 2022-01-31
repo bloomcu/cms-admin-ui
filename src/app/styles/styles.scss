@@ -3,6 +3,26 @@
 
 /* --------------------------------
 
+Title: Utility Classes
+Descr: App-wide utility classes
+
+-------------------------------- */
+.utility__lock-scroll {
+    overflow: hidden;
+}
+
+.utility__scrollable {
+    overflow: auto;
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+
+    &::-webkit-scrollbar {
+        display: none; // Chrome, Safari and Opera
+    }
+}
+
+/* --------------------------------
+
 File#: _1_custom-select
 Title: Custom Select
 Descr: Custom Select Control

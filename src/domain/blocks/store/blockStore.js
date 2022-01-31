@@ -1,75 +1,68 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { postApi as PostApi } from '@/domain/posts/api/postApi'
+import { blockApi as BlockApi } from '@/domain/posts/api/blockApi'
 
-export const postStore = defineStore('postStore', {
+export const blockStore = defineStore('blockStore', {
     state: () => ({
-        posts: [],
-        post: {},
+        blocks: [],
+        block: {},
         isLoading: false,
         isSaving: false,
-        isShowingSettings: false,
     }),
     
-    getters: {
-        getUrl: (state) => {
-            return ['bloomcu.com', state.post.path, state.post.slug].filter(Boolean).join('/')
-        }
-    },
-    
     actions: {
-        index(type = 'pages', params = {}) {
-            PostApi.index(type, params)
+        index(params = {}) {
+            BlockApi.index(type, params)
                 .then(response => {
-                    this.posts = response.data.data
+                    this.blocks = response.data.data
                 }).catch(error => {
                     console.log('Error', error.response.data)
                 })
         },
-        
-        store() {},
-        
-        show(id) {
-            PostApi.show(id)
-                .then(response => {
-                    this.post = response.data.data
-                }).catch(error => {
-                    console.log('Error', error.response.data)
-                })
-        },
-        
-        update() {
-            this.isSaving = true
-            
-            PostApi.update(this.post.id, this.post)
-                .then(response => {
-                    setTimeout(() => {
-                        this.isSaving = false
-                        this.post = response.data.data
-                    }, 500)
-                }).catch(error => {
-                    this.isSaving = false
-                    Object.values(error.response.data).forEach(error => console.log(error))
-                })
-        },
-        
-        destroy(id) {
-            PostApi.destroy(id)
-                .then(response => {
-                    this.post = {}
-                    this.posts = this.posts.filter((page) => page.id !== id)
-                }).catch(error => {
-                    console.log('Error', error.response.data)
-                })
-        },
-        
-        replicate(id) {
-            PostApi.replicate(id)
-                .then(response => {
-                    this.posts.unshift(response.data.data)
-                }).catch(error => {
-                    console.log('Error', error.response.data)
-                })
-        },
+        // 
+        // store() {},
+        // 
+        // show(id) {
+        //     BlockApi.show(id)
+        //         .then(response => {
+        //             this.block = response.data.data
+        //         }).catch(error => {
+        //             console.log('Error', error.response.data)
+        //         })
+        // },
+        // 
+        // update() {
+        //     this.isSaving = true
+        // 
+        //     BlockApi.update(this.block.id, this.block)
+        //         .then(response => {
+        //             setTimeout(() => {
+        //                 this.isSaving = false
+        //                 this.block = response.data.data
+        //             }, 500)
+        //         }).catch(error => {
+        //             this.isSaving = false
+        //             Object.values(error.response.data).forEach(error => console.log(error))
+        //         })
+        // },
+        // 
+        // destroy(id) {
+        //     BlockApi.destroy(id)
+        //         .then(response => {
+        //             this.block = {}
+        //             this.blocks = this.blocks.filter((page) => page.id !== id)
+        //         }).catch(error => {
+        //             console.log('Error', error.response.data)
+        //         })
+        // },
+        // 
+        // replicate(id) {
+        //     BlockApi.replicate(id)
+        //         .then(response => {
+        //             this.blocks.unshift(response.data.data)
+        //         }).catch(error => {
+        //             console.log('Error', error.response.data)
+        //         })
+        // },
     }
 })
 
@@ -78,5 +71,5 @@ export const postStore = defineStore('postStore', {
  * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
  */
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(postStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(blockStore, import.meta.hot))
 }

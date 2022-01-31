@@ -1,27 +1,27 @@
 <template>
-    <div class="block-outline">
+    <div class="outline">
         <!-- <draggable
             v-if="page"
             v-model="page.layout.blocks"
             :group="{ name: 'outline', pull: false, put: 'blocks' }"
             :animation="400"
             @change="change"
-            class="block-outline__list"
-            chosen-class="block-outline__list--chosen"
-            ghost-class="block-outline__list--ghost"
-            drag-class="block-outline__list--drag"
+            class="outline__list"
+            chosen-class="outline__list--chosen"
+            ghost-class="outline__list--ghost"
+            drag-class="outline__list--drag"
         >
             <transition-group type="transition" name="thumbnail">
                 <div
                     v-for="block in page.layout.blocks"
                     :key="block.uuid"
                     @click="scrollToElement(block.uuid)"
-                    class="block-outline__card"
+                    class="outline__card"
                 >
-                    <div class="block-outline__card__title">
+                    <div class="outline__card__title">
                         <p class="text-xs">{{ block.title }}</p>
                     </div>
-                    <figure class="block-outline__card__img">
+                    <figure class="outline__card__img">
                         <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
                     </figure>
                 </div>
@@ -30,17 +30,17 @@
         
         <div
             v-if="store.post.layout"
-            class="block-outline__list"
+            class="outline__list"
         >
             <div
                 v-for="block in store.post.layout.blocks"
                 :key="block.uuid"
-                class="block-outline__card"
+                class="outline__card"
             >
-                <div class="block-outline__card__title">
+                <div class="outline__card__title">
                     <p class="text-xs">{{ block.title }}</p>
                 </div>
-                <figure class="block-outline__card__img">
+                <figure class="outline__card__img">
                     <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
                 </figure>
             </div>
@@ -55,7 +55,7 @@ const store = postStore()
 </script>
 
 <style lang="scss" scoped>
-.block-outline__list {
+.outline__list {
     // Block clicked
     &--chosen {
         border: 2px solid var(--color-primary);
@@ -72,7 +72,7 @@ const store = postStore()
     }
 }
 
-.block-outline__card {
+.outline__card {
     margin-bottom: var(--space-xs);
     background-color: var(--color-bg);
     box-shadow: var(--shadow-xs);

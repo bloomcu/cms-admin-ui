@@ -2,14 +2,15 @@
     <div class="editor">
         <EditorHeader/>
         
-        <div class="editor-wrapper">
+        <!-- TODO: Can we remove the v-if check if store action is async? -->
+        <div v-if="store.post.layout" class="editor-wrapper">
             <!-- Left -->
             <div v-if="editor.show.overview" style="width: 12%;" class="editor-wrapper__left utility__scrollable">
-                <BlockOutline/>
+                <Outline/>
             </div>
             
             <div v-if="editor.show.blockEditor" style="width: 25%;" class="editor-wrapper__left utility__scrollable">
-                <BlockEditor />
+                <BlockEditor/>
             </div>
             
             <div v-if="editor.show.files" style="width: 25%;" class="editor-wrapper__left utility__scrollable">
@@ -22,14 +23,13 @@
 
             <!-- Center -->
             <main class="editor-wrapper__center utility__scrollable">
-                <!-- <layout /> -->
-                Center
-                <button @click="editor.showBlockEditor()" type="button" name="button">Edit Block</button>
+                <Layout/>
+                <!-- <button @click="editor.showBlockEditor()" type="button" name="button">Edit Block</button> -->
             </main>
 
             <!-- Right -->
             <div v-if="editor.show.blocks" class="editor-wrapper__right utility__scrollable">
-                <BlockMenu />
+                <BlockMenu/>
             </div>
         </div>
     </div>
@@ -81,8 +81,8 @@ onMounted(() => {
 
     // Style
     background-color: var(--color-white);
-    // border-radius: var(--radius-md);
-    // box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .editor-wrapper__right {

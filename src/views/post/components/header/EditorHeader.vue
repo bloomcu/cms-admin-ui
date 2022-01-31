@@ -42,7 +42,7 @@ const store = postStore()
 .editor-header {
     top: 0;
     position: sticky;
-    height: 60px;
+    min-height: 60px;
 
     display: flex;
     align-items: center;

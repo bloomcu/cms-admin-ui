@@ -27,6 +27,7 @@ function activateMenu(cat) {
     // lastActiveMenu.value = cat
 
     // Lock body scroll
+    // TODO: This may not be needed
     document.body.classList.add('utility__lock-scroll')
 
     // Update menu
@@ -34,9 +35,9 @@ function activateMenu(cat) {
 
     // Query blocks
     if (cat !== 'all') {
-        getBlocks('?category=' + cat)
+        // getBlocks('?category=' + cat)
     } else {
-        getBlocks('')
+        // getBlocks('')
     }
 }
 
