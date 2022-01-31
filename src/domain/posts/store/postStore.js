@@ -1,5 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { postApi as PostApi } from '@/posts/api/postApi'
+import { postApi as PostApi } from '@/domain/posts/api/postApi'
 
 export const postStore = defineStore('postStore', {
     state: () => ({

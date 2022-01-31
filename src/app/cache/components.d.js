@@ -7,11 +7,11 @@ declare module 'vue' {
     AppModal: typeof import('./../components/AppModal.vue')['default']
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
-    BlueprintSettings: typeof import('./../../posts/components/settings/includes/BlueprintSettings.vue')['default']
-    GeneralSettings: typeof import('./../../posts/components/settings/includes/GeneralSettings.vue')['default']
-    PostSettingsModal: typeof import('./../../posts/components/settings/PostSettingsModal.vue')['default']
-    SearchSettings: typeof import('./../../posts/components/settings/includes/SearchSettings.vue')['default']
-    SocialMediaSettings: typeof import('./../../posts/components/settings/includes/SocialMediaSettings.vue')['default']
+    BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
+    GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
+    PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
+    SearchSettings: typeof import('./../../domain/posts/components/settings/includes/SearchSettings.vue')['default']
+    SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
   }
 }
 

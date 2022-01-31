@@ -54,7 +54,9 @@ const config = defineConfig({
         Components({
             extensions: ['vue'],
             dirs: [
-                'src/*/components'
+                'src/app/components*',
+                'src/domain/*/components*',
+                'src/views/*/components*',
             ],
             dts: 'src/app/cache/components.d.js',
         }),

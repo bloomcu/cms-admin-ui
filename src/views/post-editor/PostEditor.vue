@@ -1,26 +1,21 @@
 <template>
     <div>
-        <div class="margin-bottom-md">
+        <div class="margin-bottom-md flex items-center gap-xs">
             <h1 class="text-md">{{ store.post.title }}</h1>
+            <button @click="store.isShowingSettings = true" class="btn">Settings</button>
+            <button @click="destroy()" class="btn">Delete</button>
         </div>
         
         <div class="margin-bottom-md">
             <p>Slug: {{ store.post.slug }}</p>
         </div>
-        
-        <div class="margin-bottom-md">
-            <button @click="destroy()" class="btn">Delete</button>
-        </div>
-        
-        <div class="margin-bottom-md">
-            <button @click="store.isShowingSettings = true" class="btn">Settings</button>
-            <PostSettingsModal />
-        </div>
+            
+        <PostSettingsModal />
     </div>
 </template>
 
 <script setup>
-import { postStore } from '@/posts/store/postStore'
+import { postStore } from '@/domain/posts/store/postStore'
 
 const store = postStore()
 const router = getCurrentInstance().proxy.$router
@@ -32,7 +27,7 @@ onMounted(() => {
 
 const destroy = () => {
     store.destroy(route.params.post)
-    router.push({ name: `${store.post.type}Index` })
+    router.push({ name: `${store.post.type}Dashboard` })
 }
 </script>
 

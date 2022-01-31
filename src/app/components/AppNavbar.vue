@@ -20,7 +20,7 @@
 
 <script setup>
 const menu = [
-    { title: 'Pages', name: 'pageIndex' },
-    { title: 'Articles', name: 'articleIndex' },
+    { title: 'Pages', name: 'pageDashboard' },
+    { title: 'Articles', name: 'articleDashboard' },
 ]
 </script>

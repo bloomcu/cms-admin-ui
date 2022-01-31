@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { postStore } from '@/posts/store/postStore'
+import { postStore } from '@/domain/posts/store/postStore'
 
 const store = postStore()
 const activeMenu = ref('General')
