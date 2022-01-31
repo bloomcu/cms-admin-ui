@@ -57,7 +57,7 @@ onMounted(() => {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-bg-lighter);
+    background-color: #f4f3f6; // TODO: Replace with var
 }
 
 .editor-wrapper {
