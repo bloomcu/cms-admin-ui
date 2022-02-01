@@ -6,7 +6,7 @@
         
         <div class="app-dashboard">
             <div class="app-dashboard-column--left">
-                <!-- <menu-nested :items="categories.data" @item-selected="filterByCategory"/> -->
+                <AppNestedMenu :items="categoryStore.category.children" @selected="filter"/>
             </div>
             <div class="app-dashboard-column--right">
                 <!-- <pages-table :pages="pages" :loading="pagesLoading"/> -->
@@ -29,8 +29,12 @@ import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 const postStore = usePostStore()
 const categoryStore = useCategoryStore()
 
+const filter = () => {
+    console.log('Filtering...')
+}
+
 onMounted(() => {
     postStore.index('pages')
-    postStore.show(1)
+    categoryStore.show(1)
 })
 </script>

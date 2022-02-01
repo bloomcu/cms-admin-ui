@@ -11,8 +11,8 @@
             <!-- "All" option -->
             <li class="nested-menu__item">
                 <a
-                    @click.prevent="activateMenu(null)"
-                    :class="!selected ? 'nested-menu__link--current' : ''"
+                    @click.prevent="toggle(null)"
+                    :class="!toggled ? 'nested-menu__link--current' : ''"
                     class="nested-menu__link"
                     href=""
                 >
@@ -21,28 +21,24 @@
             </li>
 
             <!-- Options -->
-            <AppNestedMenuChildren :items="items" :selected="selected" @selected="activateMenu" />
+            <AppNestedMenuChildren :items="items" :selected="toggled" @selected="toggle" />
         </ul>
     </nav>
 </template>
 
-<script>
-import LoadingGhost from '@/components/loading/LoadingGhost.vue'
+<script setup>
+// TODO: Implement loading ghost
+// import LoadingGhost from '@/components/loading/LoadingGhost.vue'
 
-props: {
-    items: {
-        type: Array
-    }
-}
+import useToggle from '@/app/composables/useToggle.js'
 
-emits: ['selected']
+const props = defineProps({ 
+    items: { type: Array }
+})
 
-const selected = ref(null)
+const { toggle, toggled } = useToggle()
 
-function activateMenu(item) {
-    item == selected.value ? selected.value = null : selected.value = item
-    emit('selected', item)
-}
+const emit = defineEmits(['selected'])
 </script>
 
 <style media="screen">

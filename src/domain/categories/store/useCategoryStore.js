@@ -26,7 +26,7 @@ export const useCategoryStore = defineStore('categoryStore', {
         show(id) {
             CategoryApi.show(id)
                 .then(response => {
-                    this.category = response.data.data
+                    this.category = response.data.data[0]
                 }).catch(error => {
                     console.log('Error', error.response.data)
                 })
