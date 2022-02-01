@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { postStore } from '@/domain/posts/store/postStore'
+import { usePostStore } from '@/domain/posts/store/usePostStore'
 
-const store = postStore()
+const store = usePostStore()
 </script>

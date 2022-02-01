@@ -33,22 +33,22 @@
 </template>
 
 <script setup>
-import { postStore } from '@/domain/posts/store/postStore'
+import { usePostStore } from '@/domain/posts/store/usePostStore'
 
-const store = postStore()
+const store = usePostStore()
 </script>
 
 <style lang="scss" scoped>
 .editor-header {
     top: 0;
     position: sticky;
-    min-height: 60px;
+    min-height: 58px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 var(--space-sm);
+    padding: 0 var(--space-md);
     background-color: var(--color-white);
     box-shadow: var(--shadow-xs);
 

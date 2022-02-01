@@ -1,5 +1,5 @@
 <template>
-    <div class="layout">
+    <div v-if="store.post.layout" class="layout">
         <Block
             v-for="block in store.post.layout.blocks"
             :key="block.uuid"
@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-import { postStore } from '@/domain/posts/store/postStore'
-const store = postStore()
+import { usePostStore } from '@/domain/posts/store/usePostStore'
+const store = usePostStore()
 </script>
 
 <style lang="scss" scoped>

@@ -4,19 +4,21 @@
         
         <!-- <Hero v-bind="block.data"/> -->
         
-        <Hero
+        <!-- <Hero
           label="This is label"
           title="Lorem ipsum dolor sit amet consectetur adipisicing elit"
           subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!"
           :image="{src: 'https://img.wallpapersafari.com/desktop/1024/576/90/72/qQ6bx0.png'}"
-        />
+        /> -->
         
-        <BlockControls :uuid="block.uuid"/>
+        <!-- <MyButton/> -->
+        
+        <!-- <BlockControls :uuid="block.uuid"/> -->
     </div>
 </template>
 
 <script setup>
-import { Hero } from 'v-codyhouse-componentz'
+// import { MyButton } from 'vite-cody2'
 
 const props = defineProps({
     block: { type: Object, required: true },

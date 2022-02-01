@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import { postApi as PostApi } from '@/domain/posts/api/postApi'
 
-export const postStore = defineStore('postStore', {
+export const usePostStore = defineStore('postStore', {
     state: () => ({
         posts: [],
         post: {},
@@ -78,5 +78,5 @@ export const postStore = defineStore('postStore', {
  * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
  */
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(postStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(usePostStore, import.meta.hot))
 }

@@ -7,6 +7,26 @@ Title: Utility Classes
 Descr: App-wide utility classes
 
 -------------------------------- */
+.app-dashboard {
+    display: flex;
+    width: 100%;
+
+    &-column--left {
+        width: 25%;
+        margin-right: 40px;
+    }
+
+    &-column--right {
+        width: 100%;
+    }
+}
+
+/* --------------------------------
+
+Title: Utility Classes
+Descr: App-wide utility classes
+
+-------------------------------- */
 .utility__lock-scroll {
     overflow: hidden;
 }

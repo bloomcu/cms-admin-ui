@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { VNode }  from 'vue'
 import VueCompositionApi from '@vue/composition-api'
 import App from '@/App.vue'
 import { createPinia, PiniaVuePlugin } from 'pinia'
@@ -16,5 +16,5 @@ const pinia = createPinia()
 new Vue({
     router,
     pinia,
-    render: (h) => h(App),
+    render: (h): VNode => h(App),
 }).$mount('#app');

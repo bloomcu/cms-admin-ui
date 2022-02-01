@@ -1,11 +1,11 @@
 <template>
-    <header class="margin-bottom-md">
+    <header class="app-header">
         <div class="flex flex-row items-center gap-md">
             <RouterLink :to="{ name: 'appHome' }">
                 <img alt="Vite logo" src="@/app/assets/vite-logo.svg" width="36px" />
             </RouterLink>
 
-            <nav class="flex flex-row flex-center items-center gap-md">
+            <!-- <nav class="flex flex-row flex-center items-center gap-md">
                 <RouterLink
                     v-for="(route, index) in menu"
                     :key="index"
@@ -13,18 +13,15 @@
                 >
                     {{ route.title }}
                 </RouterLink>
-            </nav>
+            </nav> -->
         </div>
     </header>
 </template>
 
-<script setup>
-const menu = [
-    { title: 'Pages', name: 'pageDashboard' },
-    { title: 'Articles', name: 'articleDashboard' },
-    { title: 'Blocks', name: 'pageDashboard' },
-    { title: 'Files', name: 'pageDashboard' },
-    { title: 'Menus', name: 'pageDashboard' },
-    { title: 'Settings', name: 'pageDashboard' },
-]
-</script>
+<style lang="scss">
+.app-header {
+    padding: var(--space-xxs) var(--space-md);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-xs);
+}
+</style>

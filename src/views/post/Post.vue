@@ -3,7 +3,7 @@
         <EditorHeader/>
         
         <!-- TODO: Can we remove the v-if check if store action is async? -->
-        <div v-if="store.post.layout" class="editor-wrapper">
+        <div v-if="store" class="editor-wrapper">
             <!-- Left -->
             <div v-if="editor.show.overview" style="width: 12%;" class="editor-wrapper__left utility__scrollable">
                 <Outline/>
@@ -36,10 +36,10 @@
 </template>
 
 <script setup>
-import { postStore } from '@/domain/posts/store/postStore'
+import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { editorStore } from '@/views/post/store/editorStore'
 
-const store = postStore()
+const store = usePostStore()
 const editor = editorStore()
 
 onMounted(() => {
