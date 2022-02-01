@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    App: typeof import('./../../App.vue')['default']
     App404: typeof import('./../views/App404.vue')['default']
     AppHome: typeof import('./../views/AppHome.vue')['default']
     AppInput: typeof import('./../components/forms/AppInput.vue')['default']
@@ -14,7 +15,23 @@ declare module 'vue' {
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
     AppSelect: typeof import('./../components/forms/AppSelect.vue')['default']
     AppSidebar: typeof import('./../components/AppSidebar.vue')['default']
+    Block: typeof import('./../../views/post/components/block/Block.vue')['default']
+    BlockControls: typeof import('./../../views/post/components/block/includes/BlockControls.vue')['default']
+    BlockEditor: typeof import('./../../views/post/components/block-editor/BlockEditor.vue')['default']
+    BlockMenu: typeof import('./../../views/post/components/block-menu/BlockMenu.vue')['default']
+    BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
+    DashboardArticles: typeof import('./../../views/dashboards/DashboardArticles.vue')['default']
+    DashboardPages: typeof import('./../../views/dashboards/DashboardPages.vue')['default']
+    EditorHeader: typeof import('./../../views/post/components/header/EditorHeader.vue')['default']
+    GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
+    Layout: typeof import('./../../views/post/components/layout/Layout.vue')['default']
     LayoutSidebar: typeof import('./../layouts/LayoutSidebar.vue')['default']
+    Outline: typeof import('./../../views/post/components/outline/Outline.vue')['default']
+    Post: typeof import('./../../views/post/Post.vue')['default']
+    PostPreview: typeof import('./../../views/post-preview/PostPreview.vue')['default']
+    PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
+    SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
+    SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
   }
 }
 

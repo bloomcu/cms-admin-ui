@@ -5,32 +5,23 @@
             :class="toggled(item.id) ? 'nested-menu__item--expanded' : ''"
             class="nested-menu__item"
         >
-            <a
-                @click.prevent="select(item)"
-                :class="selected == item ? 'nested-menu__link--current' : ''"
-                class="nested-menu__link"
-                href=""
-            >
+            <a @click.prevent="select(item.id)" :class="selected == item.id ? 'nested-menu__link--current' : ''" class="nested-menu__link" href="">
                 <span class="nested-menu__text">{{ item.title }}</span>
             </a>
 
             <!-- Arrow -->
-            <button
-                v-if="item.children.length"
-                @click="toggle(item.id)"
-                class="reset nested-menu__sublist-control"
-            >
+            <button v-if="item.children.length" @click="toggle(item.id)" class="reset nested-menu__sublist-control">
                 <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
 
-            <!-- Children -->
+            <!-- Recursive children -->
             <ul v-if="item.children.length" class="nested-menu__list">
                 <AppNestedMenuChildren
                     :items="item.children"
                     :selected="selected"
-                    @selected="select(item)"
+                    @selected="select"
                 />
             </ul>
         </li>
@@ -51,13 +42,13 @@ import useToggleMultiple from '@/app/composables/useToggleMultiple.js'
 
 const props = defineProps({ 
     items: { type: Array },
-    selected: { type: Object }
+    selected: ''
 })
 
 const { toggle, toggled } = useToggleMultiple()
 
-const select = (item) => {
-    emit('selected', item)
+const select = (id) => {
+    emit('selected', id)
 }
 
 const emit = defineEmits(['selected'])

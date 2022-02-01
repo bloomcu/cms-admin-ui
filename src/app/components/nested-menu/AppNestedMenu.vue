@@ -1,27 +1,16 @@
 <template>
     <nav class="nested-menu">
-        <!-- Menu Label -->
-        <!-- <div class="nested-menu__label margin-bottom-sm">
-            <span class="text-sm color-contrast-medium">Categories</span>
-        </div> -->
-
-        <!-- Children -->
         <ul class="nested-menu__list">
 
             <!-- "All" option -->
             <li class="nested-menu__item">
-                <a
-                    @click.prevent="toggle(null)"
-                    :class="!toggled ? 'nested-menu__link--current' : ''"
-                    class="nested-menu__link"
-                    href=""
-                >
+                <a @click.prevent="toggle(null)" :class="!toggled ? 'nested-menu__link--current' : ''" class="nested-menu__link" href="">
                     <span class="nested-menu__text">All</span>
                 </a>
             </li>
 
-            <!-- Options -->
-            <AppNestedMenuChildren :items="items" :selected="toggled" @selected="toggle" />
+            <!-- Children -->
+            <AppNestedMenuChildren :items="items" :selected="toggled" @selected="select" />
         </ul>
     </nav>
 </template>
@@ -38,6 +27,11 @@ const props = defineProps({
 
 const { toggle, toggled } = useToggle()
 
+const select = (id) => {
+    toggle(id)
+    emit('selected', id)
+}
+
 const emit = defineEmits(['selected'])
 </script>
 
@@ -45,9 +39,9 @@ const emit = defineEmits(['selected'])
 :root {
     /* List items */
     /* Height of each list item (navigation links) */
-    --nested-menu-list-item-height: 36px;
+    --nested-menu-list-item-height: 38px;
     /* Item horizontal padding */
-    --nested-menu-list-item-padding-x: 0.7em;
+    --nested-menu-list-item-padding-x: var(--space-xs);
 
     /* Sublist Control Arrow */
     /* Button size */
@@ -86,7 +80,7 @@ const emit = defineEmits(['selected'])
     display: flex;
     align-items: center;
     height: var(--nested-menu-list-item-height);
-    margin-bottom: 8px;
+    margin-bottom: var(--space-xxxs);
     padding-left: var(--nested-menu-list-item-padding-x);
     text-decoration: none;
     color: var(--color-contrast-high);
@@ -95,9 +89,11 @@ const emit = defineEmits(['selected'])
 
     &:hover {
         background-color: alpha(var(--color-contrast-higher), 0.05);
+        color: var(--color-primary);
     }
 }
 
+.nested-menu__link[aria-current="page"],
 .nested-menu__link--current {
     background-color: alpha(var(--color-primary), 0.1);
     color: var(--color-primary);

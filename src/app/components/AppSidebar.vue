@@ -89,7 +89,7 @@
 :root {
   /* List items */
   /* Height of each list item (navigation links) */
-  --sidenav-list-item-height: 44px;
+  --sidenav-list-item-height: 38px;
   /* Item horizontal padding */
   --sidenav-list-item-padding-x: var(--space-md);
 
@@ -106,7 +106,13 @@
   display: none; // hide sublist
 
   .sidenav__link { // sublink
-    padding-left: calc(var(--sidenav-list-item-padding-x) + var(--sidenav-sublist-control-size) + var(--sidenav-sublist-control-margin-right) + var(--sidenav-icon-size) + var(--sidenav-icon-text-gap));
+    padding-left: calc(
+        var(--sidenav-list-item-padding-x) + 
+        var(--sidenav-sublist-control-size) + 
+        var(--sidenav-sublist-control-margin-right) + 
+        var(--sidenav-icon-size) + 
+        var(--sidenav-icon-text-gap)
+    );
   }
 }
 
@@ -115,17 +121,18 @@
 }
 
 .sidenav__link {
-  font-size: 18px;
   display: flex;
-  height: var(--sidenav-list-item-height);
   align-items: center;
-  padding: 0 var(--sidenav-list-item-padding-x) 0 calc(var(--sidenav-list-item-padding-x) + var(--sidenav-sublist-control-size) + var(--sidenav-sublist-control-margin-right));
+  height: var(--sidenav-list-item-height);
+  margin-bottom: var(--space-xxxs);
+  padding-left: var(--nested-menu-list-item-padding-x);
   text-decoration: none;
   color: var(--color-contrast-high);
+  border-radius: var(--radius-md);
   transition: .2s;
 
   &:hover {
-    // background-color: alpha(var(--color-contrast-higher), 0.05);
+    background-color: alpha(var(--color-contrast-higher), 0.05);
     color: var(--color-primary);
 
     svg * {
@@ -136,7 +143,7 @@
 
 .sidenav__link[aria-current="page"],
 .sidenav__link--current {
-  // background-color: alpha(var(--color-primary), 0.1);
+  background-color: alpha(var(--color-primary), 0.1);
   color: var(--color-primary);
 
   svg * {

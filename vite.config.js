@@ -41,7 +41,6 @@ const config = defineConfig({
             ],
             imports: [
                 '@vue/composition-api',
-                // '@vueuse/core',
                 'vue-router',
                 'pinia',
             ],
@@ -55,13 +54,8 @@ const config = defineConfig({
         Components({
             extensions: ['vue'],
             deep: true,
-            dirs: [
-                'src/app/*',
-                'src/*/components/*',
-                'src/*/includes/*',
-                'src/*/layouts/*',
-                'src/*/views/*/*',
-            ],
+            dirs: ['src'],
+            directoryAsNamespace: false,
             dts: 'src/app/cache/components.d.js',
         }),
     ],
