@@ -37,7 +37,7 @@ const config = defineConfig({
         */
         AutoImport({
             include: [
-                /\.vue$/, /\.vue\?vue/,
+                /\.vue$/, /\.vue\?vue/, // .vue
             ],
             imports: [
                 '@vue/composition-api',
@@ -54,10 +54,13 @@ const config = defineConfig({
         */
         Components({
             extensions: ['vue'],
+            deep: true,
             dirs: [
-                'src/app/components*',
-                'src/domain/*/components*',
-                'src/views/*/components*',
+                'src/app/*',
+                'src/*/components/*',
+                'src/*/includes/*',
+                'src/*/layouts/*',
+                'src/*/views/*/*',
             ],
             dts: 'src/app/cache/components.d.js',
         }),
