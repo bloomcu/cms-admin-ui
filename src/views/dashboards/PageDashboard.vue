@@ -14,7 +14,7 @@
             
             <div class="app-dashboard-column--right">
                 <DashboardTable 
-                    route="post"
+                    route="postEditor"
                     :items="store.posts"
                     :loading="store.isLoading"
                     @replicate="store.replicate"

@@ -8,17 +8,11 @@
             <div v-if="editor.show.overview" style="width: 12%;" class="editor-wrapper__left app-scrollable">
                 <Outline/>
             </div>
-            
             <div v-if="editor.show.blockEditor" style="width: 25%;" class="editor-wrapper__left app-scrollable">
                 <BlockEditor/>
             </div>
-            
             <div v-if="editor.show.files" style="width: 25%;" class="editor-wrapper__left app-scrollable">
-                <!-- <file-picker /> -->
-                <div>
-                    Files
-                    <button @click="editor.showBlockEditor()" type="button" name="button">Close</button>
-                </div>
+                <FileMenu/>
             </div>
 
             <!-- Center -->
@@ -29,7 +23,7 @@
 
             <!-- Right -->
             <div v-if="editor.show.blocks" class="editor-wrapper__right app-scrollable">
-                <BlockMenu/>
+                <BlockLibrary/>
             </div>
         </div>
     </div>
@@ -37,10 +31,10 @@
 
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
-import { editorStore } from '@/views/post/store/editorStore'
+import { postEditorStore } from '@/views/post-editor/store/postEditorStore'
 
 const store = usePostStore()
-const editor = editorStore()
+const editor = postEditorStore()
 
 onMounted(() => {
     const route = getCurrentInstance().proxy.$route

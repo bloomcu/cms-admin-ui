@@ -33,9 +33,9 @@
 </template>
 
 <script setup>
-import { editorStore } from '@/views/post/store/editorStore'
+import { postEditorStore } from '@/views/post-editor/store/postEditorStore'
 
-const editor = editorStore()
+const editor = postEditorStore()
 
 const confirmDelete = ref('hide')
 

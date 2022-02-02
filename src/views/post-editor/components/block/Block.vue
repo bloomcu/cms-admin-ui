@@ -12,8 +12,8 @@
         /> -->
         
         <!-- <MyButton/> -->
-        
-        <!-- <BlockControls :uuid="block.uuid"/> -->
+        <p class="padding-y-lg">The block</p>
+        <BlockControls :uuid="block.uuid"/>
     </div>
 </template>
 

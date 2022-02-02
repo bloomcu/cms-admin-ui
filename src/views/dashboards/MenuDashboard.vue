@@ -8,7 +8,7 @@
             <div class="app-dashboard-column--right">
                 <ul class="list">
                     <DashboardTable 
-                        route="menu"
+                        route="menuEditor"
                         :items="store.menus"
                         :loading="store.isLoading"
                         @replicate="store.replicate"
