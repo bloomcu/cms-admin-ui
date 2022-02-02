@@ -27,6 +27,7 @@ declare module 'vue' {
     EditorHeader: typeof import('./../../views/post/components/header/EditorHeader.vue')['default']
     FileDashboard: typeof import('./../../views/dashboards/FileDashboard.vue')['default']
     FileGallery: typeof import('./../../domain/files/components/FileGallery.vue')['default']
+    FileUploader: typeof import('./../../domain/files/components/FileUploader.vue')['default']
     GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
     Layout: typeof import('./../../views/post/components/layout/Layout.vue')['default']
     LayoutSidebar: typeof import('./../layouts/LayoutSidebar.vue')['default']

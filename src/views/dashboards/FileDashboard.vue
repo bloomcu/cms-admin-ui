@@ -13,6 +13,7 @@
             </div>
             
             <div class="app-dashboard-column--right">
+                <FileUploader/>
                 <FileGallery :files="store.files" />
             </div>
         </div>

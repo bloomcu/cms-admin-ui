@@ -12,13 +12,23 @@ const fileApi = {
     },
     
     /**
-     * Show a file
+     * Store a file
      *
-     * @param Integer id [Id of the file you want to show]
+     * @param Object post [Properties to create file from]
      * @return promise
      */
-    show(id) {
-        return HttpClient.get(`/files/${id}`)
+    store(fileObject) {
+        return HttpClient.post('/files', fileObject)
+    },
+    
+    /**
+     * Create a presigned URL
+     *
+     * This presigned URL is used to post a file to AWS S3
+     * @param Object request [name, extension, size]
+     */
+    sign(request) {
+        return HttpClient.post('/file/sign', request)
     },
 }
 
