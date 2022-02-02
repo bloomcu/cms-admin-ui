@@ -31,8 +31,7 @@ onMounted(() => {
                 // Request a signed upload request object from our API
                 fileStore.sign({
                     name: metadata.fileInfo.name,
-                    extension: metadata.fileInfo.extension,
-                    size: metadata.fileInfo.size
+                    extension: metadata.fileInfo.extension
                 }).then((response) => {
                     // Add AWS S3 signature attributes to file
                     file.additionalData = response.data.additionalData
