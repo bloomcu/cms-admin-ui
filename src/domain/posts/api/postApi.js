@@ -20,7 +20,7 @@ const postApi = {
      * @param Object params [Key/value params to query by]
      * @return promise
      */
-    index(type, blueprint, params) {
+    index(type, params) {
         return HttpClient.get(`/${type}`, { params: params })
     },
     
