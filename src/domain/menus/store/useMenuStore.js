@@ -6,7 +6,6 @@ export const useMenuStore = defineStore('menuStore', {
         menus: [],
         menu: {},
         isLoading: false,
-        isSaving: false,
     }),
     
     actions: {
@@ -26,15 +25,36 @@ export const useMenuStore = defineStore('menuStore', {
         show(id) {
             MenuApi.show(id)
                 .then(response => {
-                    this.menu = response.data.data
+                    this.menu = response.data.data[0]
                 }).catch(error => {
                     console.log('Error', error.response.data)
                 })
         },
         
-        update(id, menu) {},
+        update(id, menu) {
+            this.isLoading = true
+            
+            MenuApi.update(this.menu.id, this.menu)
+                .then(response => {
+                    setTimeout(() => {
+                        this.isLoading = false
+                        this.menu = response.data.data
+                    }, 500)
+                }).catch(error => {
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
+                })
+        },
         
-        destroy(id) {},
+        destroy(id) {
+            MenuApi.destroy(id)
+                .then(response => {
+                    this.menu = {}
+                    this.menus = this.menus.filter((menu) => menu.id !== id)
+                }).catch(error => {
+                    console.log('Error', error.response.data)
+                })
+        },
     }
 })
 
