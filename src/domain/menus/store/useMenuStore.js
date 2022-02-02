@@ -55,6 +55,8 @@ export const useMenuStore = defineStore('menuStore', {
                     console.log('Error', error.response.data)
                 })
         },
+        
+        replicate(id) {},
     }
 })
 

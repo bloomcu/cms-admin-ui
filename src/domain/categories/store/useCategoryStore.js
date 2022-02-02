@@ -34,6 +34,8 @@ export const useCategoryStore = defineStore('categoryStore', {
         update(id, category) {},
         
         destroy(id) {},
+        
+        replicate(id) {},
     }
 })
 
