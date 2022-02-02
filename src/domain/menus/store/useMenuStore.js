@@ -14,24 +14,32 @@ export const useMenuStore = defineStore('menuStore', {
                 .then(response => {
                     this.menus = response.data.data
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
         
-        store(menu) {},
+        store() {
+            MenuApi.store(this.menu)
+                .then(response => {
+                    this.menu = response.data.data[0]
+                }).catch(error => {
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
+                })
+        },
         
-        // TODO: Add 'location' scope to menus like we have on menus
-        // So I can get a category tree by location instead of id
         show(id) {
             MenuApi.show(id)
                 .then(response => {
                     this.menu = response.data.data[0]
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
         
-        update(id, menu) {
+        update() {
             this.isLoading = true
             
             MenuApi.update(this.menu.id, this.menu)
@@ -47,12 +55,15 @@ export const useMenuStore = defineStore('menuStore', {
         },
         
         destroy(id) {
+            this.isLoading = true
+            
             MenuApi.destroy(id)
                 .then(response => {
                     this.menu = {}
                     this.menus = this.menus.filter((menu) => menu.id !== id)
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
         

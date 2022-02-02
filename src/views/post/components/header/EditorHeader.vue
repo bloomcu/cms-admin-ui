@@ -2,30 +2,31 @@
     <header class="editor-header">
         <!-- Left -->
         <div class="editor-header__column">
-            <router-link v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-sm">
+            <router-link v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-xxs">
                 <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g fill="none"><path d="M9 19l1.41-1.41L5.83 13H22v-2H5.83l4.59-4.59L9 5l-7 7 7 7z" fill="#212121"></path></g></svg>
                 Back
             </router-link>
-            <p class="text-bold">{{ store.post.title }}</p>
+            
+            <button @click="store.isShowingSettings = true" class="btn btn--sm">Settings</button>
         </div>
 
         <!-- Status -->
         <div class="editor-header__column editor-header__column--center">
+            <p class="text-bold">{{ store.post.title }}</p>
+        </div>
+
+        <!-- Controls -->
+        <div class="editor-header__column editor-header__column--right">
             <span v-if="store.isLoading" class="text-xs flex items-center">
                 <div class="status-dot status-dot--primary margin-right-xxxs"></div>
                 Saving
             </span>
 
             <span v-else class="text-xs flex items-center">
-                <div class="status-dot status-dot--success margin-right-xxxs"></div>
+            <div class="status-dot status-dot--success margin-right-xxxs"></div>
                 Published
             </span>
-        </div>
-
-        <!-- Controls -->
-        <div class="editor-header__column editor-header__column--right">
-            <button @click="store.isShowingSettings = true" class="btn btn--sm margin-right-xs">Settings</button>
-            <router-link :to="{name: 'postPreview'}" class="btn btn--primary btn--sm">Preview</router-link>
+            <router-link :to="{name: 'postPreview'}" class="btn btn--primary btn--sm margin-left-sm">Preview</router-link>
         </div>
         
         <PostSettingsModal />
@@ -38,7 +39,7 @@ import { usePostStore } from '@/domain/posts/store/usePostStore'
 const store = usePostStore()
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .editor-header {
     top: 0;
     position: sticky;
