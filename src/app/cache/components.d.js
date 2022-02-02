@@ -32,6 +32,8 @@ declare module 'vue' {
     Layout: typeof import('./../../views/post/components/layout/Layout.vue')['default']
     LayoutSidebar: typeof import('./../layouts/LayoutSidebar.vue')['default']
     Menu: typeof import('./../../views/menu/Menu.vue')['default']
+    MenuBuilder: typeof import('./../../views/menu/components/MenuBuilder.vue')['default']
+    MenuBuilderChildren: typeof import('./../../views/menu/components/MenuBuilderChildren.vue')['default']
     MenuDashboard: typeof import('./../../views/dashboards/MenuDashboard.vue')['default']
     Outline: typeof import('./../../views/post/components/outline/Outline.vue')['default']
     PageDashboard: typeof import('./../../views/dashboards/PageDashboard.vue')['default']

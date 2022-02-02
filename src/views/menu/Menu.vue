@@ -37,30 +37,36 @@
 
             <!-- Center -->
             <main class="editor-wrapper__center app-scrollable">
-                <div v-for="(post, index) in postStore.posts" :key="index" class="flex justify-between bg shadow-xs radius-md padding-xs margin-bottom-xxs" style="cursor: move;">
-                    <p class="text-sm">{{ post.title }}</p>
-                    <div class="item__dot margin-left-sm" aria-hidden="true"></div>
-                </div>
+                <draggable
+                    :list="postStore.posts"
+                    :group="{ name: 'menu-builder', pull: 'clone', put: false }"
+                    :sort="false"
+                >
+                    <div v-for="(post, index) in postStore.posts" :key="index" class="flex justify-between bg shadow-xs radius-md padding-xs margin-bottom-xxs" style="cursor: move;">
+                        <p class="text-sm">{{ post.title }}</p>
+                        <div class="item__dot margin-left-sm" aria-hidden="true"></div>
+                    </div>
+                </draggable>
             </main>
 
             <!-- Right -->
             <div class="editor-wrapper__right app-scrollable">
-                
+                <MenuBuilder :menu="store.menu"/>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import draggable from 'vuedraggable'
 import { useMenuStore } from '@/domain/menus/store/useMenuStore'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
-// import { editorStore } from '@/views/post/store/editorStore'
 
+const route = getCurrentInstance().proxy.$route
 const store = useMenuStore()
 const postStore = usePostStore()
 const categoryStore = useCategoryStore()
-// const editor = editorStore()
 
 const filter = () => {
     // TODO: Hit post api again passing filter params
@@ -68,7 +74,6 @@ const filter = () => {
 }
 
 onMounted(() => {
-    const route = getCurrentInstance().proxy.$route
     store.show(route.params.id)
     categoryStore.show(1)
     postStore.index('pages')
@@ -98,12 +103,12 @@ because the post and block editors will share many of them -->
 }
 
 .editor-wrapper__left {
-    width: 20%;
+    width: 18%;
     padding-right: var(--space-md);
 }
 
 .editor-wrapper__center {
-    width: 20%;
+    width: 24%;
     margin-right: var(--space-sm);
 
     // Flexbox
@@ -117,12 +122,12 @@ because the post and block editors will share many of them -->
 }
 
 .editor-wrapper__right {
-    width: 62%;
+    width: 58%;
     padding-left: var(--space-xs);
     
     // Style
-    background-color: var(--color-white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    // background-color: var(--color-white);
+    // border-radius: var(--radius-md);
+    // box-shadow: var(--shadow-sm);
 }
 </style>

@@ -52,10 +52,10 @@ const config = defineConfig({
         * https://github.com/antfu/unplugin-vue-components
         */
         Components({
-            extensions: ['vue'],
             deep: true,
+            extensions: ['vue'],
             dirs: ['src'],
-            directoryAsNamespace: false,
+            include: [/\.vue$/, /\.vue\?vue/],
             dts: 'src/app/cache/components.d.js',
         }),
     ],

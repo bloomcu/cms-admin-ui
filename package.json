@@ -14,7 +14,8 @@
     "filepond": "^4.30.3",
     "pinia": "^2.0.8",
     "vue": "^2.6.12",
-    "vue-router": "^3.5.3"
+    "vue-router": "^3.5.3",
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
     "sass": "^1.49.0",

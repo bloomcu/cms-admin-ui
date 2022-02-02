@@ -22,11 +22,17 @@
                 Saving
             </span>
 
-            <span v-else class="text-xs flex items-center">
-            <div class="status-dot status-dot--success margin-right-xxxs"></div>
+            <!-- <span v-else class="text-xs flex items-center">
+                <div class="status-dot status-dot--success margin-right-xxxs"></div>
                 Published
+            </span> -->
+            
+            <span v-else class="text-xs flex items-center">
+                <div class="status-dot status-dot--primary margin-right-xxxs"></div>
+                Draft
             </span>
-            <router-link :to="{name: 'postPreview'}" class="btn btn--primary btn--sm margin-left-sm">Preview</router-link>
+            <router-link :to="{name: 'postPreview'}" class="btn btn--sm btn--primary margin-left-sm">Publish</router-link>
+            <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
         </div>
         
         <PostSettingsModal />
