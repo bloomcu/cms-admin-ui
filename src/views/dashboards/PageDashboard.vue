@@ -11,6 +11,7 @@
                     @selected="filter"
                 />
             </div>
+            
             <div class="app-dashboard-column--right">
                 <DashboardTable 
                     :items="store.posts"

@@ -11,25 +11,19 @@
                     @selected="filter"
                 />
             </div>
+            
             <div class="app-dashboard-column--right">
-                <!-- <ul class="list">
-                    <DashboardTable 
-                        :items="store.posts"
-                        :loading="store.isLoading"
-                        @replicate="store.replicate"
-                        @destroy="store.destroy"
-                    />
-                </ul> -->
+                <FileGallery :files="store.files" />
             </div>
         </div>
     </LayoutSidebar>
 </template>
 
 <script setup>
-// import { useFileStore } from '@/domain/files/store/useFileStore'
+import { useFileStore } from '@/domain/files/store/useFileStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
-// const store = useFileStore()
+const store = useFileStore()
 const categories = useCategoryStore()
 
 const filter = () => {
@@ -38,7 +32,7 @@ const filter = () => {
 }
 
 onMounted(() => {
-    // store.index()
+    store.index()
     categories.show(1)
 })
 </script>
