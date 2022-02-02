@@ -4,7 +4,7 @@
             <h5>Editor</h5>
             <button @click="editor.showDefault()" class="btn btn--sm btn--primary">Close</button>
         </div>
-        <!-- <div v-if="block" class="editor-body utility__scrollable">
+        <!-- <div v-if="block" class="editor-body app-scrollable">
             <component :is="block.component" :block="block" />
         </div> -->
     </div>

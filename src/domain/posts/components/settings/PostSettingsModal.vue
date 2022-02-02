@@ -2,7 +2,7 @@
     <AppModal v-if="store.isShowingSettings" @close="store.isShowingSettings = false">
         <div class="header-page-settings max-width-lg">
             <!-- Left column -->
-            <div class="column-left utility__scrollable">
+            <div class="column-left app-scrollable">
                 <div class="column-left__content flex flex-column justify-between height-100%">
                     <div>
                         <h4 class="margin-bottom-sm">Settings</h4>
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Right column -->
-            <div class="column-right utility__scrollable">
+            <div class="column-right app-scrollable">
                 <GeneralSettings v-if="activeMenu === 'General'" />
                 <BlueprintSettings v-if="activeMenu === 'Blueprint'" />
                 <SEOSettings v-if="activeMenu === 'SEO'" />

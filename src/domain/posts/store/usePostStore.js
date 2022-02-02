@@ -17,6 +17,15 @@ export const usePostStore = defineStore('postStore', {
     },
     
     actions: {
+        indexBlueprints(params = {}) {
+            PostApi.indexBlueprints(params)
+                .then(response => {
+                    this.posts = response.data.data
+                }).catch(error => {
+                    console.log('Error', error.response.data)
+                })
+        },
+        
         index(type = 'pages', params = {}) {
             PostApi.index(type, params)
                 .then(response => {

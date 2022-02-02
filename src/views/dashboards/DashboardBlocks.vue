@@ -1,7 +1,7 @@
 <template>
     <LayoutSidebar>
         <div class="margin-bottom-md">
-            <h1 class="text-lg">Pages</h1>
+            <h1 class="text-lg">Blocks</h1>
         </div>
         
         <div class="app-dashboard">
@@ -12,22 +12,24 @@
                 />
             </div>
             <div class="app-dashboard-column--right">
-                <DashboardTable 
-                    :items="store.posts"
-                    :loading="store.isLoading"
-                    @replicate="store.replicate"
-                    @destroy="store.destroy"
-                />
+                <ul class="list">
+                    <DashboardTable
+                        :items="store.blocks"
+                        :loading="store.isLoading"
+                        @replicate="store.replicate"
+                        @destroy="store.destroy"
+                    />
+                </ul>
             </div>
         </div>
     </LayoutSidebar>
 </template>
 
 <script setup>
-import { usePostStore } from '@/domain/posts/store/usePostStore'
+import { useBlockStore } from '@/domain/blocks/store/useBlockStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
-const store = usePostStore()
+const store = useBlockStore()
 const categories = useCategoryStore()
 
 const filter = () => {
@@ -36,7 +38,7 @@ const filter = () => {
 }
 
 onMounted(() => {
-    store.index('pages')
+    store.indexBlueprints()
     categories.show(1)
 })
 </script>

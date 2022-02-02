@@ -32,14 +32,14 @@
             </li>
 
             <li class="sidenav__item">
-                <router-link :to="{ name: 'appHome' }" class="sidenav__link">
+                <router-link :to="{ name: 'blueprintDashboard' }" class="sidenav__link">
                     <!-- <svg class="icon sidenav__icon" viewBox="0 0 24 24"><g stroke-linecap="square" stroke-width="2" fill="none" stroke="#212121" stroke-linejoin="miter" stroke-miterlimit="10"><line data-cap="butt" x1="2" y1="8" x2="22" y2="8" stroke-linecap="butt" stroke="#212121"></line> <line data-cap="butt" x1="8" y1="8" x2="8" y2="22" stroke-linecap="butt" stroke="#212121"></line><path d="M20,22H4a2,2,0,0,1-2-2V4A2,2,0,0,1,4,2H20a2,2,0,0,1,2,2V20A2,2,0,0,1,20,22Z"></path></g></svg> -->
                     <span class="sidenav__text">Blueprints</span>
                 </router-link>
             </li>
             
             <li class="sidenav__item">
-                <router-link :to="{ name: 'appHome' }" class="sidenav__link">
+                <router-link :to="{ name: 'blockDashboard' }" class="sidenav__link">
                     <!-- <svg class="icon sidenav__icon" viewBox="0 0 24 24"><g stroke-linecap="square" stroke-width="2" fill="none" stroke="#212121" stroke-linejoin="miter" stroke-miterlimit="10"><line data-cap="butt" x1="2" y1="8" x2="22" y2="8" stroke-linecap="butt" stroke="#212121"></line> <line data-cap="butt" x1="8" y1="8" x2="8" y2="22" stroke-linecap="butt" stroke="#212121"></line><path d="M20,22H4a2,2,0,0,1-2-2V4A2,2,0,0,1,4,2H20a2,2,0,0,1,2,2V20A2,2,0,0,1,20,22Z"></path></g></svg> -->
                     <span class="sidenav__text">Blocks</span>
                 </router-link>
@@ -128,7 +128,7 @@
   padding-left: var(--nested-menu-list-item-padding-x);
   text-decoration: none;
   color: var(--color-contrast-high);
-  border-radius: var(--radius-md);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
   transition: .2s;
 
   &:hover {

@@ -40,12 +40,14 @@ const emit = defineEmits(['selected'])
     /* List items */
     /* Height of each list item (navigation links) */
     --nested-menu-list-item-height: 38px;
+    
     /* Item horizontal padding */
     --nested-menu-list-item-padding-x: var(--space-xs);
 
     /* Sublist Control Arrow */
     /* Button size */
     --nested-menu-sublist-control-size: 36px;
+    
     /* Icon size */
     --nested-menu-sublist-control-icon-size: 16px;
 }

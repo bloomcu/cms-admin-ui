@@ -4,7 +4,7 @@ const categoryApi = {
     /**
      * List categories
      *
-     * @param Object params [Key/value params to filter by]
+     * @param Object params [Key/value params to query by]
      * @return promise
      */
     index() {

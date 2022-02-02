@@ -28,7 +28,7 @@ function activateMenu(cat) {
 
     // Lock body scroll
     // TODO: This may not be needed
-    document.body.classList.add('utility__lock-scroll')
+    document.body.classList.add('app-lock-scroll')
 
     // Update menu
     activeMenu.value = cat

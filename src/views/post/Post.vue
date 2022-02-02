@@ -5,15 +5,15 @@
         <!-- TODO: Can we remove the v-if check if store action is async? -->
         <div v-if="store" class="editor-wrapper">
             <!-- Left -->
-            <div v-if="editor.show.overview" style="width: 12%;" class="editor-wrapper__left utility__scrollable">
+            <div v-if="editor.show.overview" style="width: 12%;" class="editor-wrapper__left app-scrollable">
                 <Outline/>
             </div>
             
-            <div v-if="editor.show.blockEditor" style="width: 25%;" class="editor-wrapper__left utility__scrollable">
+            <div v-if="editor.show.blockEditor" style="width: 25%;" class="editor-wrapper__left app-scrollable">
                 <BlockEditor/>
             </div>
             
-            <div v-if="editor.show.files" style="width: 25%;" class="editor-wrapper__left utility__scrollable">
+            <div v-if="editor.show.files" style="width: 25%;" class="editor-wrapper__left app-scrollable">
                 <!-- <file-picker /> -->
                 <div>
                     Files
@@ -22,13 +22,13 @@
             </div>
 
             <!-- Center -->
-            <main class="editor-wrapper__center utility__scrollable">
+            <main class="editor-wrapper__center app-scrollable">
                 <Layout/>
                 <!-- <button @click="editor.showBlockEditor()" type="button" name="button">Edit Block</button> -->
             </main>
 
             <!-- Right -->
-            <div v-if="editor.show.blocks" class="editor-wrapper__right utility__scrollable">
+            <div v-if="editor.show.blocks" class="editor-wrapper__right app-scrollable">
                 <BlockMenu/>
             </div>
         </div>

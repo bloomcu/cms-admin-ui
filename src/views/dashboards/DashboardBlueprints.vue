@@ -1,7 +1,7 @@
 <template>
     <LayoutSidebar>
         <div class="margin-bottom-md">
-            <h1 class="text-lg">Pages</h1>
+            <h1 class="text-lg">Blueprints</h1>
         </div>
         
         <div class="app-dashboard">
@@ -12,12 +12,14 @@
                 />
             </div>
             <div class="app-dashboard-column--right">
-                <DashboardTable 
-                    :items="store.posts"
-                    :loading="store.isLoading"
-                    @replicate="store.replicate"
-                    @destroy="store.destroy"
-                />
+                <ul class="list">
+                    <DashboardTable
+                        :items="store.posts"
+                        :loading="store.isLoading"
+                        @replicate="store.replicate"
+                        @destroy="store.destroy"
+                    />
+                </ul>
             </div>
         </div>
     </LayoutSidebar>
@@ -36,7 +38,7 @@ const filter = () => {
 }
 
 onMounted(() => {
-    store.index('pages')
+    store.indexBlueprints()
     categories.show(1)
 })
 </script>
