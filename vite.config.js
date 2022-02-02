@@ -41,8 +41,8 @@ const config = defineConfig({
             ],
             imports: [
                 '@vue/composition-api',
-                'vue-router',
-                'pinia',
+                'vue-router', // TODO: Consider manually importing these
+                'pinia', // TODO: Consider manually importing these
             ],
             dts: 'src/app/cache/auto-imports.d.ts',
         }),
