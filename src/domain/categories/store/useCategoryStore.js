@@ -18,7 +18,7 @@ export const useCategoryStore = defineStore('categoryStore', {
                 })
         },
         
-        store(category) {},
+        store() {},
         
         // TODO: Add 'location' scope to categories like we have on menus
         // So I can get a category tree by location instead of id
@@ -31,7 +31,7 @@ export const useCategoryStore = defineStore('categoryStore', {
                 })
         },
         
-        update(id, category) {},
+        update() {},
         
         destroy(id) {},
         

@@ -15,6 +15,8 @@
 </template>
 
 <script setup>
+import { onClickOutside } from '@vueuse/core'
+
 const props = defineProps({ 
     open: { type: Boolean, default: false } 
 })

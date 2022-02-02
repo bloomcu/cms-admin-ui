@@ -11,6 +11,6 @@ const store = usePostStore()
 const route = getCurrentInstance().proxy.$route
 
 onMounted(() => {    
-    store.show(route.params.post)
+    store.show(route.params.id)
 })
 </script>

@@ -1,12 +1,12 @@
 <template>
     <div>
-        <LoadingGhost v-if="loading"/>
+        <!-- <LoadingGhost v-if="loading"/> -->
         
-        <ul v-else class="item text-sm">
+        <ul class="item text-sm">
             <li v-for="(item, index) in items" :key="index" class="item__wrapper flex padding-sm">
                 <!-- Left -->
                 <router-link
-                    :to="{ name: 'post', params: { post: item.id }}"
+                    :to="{ name: route, params: { id: item.id }}"
                     class="flex-grow margin-right-xs" 
                     style="text-decoration: none; color: inherit;"
                 >
@@ -44,6 +44,7 @@
 const props = defineProps({ 
     items: { type: Array },
     loading: { type: Boolean, default: false },
+    route: { type: String, required: true }
 })
 
 const replicate = (id) => {

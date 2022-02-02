@@ -30,7 +30,7 @@ export const useFileStore = defineStore('fileStore', {
         
         show(id) {},
         
-        update(id, file) {},
+        update() {},
         
         destroy(id) {},
         

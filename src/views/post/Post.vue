@@ -44,10 +44,12 @@ const editor = editorStore()
 
 onMounted(() => {
     const route = getCurrentInstance().proxy.$route
-    store.show(route.params.post)
+    store.show(route.params.id)
 })
 </script>
 
+<!-- TODO: These editor classes may need to be abstracted
+because the menu and block editors will share many of them -->
 <style lang="scss" scoped>
 .editor {
     display: flex;

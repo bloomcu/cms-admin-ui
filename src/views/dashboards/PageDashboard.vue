@@ -7,13 +7,14 @@
         <div class="app-dashboard">
             <div class="app-dashboard-column--left">
                 <AppNestedMenu 
-                    :items="categories.category.children" 
+                    :items="categoryStore.category.children" 
                     @selected="filter"
                 />
             </div>
             
             <div class="app-dashboard-column--right">
                 <DashboardTable 
+                    route="post"
                     :items="store.posts"
                     :loading="store.isLoading"
                     @replicate="store.replicate"
@@ -29,7 +30,7 @@ import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
 const store = usePostStore()
-const categories = useCategoryStore()
+const categoryStore = useCategoryStore()
 
 const filter = () => {
     // TODO: Hit post api again passing filter params
@@ -38,6 +39,6 @@ const filter = () => {
 
 onMounted(() => {
     store.index('pages')
-    categories.show(1)
+    categoryStore.show(1)
 })
 </script>
