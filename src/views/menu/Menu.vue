@@ -19,10 +19,11 @@
             <!-- Controls -->
             <div class="editor-header__column editor-header__column--right">
                 <span class="text-xs flex items-center">
-                    <div class="status-dot status-dot--success margin-right-xxxs"></div>
-                    Published
+                    <div class="status-dot status-dot--primary margin-right-xxxs"></div>
+                    Draft
                 </span>
-                <router-link :to="{name: 'postPreview'}" class="btn btn--primary btn--sm margin-left-sm">Preview</router-link>
+                <router-link :to="{name: 'postPreview'}" class="btn btn--sm btn--primary margin-left-sm">Publish</router-link>
+                <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
             </div>
         </header>
         
