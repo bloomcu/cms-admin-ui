@@ -46,14 +46,14 @@
             </li>
 
             <li class="sidenav__item">
-                <router-link :to="{ name: 'appHome' }" class="sidenav__link">
+                <router-link :to="{ name: 'fileDashboard' }" class="sidenav__link">
                     <!-- <svg class="icon sidenav__icon" viewBox="0 0 24 24"><g stroke-linecap="square" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="miter"><polyline data-cap="butt" points="1 20 6 14 10 18 17 10 23 17" stroke-linecap="butt"></polyline><rect x="1" y="3" width="22" height="18"></rect><circle cx="9" cy="8" r="2"></circle></g></svg> -->
-                    <span class="sidenav__text">Uploads</span>
+                    <span class="sidenav__text">Files</span>
                 </router-link>
             </li>
 
             <li class="sidenav__item">
-                <router-link :to="{ name: 'appHome' }" class="sidenav__link">
+                <router-link :to="{ name: 'menuDashboard' }" class="sidenav__link">
                     <!-- <svg class="icon sidenav__icon" viewBox="0 0 24 24"><g stroke-linecap="square" stroke-width="2" fill="none" stroke="#212121" stroke-linejoin="miter" stroke-miterlimit="10"><line x1="1" y1="12" x2="23" y2="12" stroke="#212121"></line> <line x1="12" y1="5" x2="23" y2="5"></line> <line x1="1" y1="19" x2="12" y2="19"></line></g></svg> -->
                     <span class="sidenav__text">Menus</span>
                 </router-link>
