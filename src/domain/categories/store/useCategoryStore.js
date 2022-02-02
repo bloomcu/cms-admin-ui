@@ -6,7 +6,6 @@ export const useCategoryStore = defineStore('categoryStore', {
         categories: [],
         category: {},
         isLoading: false,
-        isSaving: false,
     }),
     
     actions: {

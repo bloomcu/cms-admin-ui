@@ -11,7 +11,7 @@
 
         <!-- Status -->
         <div class="editor-header__column editor-header__column--center">
-            <span v-if="store.isSaving" class="text-xs flex items-center">
+            <span v-if="store.isLoading" class="text-xs flex items-center">
                 <div class="status-dot status-dot--primary margin-right-xxxs"></div>
                 Saving
             </span>

@@ -6,7 +6,6 @@ export const useBlockStore = defineStore('blockStore', {
         blocks: [],
         block: {},
         isLoading: false,
-        isSaving: false,
     }),
     
     actions: {

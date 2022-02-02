@@ -17,7 +17,7 @@
                     </div>
                     <div class="flex flex-column gap-sm">
                         <button @click="destroy()" class="btn">Delete</button>
-                        <AppSaveButton @clicked="store.update()" :loading="store.isSaving">Save</AppSaveButton>
+                        <AppSaveButton @clicked="store.update()" :loading="store.isLoading">Save</AppSaveButton>
                     </div>
                 </div>
             </div>

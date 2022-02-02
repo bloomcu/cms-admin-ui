@@ -6,7 +6,6 @@ export const usePostStore = defineStore('postStore', {
         posts: [],
         post: {},
         isLoading: false,
-        isSaving: false,
         isShowingSettings: false,
     }),
     
@@ -47,16 +46,16 @@ export const usePostStore = defineStore('postStore', {
         },
         
         update() {
-            this.isSaving = true
+            this.isLoading = true
             
             PostApi.update(this.post.id, this.post)
                 .then(response => {
                     setTimeout(() => {
-                        this.isSaving = false
+                        this.isLoading = false
                         this.post = response.data.data
                     }, 500)
                 }).catch(error => {
-                    this.isSaving = false
+                    this.isLoading = false
                     Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
