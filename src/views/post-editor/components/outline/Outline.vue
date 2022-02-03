@@ -1,42 +1,11 @@
 <template>
-    <div class="outline">
-        <!-- <draggable
-            v-if="page"
-            v-model="page.layout.blocks"
-            :group="{ name: 'outline', pull: false, put: 'blocks' }"
-            :animation="400"
-            @change="change"
-            class="outline__list"
-            chosen-class="outline__list--chosen"
-            ghost-class="outline__list--ghost"
-            drag-class="outline__list--drag"
+    <div v-if="store.post.layout" class="outline">
+        <Draggable
+            :list="store.post.layout.blocks"
+            :group="{ name: 'outline', pull: false }"
+            :animation="200" 
         >
-            <transition-group type="transition" name="thumbnail">
-                <div
-                    v-for="block in page.layout.blocks"
-                    :key="block.uuid"
-                    @click="scrollToElement(block.uuid)"
-                    class="outline__card"
-                >
-                    <div class="outline__card__title">
-                        <p class="text-xs">{{ block.title }}</p>
-                    </div>
-                    <figure class="outline__card__img">
-                        <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
-                    </figure>
-                </div>
-            </transition-group>
-        </draggable> -->
-        
-        <div
-            v-if="store.post.layout"
-            class="outline__list"
-        >
-            <div
-                v-for="block in store.post.layout.blocks"
-                :key="block.uuid"
-                class="outline__card"
-            >
+            <div v-for="block in store.post.layout.blocks" :key="block.uuid" class="outline__card">
                 <div class="outline__card__title">
                     <p class="text-xs">{{ block.title }}</p>
                 </div>
@@ -44,11 +13,12 @@
                     <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
                 </figure>
             </div>
-        </div>
+        </Draggable>
     </div>
 </template>
 
 <script setup>
+import Draggable from 'vuedraggable'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 
 const store = usePostStore()
