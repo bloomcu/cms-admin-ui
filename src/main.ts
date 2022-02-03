@@ -5,16 +5,16 @@ import { createPinia, PiniaVuePlugin } from 'pinia'
 import router from '@/router'
 import '@/app/styles/styles.scss'
 
+const pinia = createPinia()
+
 Vue.use(VueCompositionApi)
 Vue.use(PiniaVuePlugin)
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
 
-const pinia = createPinia()
-
 new Vue({
-    router,
     pinia,
+    router,
     render: (h): VNode => h(App),
 }).$mount('#app');

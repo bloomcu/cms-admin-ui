@@ -38,6 +38,8 @@
 </template>
 
 <script setup>
+// TODO: Move this component to app/components and call it DataTable.vue
+
 // TODO: Hookup the loading ghost
 // import LoadingGhost from '@/components/loading/LoadingGhost.vue'
 

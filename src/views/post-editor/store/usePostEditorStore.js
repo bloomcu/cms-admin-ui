@@ -1,6 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 
-export const postEditorStore = defineStore('postEditorStore', {
+export const usePostEditorStore = defineStore('usePostEditorStore', {
     state: () => ({
         show: {
             overview: true,
@@ -20,7 +20,7 @@ export const postEditorStore = defineStore('postEditorStore', {
             }
         },
 
-        showBlockEditor() {
+        showBlockEditor(blockUUID) {
             this.show = {
                 overview: false,
                 blockEditor: true,
@@ -45,5 +45,5 @@ export const postEditorStore = defineStore('postEditorStore', {
  * https://pinia.vuejs.org/cookbook/hot-module-replacement.html
  */
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(postEditorStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(usePostEditorStore, import.meta.hot))
 }

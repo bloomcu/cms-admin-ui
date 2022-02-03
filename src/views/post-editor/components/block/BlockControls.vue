@@ -2,10 +2,20 @@
     <div class="block-controls">
         <div class="block-controls__wrapper">
             <!-- Edit -->
-            <button v-if="confirmDelete === 'hide'" @click="editor.showBlockEditor()" class="block-controls__button btn btn--sm btn--primary">
+            <router-link 
+                v-if="confirmDelete === 'hide'" 
+                :to="{ name: 'postBlockEditor', params: { uuid: props.uuid } }" 
+                @click.native="store.showBlockEditor()"
+                class="block-controls__button btn btn--sm btn--primary"
+            >
                 <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g><path d="M1.915,17.329L1.02,21.804c-0.066,0.328,0.037,0.667,0.273,0.903C1.482,22.896,1.737,23,2,23 c0.065,0,0.131-0.006,0.196-0.02l4.475-0.895L1.915,17.329z"></path><polygon points="13.586,5 11,7.586 3,15.586 8.414,21 19,10.414 "></polygon><path d="M22.707,5.293l-4-4c-0.391-0.391-1.023-0.391-1.414,0L15,3.586L20.414,9l2.293-2.293 C23.098,6.316,23.098,5.684,22.707,5.293z"></path></g></svg>
                 Edit Block
-            </button>
+            </router-link>
+            
+            <!-- <button v-if="confirmDelete === 'hide'" @click="store.showBlockEditor(uuid)" class="block-controls__button btn btn--sm btn--primary">
+                <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g><path d="M1.915,17.329L1.02,21.804c-0.066,0.328,0.037,0.667,0.273,0.903C1.482,22.896,1.737,23,2,23 c0.065,0,0.131-0.006,0.196-0.02l4.475-0.895L1.915,17.329z"></path><polygon points="13.586,5 11,7.586 3,15.586 8.414,21 19,10.414 "></polygon><path d="M22.707,5.293l-4-4c-0.391-0.391-1.023-0.391-1.414,0L15,3.586L20.414,9l2.293-2.293 C23.098,6.316,23.098,5.684,22.707,5.293z"></path></g></svg>
+                Edit Block
+            </button> -->
 
             <!-- Replicate -->
             <button v-if="confirmDelete === 'hide'" class="block-controls__button btn btn--sm btn--primary">
@@ -33,15 +43,19 @@
 </template>
 
 <script setup>
-import { postEditorStore } from '@/views/post-editor/store/postEditorStore'
-
-const editor = postEditorStore()
-
-const confirmDelete = ref('hide')
+import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const props = defineProps({
     uuid: { type: String, required: true }
 })
+
+const store = usePostEditorStore()
+const confirmDelete = ref('hide')
+
+// const editBlock = () => {
+//     store.showBlockEditor()
+//     router.push({ name: 'postBlockEditor', params: { uuid: props.uuid } })    
+// }
 </script>
 
 <style lang="scss">

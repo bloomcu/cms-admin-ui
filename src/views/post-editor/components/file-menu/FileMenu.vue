@@ -11,11 +11,11 @@
 </template>
 
 <script setup>
-// TODO: Maybe we use events to trigger postEditorStore changes
-import { postEditorStore } from '@/views/post-editor/store/postEditorStore'
+// TODO: Maybe we use events to trigger usePostEditorStore changes
+import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 import { useFileStore } from '@/domain/files/store/useFileStore'
 
-const editor = postEditorStore()
+const editor = usePostEditorStore()
 const files = useFileStore()
 
 onMounted(() => {

@@ -12,6 +12,13 @@ export const usePostStore = defineStore('postStore', {
     getters: {
         getUrl: (state) => {
             return ['bloomcu.com', state.post.path, state.post.slug].filter(Boolean).join('/')
+        },
+        
+        // TODO: Move this the block store? 
+        getBlockByUUID: (state, uuid) => {
+            return state.post.layout.blocks.find(
+                block => block.uuid === uuid
+            )
         }
     },
     

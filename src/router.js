@@ -25,4 +25,18 @@ const router = new VueRouter({
     routes,
 })
 
+// router.beforeEach((to, from, next) => {
+//     const store = usePostEditorStore()
+// 
+//     if (to.name === 'postBlockEditor') {
+//         store.showBlockEditor()
+//     }
+// 
+//     if (to.name === 'postEditor') {
+//         store.showDefault()
+//     }
+// 
+//     next();
+// })
+
 export default router

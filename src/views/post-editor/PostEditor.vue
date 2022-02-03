@@ -31,10 +31,10 @@
 
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
-import { postEditorStore } from '@/views/post-editor/store/postEditorStore'
+import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const store = usePostStore()
-const editor = postEditorStore()
+const editor = usePostEditorStore()
 
 onMounted(() => {
     const route = getCurrentInstance().proxy.$route

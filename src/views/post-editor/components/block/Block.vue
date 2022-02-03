@@ -1,29 +1,46 @@
 <template>
-    <div class="block-wrapper" :class="editing ? 'block-wrapper--editing' : ''">
-        <!-- <component :is="block.component" v-bind="block.data" /> -->
+    <div class="block-wrapper" :class="editing ? 'block-wrapper--editing' : ''">        
+        <!-- TODO: Change block.component to block.name -->
+        <component :is="block.component" v-bind="block.data" />
         
-        <!-- <Hero v-bind="block.data"/> -->
-        
-        <!-- <Hero
-          label="This is label"
-          title="Lorem ipsum dolor sit amet consectetur adipisicing elit"
-          subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vero aliquam, natus quae architecto hic quod!"
-          :image="{src: 'https://img.wallpapersafari.com/desktop/1024/576/90/72/qQ6bx0.png'}"
-        /> -->
-        
-        <!-- <MyButton/> -->
-        <p class="padding-y-lg">The block</p>
         <BlockControls :uuid="block.uuid"/>
     </div>
 </template>
 
-<script setup>
-// import { MyButton } from 'vite-cody2'
+<script>
+import { Hero, Feature } from 'vite-codytest'
+import BlockControls from '@/views/post-editor/components/block/BlockControls.vue'
 
-const props = defineProps({
-    block: { type: Object, required: true },
-    editing: { type: Boolean, default: false } 
-})
+export default defineComponent({
+    props: {
+        block: { type: Object, required: true },
+        editing: { type: Boolean, default: false } 
+    },
+    
+    components: {
+        BlockControls,
+        Hero,
+        Feature,
+    }
+})    
+</script>
+
+<script setup>
+// import { Hero, Feature } from 'vite-codytest'
+// import * from 'vite-codytest'
+
+// const props = defineProps({
+//     block: { type: Object, required: true },
+//     editing: { type: Boolean, default: false } 
+// })
+
+// const AsyncComponent = defineAsyncComponent(() => import())
+
+// Picker: () => import("./emoji-mart-vue")
+
+// const component = computed(() => {})
+
+// console.log(props.block.data)
 </script>
 
 <style lang="scss">
