@@ -1,5 +1,5 @@
 <template>
-    <draggable 
+    <Draggable 
         :list="children" 
         :animation="200" 
         :group="{ name: 'menu-builder' }"
@@ -27,7 +27,7 @@
                 <MenuBuilderChildren :children="item.children"/>
             </ul>
         </li>
-    </draggable>
+    </Draggable>
 </template>
 
 <script>
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <script setup>
-import draggable from 'vuedraggable'
+import Draggable from 'vuedraggable'
 import useToggleMultiple from '@/app/composables/useToggleMultiple.js'
 
 const props = defineProps({ 

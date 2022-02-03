@@ -38,7 +38,7 @@
 
             <!-- Center -->
             <main class="editor-wrapper__center app-scrollable">
-                <draggable
+                <Draggable
                     :list="postStore.posts"
                     :group="{ name: 'menu-builder', pull: 'clone', put: false }"
                     :sort="false"
@@ -47,7 +47,7 @@
                         <p class="text-sm">{{ post.title }}</p>
                         <div class="item__dot margin-left-sm" aria-hidden="true"></div>
                     </div>
-                </draggable>
+                </Draggable>
             </main>
 
             <!-- Right -->
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import draggable from 'vuedraggable'
+import Draggable from 'vuedraggable'
 import { useMenuStore } from '@/domain/menus/store/useMenuStore'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
