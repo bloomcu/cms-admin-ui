@@ -11,14 +11,10 @@
             <div v-if="editor.show.blockEditor" style="width: 25%;" class="editor-wrapper__left app-scrollable">
                 <BlockEditor/>
             </div>
-            <div v-if="editor.show.files" style="width: 25%;" class="editor-wrapper__left app-scrollable">
-                <FileMenu/>
-            </div>
 
             <!-- Center -->
             <main class="editor-wrapper__center app-scrollable">
                 <Layout/>
-                <!-- <button @click="editor.showBlockEditor()" type="button" name="button">Edit Block</button> -->
             </main>
 
             <!-- Right -->

@@ -30,12 +30,7 @@ export const usePostEditorStore = defineStore('usePostEditorStore', {
         },
 
         showFiles() {
-            this.show = {
-                overview: false,
-                blockEditor: false,
-                files: true,
-                blocks: false,
-            }
+            this.show.files = true
         }
     }
 })

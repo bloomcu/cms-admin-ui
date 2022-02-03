@@ -6,7 +6,7 @@
         </div>
         
         <FileUploader/>
-        <FileGallery :files="files.files" />
+        <FileGallery :files="files.files" @selected="fileSelected"/>
     </div>
 </template>
 
@@ -17,6 +17,12 @@ import { useFileStore } from '@/domain/files/store/useFileStore'
 
 const editor = usePostEditorStore()
 const files = useFileStore()
+
+const fileSelected = (file) => {
+    emit('file-selected', file)
+}
+
+const emit = defineEmits(['file-selected'])
 
 onMounted(() => {
     files.index()

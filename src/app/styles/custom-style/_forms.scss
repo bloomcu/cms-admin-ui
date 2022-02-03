@@ -12,9 +12,9 @@
 }
 
 .form-control {
-  background: var(--color-bg-dark);
   line-height: 1.2;
-  box-shadow: inset 0px 0px 0px 1px var(--color-contrast-lower);
+  background: var(--color-bg);
+  border: 2px solid var(--color-contrast-lower);
   transition: all 0.2s ease;
 
   &::placeholder {

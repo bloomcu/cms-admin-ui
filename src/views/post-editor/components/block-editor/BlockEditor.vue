@@ -1,21 +1,27 @@
 <template>
-    <div class="block-editor">
-        <div class="block-editor__header">
-            <h5>Block Editor</h5>
-            <router-link :to="{ name: 'postEditor' }" @click.native="editor.showDefault()" class="btn btn--sm btn--primary">Close</router-link>
+    <div>
+        <div v-if="editor.show.blockEditor && !editor.show.files" class="block-editor">
+            <div class="block-editor__header">
+                <h5>{{ block.title }}</h5>
+                <router-link @click.native="editor.showDefault()" :to="{ name: 'postEditor' }" class="btn btn--sm btn--primary">Close</router-link>
+            </div>
+            
+            <div class="block-editor__body app-scrollable">
+                <component :is="`${block.component}Editor`" :block="block"/>
+            </div>
         </div>
         
-        <button @click="editor.showFiles()" class="btn btn--sm btn--primary">Files</button>
-        
-        <!-- <div v-if="block" class="editor-body app-scrollable">
-            <component :is="block.component" :block="block" />
-        </div> -->
-        
-        <!-- Title -->
-        <!-- <div class="margin-bottom-md">
-            <label class="form-label margin-bottom-xxs">Title</label>
-            <textarea v-model="block.data.title" class="form-control width-100%" type="text"></textarea>
-        </div> -->
+        <div v-if="editor.show.files" class="block-editor">
+            <div class="block-editor__header">
+                <h5>File Menu</h5>
+                <button @click="editor.showBlockEditor()" class="btn btn--sm btn--primary">Done</button>
+            </div>
+            
+            <div class="block-editor__body app-scrollable">
+                <FileUploader/>
+                <FileGallery @selected="setFile"/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -25,15 +31,84 @@ import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore
 
 const store = usePostStore()
 const editor = usePostEditorStore()
+
+// TODO: Can I just use Vue provide/inject to make the current route available
+// across the whole app? Instead of initializing each place I need it.
+const route = getCurrentInstance().proxy.$route
+const block = store.getBlockByUUID(route.params.uuid)
+
+const setFile = (file) => {
+    // TODO: The file menu should probably open as an overlay above the editor.
+    
+    // TODO: I don't like this at all. We need a better way to communitcate the
+    // selected file out to the block being edited. Look into a higher level event bus.
+    block.data.image.src = file.path
+}
 </script>
 
-<style lang="scss" scoped>
+<script>
+// TODO: For some reason, I can use dynamic components this way in <script setup>
+// Look into how to accomplish this in <script setup>
+import HeroEditor from '@/views/post-editor/components/block-editor/includes/HeroEditor.vue'
+import FeatureEditor from '@/views/post-editor/components/block-editor/includes/FeatureEditor.vue'
+
+export default defineComponent({
+    components: {
+        HeroEditor,
+        FeatureEditor
+    }
+})  
+</script>
+
+<style lang="scss">
+.block-editor {
+    .filepond--panel-root {
+        background-color: var(--color-white);
+    }    
+}
+
 .block-editor__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--space-sm);
     padding-bottom: var(--space-sm);
-    border-bottom: 1px solid var(--color-contrast-low);
+    border-bottom: 1px solid var(--color-contrast-lower);
+}
+
+.block-editor__file {
+    display: flex;
+    align-items: center;
+    padding: var(--space-xxs);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-contrast-lower);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    cursor: pointer;
+
+    &__thumbnail {
+        width: 80px;
+        height: 80px;
+        margin-right: var(--space-sm);
+        display: inline-block;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        border: 1px solid var(--color-contrast-lower);
+        border-radius: var(--radius-md);
+        transition: box-shadow;
+        transition-duration: .4s;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow:inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &__description {
+        p {
+            margin-bottom: var(--space-xxs);
+        }
+    }
 }
 </style>

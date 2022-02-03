@@ -7,40 +7,26 @@
     </div>
 </template>
 
-<script>
-import { Hero, Feature } from 'vite-codytest'
+<script setup>
 import BlockControls from '@/views/post-editor/components/block/BlockControls.vue'
 
+// TODO: Currently the "editing" props is not being utilized. Look at checking the
+// route block uuid param to determine is this block is being edited.
+const props = defineProps({
+    block: { type: Object, required: true },
+    editing: { type: Boolean, default: false } 
+})
+</script>
+
+<script>
+import { Hero, Feature } from 'vite-codytest'
+
 export default defineComponent({
-    props: {
-        block: { type: Object, required: true },
-        editing: { type: Boolean, default: false } 
-    },
-    
     components: {
-        BlockControls,
         Hero,
         Feature,
     }
 })    
-</script>
-
-<script setup>
-// import { Hero, Feature } from 'vite-codytest'
-// import * from 'vite-codytest'
-
-// const props = defineProps({
-//     block: { type: Object, required: true },
-//     editing: { type: Boolean, default: false } 
-// })
-
-// const AsyncComponent = defineAsyncComponent(() => import())
-
-// Picker: () => import("./emoji-mart-vue")
-
-// const component = computed(() => {})
-
-// console.log(props.block.data)
 </script>
 
 <style lang="scss">

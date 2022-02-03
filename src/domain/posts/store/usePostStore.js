@@ -15,8 +15,8 @@ export const usePostStore = defineStore('postStore', {
         },
         
         // TODO: Move this the block store? 
-        getBlockByUUID: (state, uuid) => {
-            return state.post.layout.blocks.find(
+        getBlockByUUID: (state) => {
+            return (uuid) => state.post.layout.blocks.find(
                 block => block.uuid === uuid
             )
         }

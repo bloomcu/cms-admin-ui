@@ -25,6 +25,7 @@ declare module 'vue' {
     BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
     DashboardTable: typeof import('./../../views/dashboards/components/DashboardTable.vue')['default']
     EditorHeader: typeof import('./../../views/post-editor/components/header/EditorHeader.vue')['default']
+    FeatureEditor: typeof import('./../../views/post-editor/components/block-editor/includes/FeatureEditor.vue')['default']
     FileDashboard: typeof import('./../../views/dashboards/FileDashboard.vue')['default']
     FileGallery: typeof import('./../../domain/files/components/FileGallery.vue')['default']
     FileMenu: typeof import('./../../views/post-editor/components/file-menu/FileMenu.vue')['default']
