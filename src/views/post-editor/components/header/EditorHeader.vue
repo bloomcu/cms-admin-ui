@@ -34,9 +34,6 @@
             <router-link :to="{name: 'postPreview'}" class="btn btn--sm btn--primary margin-left-sm">Publish</router-link>
             <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
         </div>
-        
-        <!-- TODO: Should I really let this live here rather than in PostEditor.vue? -->
-        <PostSettingsModal />
     </header>
 </template>
 
@@ -59,8 +56,6 @@ const store = usePostStore()
     padding: 0 var(--space-md);
     background-color: var(--color-white);
     box-shadow: var(--shadow-xs);
-
-    z-index: var(--zindex-fixed-element);
 }
 
 .editor-header__column {

@@ -24,6 +24,7 @@ const store = usePostStore()
 
 <style lang="scss">
 .layout {
+    position: relative;
     z-index: 0;
 }
 </style>

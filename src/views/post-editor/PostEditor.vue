@@ -1,6 +1,7 @@
 <template>
     <div class="editor">
         <EditorHeader/>
+        <PostSettingsModal />
         
         <!-- TODO: Can we remove the v-if check if store action is async? -->
         <div v-if="store" class="editor-wrapper">

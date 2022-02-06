@@ -40,7 +40,7 @@ const emit = defineEmits(['close'])
     top: 0;
     width: 100%;
     height: 100%;
-    z-index: var(--zindex-overlay);
+    z-index: 10;
 
     // Style
     padding: var(--space-md);
@@ -73,7 +73,6 @@ const emit = defineEmits(['close'])
     float: right;
     top: 15px;
     right: 15px;
-    z-index: var(--zindex-fixed-element);
     background-color: var(--color-primary);
 
     &:hover {

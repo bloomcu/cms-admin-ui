@@ -39,6 +39,5 @@ App Body
     position: relative;
     padding: var(--space-md) var(--space-md) var(--space-sm) 0;
     min-height: calc(100vh - var(--app-ui-header-height));
-    z-index: 1;
 }
 </style>

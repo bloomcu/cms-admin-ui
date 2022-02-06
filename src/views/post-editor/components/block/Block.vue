@@ -1,9 +1,9 @@
 <template>
     <div class="block-wrapper" :class="editing ? 'block-wrapper--editing' : ''">
+        <BlockControls :uuid="block.uuid"/>
+        
         <!-- TODO: Change block.component to block.name -->
         <Component :is="block.component" v-bind="block.data" />
-        
-        <BlockControls :uuid="block.uuid"/>
     </div>
 </template>
 

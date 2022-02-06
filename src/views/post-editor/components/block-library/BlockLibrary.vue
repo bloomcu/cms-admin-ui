@@ -89,8 +89,6 @@ const menu = [
 
 <style lang="scss" scoped>
 .block-library {
-    z-index: 2;
-    
     &__column--left {
         width: 100%;
         margin-right: var(--space-sm);
@@ -103,7 +101,7 @@ const menu = [
 
 .block-library__menu {
     position: relative;
-    z-index: 3;
+    z-index: 2;
 
     .menu-item {
         font-size: 1.1rem;

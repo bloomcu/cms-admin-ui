@@ -41,7 +41,7 @@ const emit = defineEmits(['close'])
     width: 820px;
     background-color: var(--color-contrast-lower);
     box-shadow: var(--shadow-xl);
-    z-index: var(--zindex-overlay);
+    z-index: 1;
 
     // Visibility hidden
     // visibility: hidden;
@@ -57,7 +57,7 @@ const emit = defineEmits(['close'])
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: var(--zindex-fixed-element);
+    z-index: 10;
 
     background-color: alpha(var(--color-contrast-higher), 0.75);
     cursor: pointer;
@@ -85,7 +85,7 @@ const emit = defineEmits(['close'])
     position: fixed;
     top: var(--space-sm);
     left: var(--space-sm);
-
+    
     background-color: var(--color-contrast-high);
     border-radius: 50%;
     border: none;
