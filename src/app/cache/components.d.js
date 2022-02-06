@@ -26,13 +26,13 @@ declare module 'vue' {
     BlueprintSettings: typeof import('./../../domain/posts/components/settings/includes/BlueprintSettings.vue')['default']
     DashboardTable: typeof import('./../../views/dashboards/components/DashboardTable.vue')['default']
     EditorHeader: typeof import('./../../views/post-editor/components/header/EditorHeader.vue')['default']
-    FeatureEditor: typeof import('./../../views/post-editor/components/block-editor/includes/FeatureEditor.vue')['default']
+    FeatureEditor: typeof import('./../../domain/blocks/components/FeatureEditor.vue')['default']
     FileDashboard: typeof import('./../../views/dashboards/FileDashboard.vue')['default']
     FileGallery: typeof import('./../../domain/files/components/FileGallery.vue')['default']
     FileMenu: typeof import('./../../views/post-editor/components/file-menu/FileMenu.vue')['default']
     FileUploader: typeof import('./../../domain/files/components/FileUploader.vue')['default']
     GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
-    HeroEditor: typeof import('./../../views/post-editor/components/block-editor/includes/HeroEditor.vue')['default']
+    HeroEditor: typeof import('./../../domain/blocks/components/HeroEditor.vue')['default']
     Layout: typeof import('./../../views/post-editor/components/layout/Layout.vue')['default']
     LayoutSidebar: typeof import('./../layouts/LayoutSidebar.vue')['default']
     MenuBuilder: typeof import('./../../views/menu-editor/components/MenuBuilder.vue')['default']
@@ -46,8 +46,8 @@ declare module 'vue' {
     PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
-    TestimonialEditor: typeof import('./../../views/post-editor/components/block-editor/includes/TestimonialEditor.vue')['default']
-    VideoBackgroundHeroEditor: typeof import('./../../views/post-editor/components/block-editor/includes/VideoBackgroundHeroEditor.vue')['default']
+    TestimonialEditor: typeof import('./../../domain/blocks/components/TestimonialEditor.vue')['default']
+    VideoBackgroundHeroEditor: typeof import('./../../domain/blocks/components/VideoBackgroundHeroEditor.vue')['default']
   }
 }
 

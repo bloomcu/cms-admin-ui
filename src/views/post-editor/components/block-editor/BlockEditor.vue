@@ -28,10 +28,10 @@
 <script>
 // TODO: For some reason, I can use dynamic components this way in <script setup>
 // Look into how to accomplish this in <script setup>
-import HeroEditor from '@/views/post-editor/components/block-editor/includes/HeroEditor.vue'
-import VideoBackgroundHeroEditor from '@/views/post-editor/components/block-editor/includes/VideoBackgroundHeroEditor.vue'
-import FeatureEditor from '@/views/post-editor/components/block-editor/includes/FeatureEditor.vue'
-import TestimonialEditor from '@/views/post-editor/components/block-editor/includes/TestimonialEditor.vue'
+import HeroEditor from '@/domain/blocks/components/HeroEditor.vue'
+import VideoBackgroundHeroEditor from '@/domain/blocks/components/VideoBackgroundHeroEditor.vue'
+import FeatureEditor from '@/domain/blocks/components/FeatureEditor.vue'
+import TestimonialEditor from '@/domain/blocks/components/TestimonialEditor.vue'
 
 export default defineComponent({
     components: {

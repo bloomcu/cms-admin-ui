@@ -69,7 +69,6 @@ const emit = defineEmits(['replicate', 'destroy'])
 <style lang="scss">
 .item {
     position: relative;
-    z-index: 1;
 }
 
 .item__wrapper {
