@@ -32,6 +32,7 @@ import HeroEditor from '@/domain/blocks/components/HeroEditor.vue'
 import VideoBackgroundHeroEditor from '@/domain/blocks/components/VideoBackgroundHeroEditor.vue'
 import FeatureEditor from '@/domain/blocks/components/FeatureEditor.vue'
 import TestimonialEditor from '@/domain/blocks/components/TestimonialEditor.vue'
+import TextColumnsEditor from '@/domain/blocks/components/TextColumnsEditor.vue'
 
 export default defineComponent({
     components: {
@@ -39,6 +40,7 @@ export default defineComponent({
         VideoBackgroundHeroEditor,
         FeatureEditor,
         TestimonialEditor,
+        TextColumnsEditor,
     }
 })  
 </script>

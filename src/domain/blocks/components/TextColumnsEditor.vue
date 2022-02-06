@@ -1,0 +1,79 @@
+<template>
+    <!-- TODO: We should dynamically generate the editor fields right here.
+    Perhaps generate based on the properties of block.data -->
+    <div>
+        <!-- Gap Width -->
+        <div class="margin-bottom-md">
+            <div class="form-group">
+                <label class="form-label margin-bottom-xxs">Gap Width</label>
+                <div class="select">
+                    <select v-model="block.data.gap" name="gap" id="gap" class="select_input form-control width-100%">
+                        <option value="xxs" key="xxs" :selected="block.data.gap === 'xxs'">Smallest</option>
+                        <option value="xs" key="xs" :selected="block.data.gap === 'xs'">Extra Small</option>
+                        <option value="sm" key="sm" :selected="block.data.gap === 'sm'">Small</option>
+                        <option value="md" key="md" :selected="block.data.gap === 'md'">Medium</option>
+                        <option value="lg" key="lg" :selected="block.data.gap === 'lg'">Large</option>
+                        <option value="xl" key="xl" :selected="block.data.gap === 'xl'">Largest</option>
+                    </select>
+                    <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Column Width -->
+        <div class="margin-bottom-md">
+            <div class="form-group">
+                <label class="form-label margin-bottom-xxs">Column Width</label>
+                <div class="select">
+                    <select v-model="block.data.cols" name="cols" id="cols" class="select_input form-control width-100%">
+                        <option value="1" key="1" :selected="block.data.cols === '1'">1</option>
+                        <option value="2" key="2" :selected="block.data.cols === '2'">2</option>
+                        <option value="3" key="3" :selected="block.data.cols === '3'">3</option>
+                        <option value="4" key="4" :selected="block.data.cols === '4'">4</option>
+                        <option value="6" key="6" :selected="block.data.cols === '6'">6</option>
+                        <option value="12" key="12" :selected="block.data.cols === '12'">12</option>
+                    </select>
+                    <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Column 1 -->
+        <div class="margin-bottom-md">
+          <p class="margin-bottom-xxs">Column One</p>
+          
+          <label class="form-label margin-bottom-xxs">Label</label>
+          <input v-model="block.data.columns[0].label" class="form-control width-100% margin-bottom-xxxs" type="text">
+          
+          <label class="form-label margin-bottom-xxs">Title</label>
+          <input v-model="block.data.columns[0].title" class="form-control width-100% margin-bottom-xxxs" type="text">
+          
+          <label class="form-label margin-bottom-xxs">Body</label>
+          <textarea v-model="block.data.columns[0].body" class="form-control width-100% margin-bottom-xxxs" type="text" rows="3"></textarea>
+        </div>
+        
+        <!-- Column 2 -->
+        <div class="margin-bottom-md">
+          <p class="margin-bottom-xxs">Column One</p>
+          
+          <label class="form-label margin-bottom-xxs">Label</label>
+          <input v-model="block.data.columns[1].label" class="form-control width-100% margin-bottom-xxxs" type="text">
+          
+          <label class="form-label margin-bottom-xxs">Title</label>
+          <input v-model="block.data.columns[1].title" class="form-control width-100% margin-bottom-xxxs" type="text">
+          
+          <label class="form-label margin-bottom-xxs">Body</label>
+          <textarea v-model="block.data.columns[1].body" class="form-control width-100% margin-bottom-xxxs" type="text" rows="3"></textarea>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
+
+const editor = usePostEditorStore()
+
+const props = defineProps({ 
+    block: { type: Object, required: true } 
+})
+</script>

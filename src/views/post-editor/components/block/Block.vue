@@ -13,7 +13,8 @@ import {
   BoxedHero,
   VideoBackgroundHero,
   Feature,
-  Testimonial
+  Testimonial,
+  TextColumns
 } from 'vite-codytest'
 
 export default defineComponent({
@@ -22,7 +23,8 @@ export default defineComponent({
         BoxedHero,
         VideoBackgroundHero,
         Feature,
-        Testimonial
+        Testimonial,
+        TextColumns
     }
 })    
 </script>

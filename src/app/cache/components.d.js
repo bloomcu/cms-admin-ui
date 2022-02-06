@@ -47,6 +47,7 @@ declare module 'vue' {
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
     TestimonialEditor: typeof import('./../../domain/blocks/components/TestimonialEditor.vue')['default']
+    TextColumnsEditor: typeof import('./../../domain/blocks/components/TextColumnsEditor.vue')['default']
     VideoBackgroundHeroEditor: typeof import('./../../domain/blocks/components/VideoBackgroundHeroEditor.vue')['default']
   }
 }
