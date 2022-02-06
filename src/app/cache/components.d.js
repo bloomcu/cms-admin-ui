@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     App: typeof import('./../../App.vue')['default']
     App404: typeof import('./../views/App404.vue')['default']
+    AppDrawer: typeof import('./../components/AppDrawer.vue')['default']
     AppHome: typeof import('./../views/AppHome.vue')['default']
     AppInput: typeof import('./../components/forms/AppInput.vue')['default']
     AppModal: typeof import('./../components/AppModal.vue')['default']
@@ -45,6 +46,8 @@ declare module 'vue' {
     PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
+    TestimonialEditor: typeof import('./../../views/post-editor/components/block-editor/includes/TestimonialEditor.vue')['default']
+    VideoBackgroundHeroEditor: typeof import('./../../views/post-editor/components/block-editor/includes/VideoBackgroundHeroEditor.vue')['default']
   }
 }
 
