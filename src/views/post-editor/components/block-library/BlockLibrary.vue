@@ -1,6 +1,6 @@
 <template>
-    <div class="block-menu">
-        <ul>
+    <div class="block-library">
+        <ul class="block-library__menu">
             <li
                 v-for="(item, index) in menu" :key="index"
                 @click="activateMenu(item.category)"
@@ -8,36 +8,67 @@
                 class="menu-item flex _align-middle"
             >
                 {{ item.title }}
-                <span v-if="item.count" class="counter counter--dark margin-left-xs">{{ item.count }}</span>
             </li>
         </ul>
         
-        <!-- <app-drawer :open="activeMenu !== null" @close="activeMenu = null" >
-            <blocks-list :blocks="blocks" @event-dragstart="activeMenu = null" @event-dragend="activeMenu = lastActiveMenu"/>
-        </app-drawer> -->
+        <AppDrawer v-if="activeMenu" @close="activeMenu = false">
+            <div class="block-library__list">
+                <div class="block-library__column--left">
+                    <div class="flex flex-column">
+                        <Draggable
+                            :list="store.blocks"
+                            :group="{name: 'blocks', pull: 'clone', put: false}"
+                            :sort="false"
+                            :clone="onClone"
+                            class="block-library__blocks"
+                            chosen-class="block-library__blocks--chosen"
+                            ghost-class="block-library__blocks--ghost"
+                            drag-class="block-library__blocks--drag"
+                        >
+                            <div v-for="block in store.blocks" :key="block.id" class="block-library__card">
+                                <div class="block-library__card-title">
+                                    <p class="text-xs">{{ block.title }}</p>
+                                </div>
+                                <figure class="block-library__card-img">
+                                    <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
+                                </figure>
+                            </div>
+                        </Draggable>
+                    </div>
+                </div>
+                
+                <div class="block-library__column--right"></div>
+            </div>
+        </AppDrawer>
+        
     </div>
 </template>
 
 <script setup>
-const activeMenu = ref(null)
+import Draggable from 'vuedraggable'
+import { v4 as uuid } from 'uuid';
+import { useBlockStore } from '@/domain/blocks/store/useBlockStore'
+
+const store = useBlockStore()
+
+const onClone = (original) => {
+    return {...original, uuid: uuid()}
+}
+
+const activeMenu = ref(false)
 // const lastActiveMenu = ref(null)
-
-function activateMenu(cat) {
+const activateMenu = (category) => {
     // Cache this category
-    // lastActiveMenu.value = cat
-
-    // Lock body scroll
-    // TODO: This may not be needed
-    document.body.classList.add('app-lock-scroll')
+    // lastActiveMenu.value = category
 
     // Update menu
-    activeMenu.value = cat
+    activeMenu.value = category
 
     // Query blocks
-    if (cat !== 'all') {
-        // getBlocks('?category=' + cat)
+    if (category !== 'all') {
+        store.indexBlueprints('?category=' + category)
     } else {
-        // getBlocks('')
+        store.indexBlueprints('')
     }
 }
 
@@ -57,9 +88,22 @@ const menu = [
 </script>
 
 <style lang="scss" scoped>
-.block-menu {
+.block-library {
+    z-index: 2;
+    
+    &__column--left {
+        width: 100%;
+        margin-right: var(--space-sm);
+    }
+
+    &__column--right {
+        width: 250px;
+    }
+}
+
+.block-library__menu {
     position: relative;
-    z-index: 6;
+    z-index: 3;
 
     .menu-item {
         font-size: 1.1rem;
@@ -75,6 +119,53 @@ const menu = [
         &--active {
             background-color: alpha(var(--color-primary), 0.1);
             color: var(--color-primary);
+        }
+    }
+}
+
+.block-library__list {
+    display: flex;
+    padding: var(--space-sm);
+}
+
+.block-library__blocks {
+    &--chosen {
+        border: 2px solid var(--color-primary);
+    }
+
+    &--ghost {
+        border: 2px solid var(--color-primary);
+    }
+
+    &--drag {
+        border: 2px solid var(--color-primary);
+    }
+}
+
+.block-library__card {
+    margin-bottom: var(--space-xs);
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--color-contrast-lower);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    
+    &:hover {
+        box-shadow: var(--shadow-sm);
+    }
+    
+    &-title {
+        padding: var(--space-xxs);
+        border-bottom: 1px solid var(--color-contrast-lower);
+    }
+    
+    &-img {
+        position: relative;
+        
+        img {
+            display: block;
+            width: 100%;
         }
     }
 }

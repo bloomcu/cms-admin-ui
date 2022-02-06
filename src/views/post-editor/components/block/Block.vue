@@ -1,11 +1,31 @@
 <template>
-    <div class="block-wrapper" :class="editing ? 'block-wrapper--editing' : ''">        
+    <div class="block-wrapper" :class="editing ? 'block-wrapper--editing' : ''">
         <!-- TODO: Change block.component to block.name -->
-        <component :is="block.component" v-bind="block.data" />
+        <Component :is="block.component" v-bind="block.data" />
         
         <BlockControls :uuid="block.uuid"/>
     </div>
 </template>
+
+<script>
+import { 
+  Hero,
+  BoxedHero,
+  VideoBackgroundHero,
+  Feature,
+  Testimonial
+} from 'vite-codytest'
+
+export default defineComponent({
+    components: {
+        Hero,
+        BoxedHero,
+        VideoBackgroundHero,
+        Feature,
+        Testimonial
+    }
+})    
+</script>
 
 <script setup>
 import BlockControls from '@/views/post-editor/components/block/BlockControls.vue'
@@ -16,17 +36,6 @@ const props = defineProps({
     block: { type: Object, required: true },
     editing: { type: Boolean, default: false } 
 })
-</script>
-
-<script>
-import { Hero, Feature } from 'vite-codytest'
-
-export default defineComponent({
-    components: {
-        Hero,
-        Feature,
-    }
-})    
 </script>
 
 <style lang="scss">

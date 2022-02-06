@@ -2,7 +2,7 @@
     <div v-if="store.post.layout" class="layout">
         <Draggable
             :list="store.post.layout.blocks"
-            :group="{ name: 'layout' }"
+            :group="{name: 'layout', pull: false, put: 'blocks'}"
             :animation="200"
         >
             <Block
@@ -22,5 +22,8 @@ import { usePostStore } from '@/domain/posts/store/usePostStore'
 const store = usePostStore()
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.layout {
+    z-index: 0;
+}
 </style>

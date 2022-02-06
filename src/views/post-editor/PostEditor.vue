@@ -40,7 +40,7 @@ onMounted(() => {
 
 <!-- TODO: These editor classes may need to be abstracted
 because the menu and block editors will share many of them -->
-<style lang="scss" scoped>
+<style lang="scss">
 .editor {
     display: flex;
     flex-direction: column;

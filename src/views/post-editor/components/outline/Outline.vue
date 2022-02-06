@@ -2,7 +2,7 @@
     <div v-if="store.post.layout" class="outline">
         <Draggable
             :list="store.post.layout.blocks"
-            :group="{ name: 'outline', pull: false }"
+            :group="{name: 'outline', pull: false, put: 'blocks'}"
             :animation="200" 
         >
             <div v-for="block in store.post.layout.blocks" :key="block.uuid" class="outline__card">
