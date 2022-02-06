@@ -38,37 +38,35 @@
             </div>
         </div>
         
-        <!-- Column 1 -->
+        <!-- Columns -->
         <div class="margin-bottom-md">
-          <p class="margin-bottom-xxs">Column One</p>
+          <p class="margin-bottom-xxs">Columns</p>
           
-          <label class="form-label margin-bottom-xxs">Label</label>
-          <input v-model="block.data.columns[0].label" class="form-control width-100% margin-bottom-xxxs" type="text">
+          <!-- <ContentComponentEditor v-model="block.data.columns[0]"/> -->
           
-          <label class="form-label margin-bottom-xxs">Title</label>
-          <input v-model="block.data.columns[0].title" class="form-control width-100% margin-bottom-xxxs" type="text">
-          
-          <label class="form-label margin-bottom-xxs">Body</label>
-          <textarea v-model="block.data.columns[0].body" class="form-control width-100% margin-bottom-xxxs" type="text" rows="3"></textarea>
+          <Draggable
+              :list="block.data.columns"
+              :group="{name: 'columns'}"
+              :animation="200"
+          >
+            <div v-for="(column, index) in block.data.columns" class="bg border border-2 radius-md padding-sm margin-bottom-xs" style="cursor: move;">
+              <label class="form-label margin-bottom-xxs">Label</label>
+              <input v-model="block.data.columns[index].label" class="form-control width-100% margin-bottom-xxxs" type="text">
+              
+              <label class="form-label margin-bottom-xxs">Title</label>
+              <input v-model="block.data.columns[index].title" class="form-control width-100% margin-bottom-xxxs" type="text">
+              
+              <label class="form-label margin-bottom-xxs">Body</label>
+              <textarea v-model="block.data.columns[index].body" class="form-control width-100% margin-bottom-xxxs" type="text" rows="3"></textarea>
+            </div>
+          </Draggable>
         </div>
         
-        <!-- Column 2 -->
-        <div class="margin-bottom-md">
-          <p class="margin-bottom-xxs">Column One</p>
-          
-          <label class="form-label margin-bottom-xxs">Label</label>
-          <input v-model="block.data.columns[1].label" class="form-control width-100% margin-bottom-xxxs" type="text">
-          
-          <label class="form-label margin-bottom-xxs">Title</label>
-          <input v-model="block.data.columns[1].title" class="form-control width-100% margin-bottom-xxxs" type="text">
-          
-          <label class="form-label margin-bottom-xxs">Body</label>
-          <textarea v-model="block.data.columns[1].body" class="form-control width-100% margin-bottom-xxxs" type="text" rows="3"></textarea>
-        </div>
     </div>
 </template>
 
 <script setup>
+import Draggable from 'vuedraggable'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const editor = usePostEditorStore()
@@ -76,4 +74,6 @@ const editor = usePostEditorStore()
 const props = defineProps({ 
     block: { type: Object, required: true } 
 })
+
+const thelabel = ref('yolo')
 </script>
