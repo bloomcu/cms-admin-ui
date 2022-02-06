@@ -1,15 +1,9 @@
 <template>
     <div>
-        <!-- Invert -->
+        <!-- Testimonial -->
         <div class="margin-bottom-md">
-            <input v-model="block.data.invert" type="checkbox" class="margin-right-xxs" id="invert">
-            <label class="form-label" for="invert">Invert</label>
-        </div>
-
-        <!-- Label -->
-        <div class="margin-bottom-md">
-            <label class="form-label margin-bottom-xxs">Label</label>
-            <input v-model="block.data.label" class="form-control width-100%" type="text">
+            <label class="form-label margin-bottom-xxs">Testimonial</label>
+            <textarea v-model="block.data.testimonial" class="form-control width-100%" type="text"></textarea>
         </div>
 
         <!-- Title -->
@@ -40,19 +34,6 @@
             </div>
         </div>
 
-        <!-- Button One -->
-        <div class="margin-bottom-md">
-            <label class="form-label margin-bottom-xxs">Button One</label>
-            <input v-model="block.data.buttons[0].text" class="form-control width-100% margin-bottom-xxxs" type="text">
-            <input v-model="block.data.buttons[0].href" class="form-control width-100%" type="text">
-        </div>
-
-        <!-- Button Two -->
-        <div class="margin-bottom-md">
-            <label class="form-label margin-bottom-xxs">Button Two</label>
-            <input v-model="block.data.buttons[1].text" class="form-control width-100% margin-bottom-xxxs" type="text">
-            <input v-model="block.data.buttons[1].href" class="form-control width-100%" type="text">
-        </div>
     </div>
 </template>
 

@@ -7,7 +7,7 @@
             </div>
             
             <div class="block-editor__body app-scrollable">
-                <component :is="`${block.component}Editor`" :block="block"/>
+                <component :is="`${block.group}Editor`" :block="block"/>
             </div>
         </div>
         
@@ -24,6 +24,24 @@
         </div>
     </div>
 </template>
+
+<script>
+// TODO: For some reason, I can use dynamic components this way in <script setup>
+// Look into how to accomplish this in <script setup>
+import HeroEditor from '@/views/post-editor/components/block-editor/includes/HeroEditor.vue'
+import VideoBackgroundHeroEditor from '@/views/post-editor/components/block-editor/includes/VideoBackgroundHeroEditor.vue'
+import FeatureEditor from '@/views/post-editor/components/block-editor/includes/FeatureEditor.vue'
+import TestimonialEditor from '@/views/post-editor/components/block-editor/includes/TestimonialEditor.vue'
+
+export default defineComponent({
+    components: {
+        HeroEditor,
+        VideoBackgroundHeroEditor,
+        FeatureEditor,
+        TestimonialEditor,
+    }
+})  
+</script>
 
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
@@ -44,20 +62,6 @@ const setFile = (file) => {
     // selected file out to the block being edited. Look into a higher level event bus.
     block.data.image.src = file.path
 }
-</script>
-
-<script>
-// TODO: For some reason, I can use dynamic components this way in <script setup>
-// Look into how to accomplish this in <script setup>
-import HeroEditor from '@/views/post-editor/components/block-editor/includes/HeroEditor.vue'
-import FeatureEditor from '@/views/post-editor/components/block-editor/includes/FeatureEditor.vue'
-
-export default defineComponent({
-    components: {
-        HeroEditor,
-        FeatureEditor
-    }
-})  
 </script>
 
 <style lang="scss">

@@ -22,8 +22,9 @@ const props = defineProps({
 })
 
 const target = ref(null)
-const emit = defineEmits(['close'])
 onClickOutside(target, (event) => emit('close'))
+
+const emit = defineEmits(['close'])
 </script>
 
 <style lang="scss" scoped>

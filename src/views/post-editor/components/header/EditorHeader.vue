@@ -35,6 +35,7 @@
             <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
         </div>
         
+        <!-- TODO: Should I really let this live here rather than in PostEditor.vue? -->
         <PostSettingsModal />
     </header>
 </template>
@@ -59,7 +60,7 @@ const store = usePostStore()
     background-color: var(--color-white);
     box-shadow: var(--shadow-xs);
 
-    z-index: 4;
+    z-index: var(--zindex-fixed-element);
 }
 
 .editor-header__column {

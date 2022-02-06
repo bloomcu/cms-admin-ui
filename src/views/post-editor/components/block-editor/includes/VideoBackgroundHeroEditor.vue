@@ -32,9 +32,30 @@
             <textarea v-model="block.data.subtitle" class="form-control width-100%" rows="3" type="text"></textarea>
         </div>
         
-        <!-- Image -->
+        <!-- Video -->
         <div class="margin-bottom-md">
-            <label class="form-label block margin-bottom-xxs">Image</label>
+            <p class="margin-bottom-xxs">Video</p>
+            
+            <label class="form-label margin-bottom-xxs">Video Source URL</label>
+            <input v-model="block.data.video.src" class="form-control width-100% margin-bottom-xxxs" type="text">
+            
+            <input v-model="block.data.video.loop" type="checkbox" class="margin-right-xxs" id="loop">
+            <label class="form-label" for="loop">Loop</label>
+            
+            <input v-model="block.data.video.autoplay" type="checkbox" class="margin-right-xxs" id="autoplay">
+            <label class="form-label" for="autoplay">Autoplay</label>
+            
+            <input v-model="block.data.video.muted" type="checkbox" class="margin-right-xxs" id="muted">
+            <label class="form-label" for="muted">Muted Audio</label>
+            
+            <input v-model="block.data.video.plays_inline" type="checkbox" class="margin-right-xxs" id="plays_inline">
+            <label class="form-label" for="plays_inline">Play Inline</label>
+        </div>
+        
+        <!-- Video Placeholder Image -->
+        <div class="margin-bottom-md">
+            <label class="form-label block margin-bottom-xxs">Video Placeholder Image</label>
+            
             <div @click="editor.showFiles()" class="block-editor__file">
                 <div
                     :style="{ 'background-image': 'url(' + `https://d25r5txdw1c9o7.cloudfront.net/fit-in/100x100/${block.data.image.src}` + ')' }"
