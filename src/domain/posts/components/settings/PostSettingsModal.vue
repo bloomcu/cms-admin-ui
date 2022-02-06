@@ -43,6 +43,7 @@ const router = getCurrentInstance().proxy.$router
 const route = getCurrentInstance().proxy.$route
 
 const destroy = () => {
+    // TODO: Do I really need to track the visibility of settings inside the store?
     store.destroy(route.params.id)
     store.isShowingSettings = false
     router.push({ name: `${store.post.type}Dashboard` })
