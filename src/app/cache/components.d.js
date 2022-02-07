@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     App: typeof import('./../../App.vue')['default']
     App404: typeof import('./../views/App404.vue')['default']
+    AppCard: typeof import('./../components/AppCard.vue')['default']
     AppDrawer: typeof import('./../components/AppDrawer.vue')['default']
     AppHome: typeof import('./../views/AppHome.vue')['default']
     AppInput: typeof import('./../components/forms/AppInput.vue')['default']
@@ -35,6 +36,7 @@ declare module 'vue' {
     GeneralSettings: typeof import('./../../domain/posts/components/settings/includes/GeneralSettings.vue')['default']
     HeroEditor: typeof import('./../../domain/blocks/components/editors/HeroEditor.vue')['default']
     Layout: typeof import('./../../views/post-editor/components/layout/Layout.vue')['default']
+    LayoutDefault: typeof import('./../layouts/LayoutDefault.vue')['default']
     LayoutSidebar: typeof import('./../layouts/LayoutSidebar.vue')['default']
     MenuBuilder: typeof import('./../../views/menu-editor/components/MenuBuilder.vue')['default']
     MenuBuilderChildren: typeof import('./../../views/menu-editor/components/MenuBuilderChildren.vue')['default']
@@ -42,6 +44,7 @@ declare module 'vue' {
     MenuEditor: typeof import('./../../views/menu-editor/MenuEditor.vue')['default']
     Outline: typeof import('./../../views/post-editor/components/outline/Outline.vue')['default']
     PageDashboard: typeof import('./../../views/dashboards/PageDashboard.vue')['default']
+    PostCreate: typeof import('./../../views/post-create/PostCreate.vue')['default']
     PostEditor: typeof import('./../../views/post-editor/PostEditor.vue')['default']
     PostPreview: typeof import('./../../views/post-preview/PostPreview.vue')['default']
     PostSettingsModal: typeof import('./../../domain/posts/components/settings/PostSettingsModal.vue')['default']

@@ -1,7 +1,8 @@
 <template>
     <LayoutSidebar>
-        <div class="margin-bottom-md">
+        <div class="flex flex-wrap items-center justify-between margin-bottom-md">
             <h1 class="text-lg">Pages</h1>
+            <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Page</RouterLink>
         </div>
         
         <div class="app-dashboard">

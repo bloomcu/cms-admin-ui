@@ -1,5 +1,5 @@
 <template>
-    <div class="editor">
+    <div class="menu-editor">
         <header class="editor-header">
             <!-- Left -->
             <div class="editor-header__column">
@@ -13,23 +13,23 @@
 
             <!-- Status -->
             <div class="editor-header__column editor-header__column--center">
-                <p class="text-bold">{{ store.menu.title }}</p>
+                <p class="text-bold">{{ menuStore.menu.title }}</p>
             </div>
 
             <!-- Controls -->
             <div class="editor-header__column editor-header__column--right">
                 <span class="text-xs flex items-center">
-                    <div class="status-dot status-dot--primary margin-right-xxxs"></div>
-                    Draft
+                    <div class="status-dot status-dot--success margin-right-xxxs"></div>
+                    Published
                 </span>
-                <router-link :to="{name: 'postPreview'}" class="btn btn--sm btn--primary margin-left-sm">Publish</router-link>
-                <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
+                <button @click="menuStore.update()" class="btn btn--sm btn--primary margin-left-sm">Save</button>
+                <!-- <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link> -->
             </div>
         </header>
         
-        <div v-if="store" class="editor-wrapper">
+        <div class="menu-editor-wrapper">
             <!-- Left -->
-            <div class="editor-wrapper__left app-scrollable">
+            <div class="menu-editor-wrapper__left app-scrollable">
                 <AppNestedMenu 
                     :items="categoryStore.category.children" 
                     @selected="filter"
@@ -37,11 +37,23 @@
             </div>
 
             <!-- Center -->
-            <main class="editor-wrapper__center app-scrollable">
+            <main class="menu-editor-wrapper__center app-scrollable">
+              <!-- Deleted -->
+              <div class="bg bg-contrast-lower bg-opacity-50% text-center padding-y-md padding-x-sm radius-md margin-bottom-sm">
+                <p class="text-sm color-contrast-low">Trash</p>
+                <Draggable
+                    :list="deleted"
+                    :group="{ name: 'menu-builder' }"
+                    style="list-style: none;"
+                />
+              </div>
+              
+              <!-- Pages -->
                 <Draggable
                     :list="postStore.posts"
                     :group="{ name: 'menu-builder', pull: 'clone', put: false }"
                     :sort="false"
+                    :clone="onClone"
                 >
                     <div v-for="(post, index) in postStore.posts" :key="index" class="flex justify-between bg shadow-xs radius-md padding-xs margin-bottom-xxs" style="cursor: move;">
                         <p class="text-sm">{{ post.title }}</p>
@@ -51,8 +63,8 @@
             </main>
 
             <!-- Right -->
-            <div class="editor-wrapper__right app-scrollable">
-                <MenuBuilder :menu="store.menu"/>
+            <div v-if="menuStore.menu" class="menu-editor-wrapper__right app-scrollable">
+                <MenuBuilder/>
             </div>
         </div>
     </div>
@@ -65,9 +77,21 @@ import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
 const route = getCurrentInstance().proxy.$route
-const store = useMenuStore()
+const menuStore = useMenuStore()
 const postStore = usePostStore()
 const categoryStore = useCategoryStore()
+
+const deleted = ref([])
+
+const onClone = (original) => {
+    return {
+      title: original.title,
+      location: null,
+      component: 'menu-link',
+      href: original.url,
+      children: [],
+    }
+}
 
 const filter = () => {
     // TODO: Hit post api again passing filter params
@@ -75,16 +99,15 @@ const filter = () => {
 }
 
 onMounted(() => {
-    store.show(route.params.id)
     categoryStore.show(1)
     postStore.index('pages')
 })
 </script>
 
-<!-- TODO: These editor classes may need to be abstracted
-because the post and block editors will share many of them -->
-<style lang="scss" scoped>
-.editor {
+<!-- TODO: These menu-editor classes may need to be abstracted
+because the post and block menu-editors will share many of them -->
+<style lang="scss">
+.menu-editor {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -95,7 +118,7 @@ because the post and block editors will share many of them -->
     background-color: #f4f3f6; // TODO: Replace with var
 }
 
-.editor-wrapper {
+.menu-editor-wrapper {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -103,12 +126,12 @@ because the post and block editors will share many of them -->
     min-height: 0;
 }
 
-.editor-wrapper__left {
+.menu-editor-wrapper__left {
     width: 18%;
     padding-right: var(--space-md);
 }
 
-.editor-wrapper__center {
+.menu-editor-wrapper__center {
     width: 24%;
     margin-right: var(--space-sm);
 
@@ -122,7 +145,7 @@ because the post and block editors will share many of them -->
     // box-shadow: var(--shadow-sm);
 }
 
-.editor-wrapper__right {
+.menu-editor-wrapper__right {
     width: 58%;
     padding-left: var(--space-xs);
     

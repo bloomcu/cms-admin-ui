@@ -40,7 +40,7 @@ export default {
 
 import useToggleMultiple from '@/app/composables/useToggleMultiple.js'
 
-const props = defineProps({ 
+const props = defineProps({
     items: { type: Array },
     selected: ''
 })

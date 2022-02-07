@@ -46,7 +46,6 @@ export const useMenuStore = defineStore('menuStore', {
                 .then(response => {
                     setTimeout(() => {
                         this.isLoading = false
-                        this.menu = response.data.data
                     }, 500)
                 }).catch(error => {
                     this.isLoading = false

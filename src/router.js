@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 // Import route groups
 import dashboardRoutes from '@/views/dashboards/routes/dashboardRoutes.js'
+import postCreateRoutes from '@/views/post-create/routes/postCreateRoutes.js'
 import postEditorRoutes from '@/views/post-editor/routes/postEditorRoutes.js'
 import postPreviewRoutes from '@/views/post-preview/routes/postPreviewRoutes.js'
 import menuEditorRoutes from '@/views/menu-editor/routes/menuEditorRoutes.js'
@@ -12,6 +13,7 @@ Vue.use(VueRouter)
 
 export const routes = [
     ...dashboardRoutes,
+    ...postCreateRoutes,
     ...postEditorRoutes,
     ...postPreviewRoutes,
     ...menuEditorRoutes,
