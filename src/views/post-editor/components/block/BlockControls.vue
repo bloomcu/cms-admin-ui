@@ -5,7 +5,7 @@
             <router-link 
                 v-if="confirmDelete === 'hide'" 
                 :to="{ name: 'postBlockEditor', params: { uuid: props.uuid } }" 
-                @click.native="store.showBlockEditor()"
+                @click.native="editor.showBlockEditor()"
                 class="block-controls__button btn btn--sm btn--primary"
             >
                 <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g><path d="M1.915,17.329L1.02,21.804c-0.066,0.328,0.037,0.667,0.273,0.903C1.482,22.896,1.737,23,2,23 c0.065,0,0.131-0.006,0.196-0.02l4.475-0.895L1.915,17.329z"></path><polygon points="13.586,5 11,7.586 3,15.586 8.414,21 19,10.414 "></polygon><path d="M22.707,5.293l-4-4c-0.391-0.391-1.023-0.391-1.414,0L15,3.586L20.414,9l2.293-2.293 C23.098,6.316,23.098,5.684,22.707,5.293z"></path></g></svg>
@@ -13,9 +13,9 @@
             </router-link>
 
             <!-- Replicate -->
-            <button v-if="confirmDelete === 'hide'" class="block-controls__button btn btn--sm btn--primary">
+            <!-- <button v-if="confirmDelete === 'hide'" class="block-controls__button btn btn--sm btn--primary">
                 <svg class="icon" viewBox="0 0 24 24"><g><path data-color="color-2" d="M22,7h-3v11c0,0.552-0.448,1-1,1H7v3c0,0.552,0.448,1,1,1h14c0.552,0,1-0.448,1-1V8 C23,7.448,22.552,7,22,7z"></path><path d="M16,17H2c-0.553,0-1-0.447-1-1V2c0-0.552,0.447-1,1-1h14c0.553,0,1,0.448,1,1v14C17,16.553,16.553,17,16,17z"></path></g></svg>
-            </button>
+            </button> -->
 
             <!-- Delete -->
             <button v-if="confirmDelete === 'hide'" @click="confirmDelete = 'show'" class="block-controls__button btn btn--sm btn--primary">
@@ -29,7 +29,7 @@
                 </button>
 
                 <!-- Confirm Delete -->
-                <button class="block-controls__button btn btn--sm btn--accent">
+                <button @click="store.destroyBlock(uuid)" class="block-controls__button btn btn--sm btn--accent">
                     Confirm Delete
                 </button>
             </div>
@@ -38,13 +38,15 @@
 </template>
 
 <script setup>
+import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const props = defineProps({
     uuid: { type: String, required: true }
 })
 
-const store = usePostEditorStore()
+const store = usePostStore()
+const editor = usePostEditorStore()
 const confirmDelete = ref('hide')
 </script>
 

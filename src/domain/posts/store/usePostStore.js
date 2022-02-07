@@ -1,5 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import { postApi as PostApi } from '@/domain/posts/api/postApi'
+import { blockApi as BlockApi } from '@/domain/blocks/api/blockApi'
 
 export const usePostStore = defineStore('postStore', {
     state: () => ({
@@ -48,7 +49,7 @@ export const usePostStore = defineStore('postStore', {
                 .then(response => {
                     this.post = response.data.data
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
         
@@ -60,7 +61,7 @@ export const usePostStore = defineStore('postStore', {
                     setTimeout(() => {
                         this.isLoading = false
                         // this.post = response.data.data
-                    }, 500)
+                    }, 1500)
                 }).catch(error => {
                     this.isLoading = false
                     Object.values(error.response.data).forEach(error => console.log(error))
@@ -73,7 +74,7 @@ export const usePostStore = defineStore('postStore', {
                     this.post = {}
                     this.posts = this.posts.filter((page) => page.id !== id)
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
         
@@ -82,7 +83,16 @@ export const usePostStore = defineStore('postStore', {
                 .then(response => {
                     this.posts.unshift(response.data.data)
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    Object.values(error.response.data).forEach(error => console.log(error))
+                })
+        },
+        
+        destroyBlock(uuid) {
+            BlockApi.destroy(uuid)
+                .then(response => {
+                    this.post.layout.blocks = this.post.layout.blocks.filter((block) => block.uuid !== uuid)
+                }).catch(error => {
+                    Object.values(error.response.data).forEach(error => console.log(error))
                 })
         },
     }

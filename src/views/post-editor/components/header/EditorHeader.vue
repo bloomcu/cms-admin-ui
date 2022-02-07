@@ -18,7 +18,7 @@
         <!-- Controls -->
         <div class="editor-header__column editor-header__column--right">
             <span v-if="store.isLoading" class="text-xs flex items-center">
-                <div class="status-dot status-dot--primary margin-right-xxxs"></div>
+                <div class="status-dot status-dot--success margin-right-xxxs"></div>
                 Saving
             </span>
 
