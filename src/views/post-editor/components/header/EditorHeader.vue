@@ -2,7 +2,7 @@
     <header class="editor-header">
         <!-- Left -->
         <div class="editor-header__column">
-            <router-link v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-xxs">
+            <router-link @click.native="editor.showDefault()" v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-xxs">
                 <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g fill="none"><path d="M9 19l1.41-1.41L5.83 13H22v-2H5.83l4.59-4.59L9 5l-7 7 7 7z" fill="#212121"></path></g></svg>
                 Back
             </router-link>
@@ -32,15 +32,17 @@
                 Draft
             </span>
             <router-link :to="{name: 'postPreview'}" class="btn btn--sm btn--primary margin-left-sm">Publish</router-link>
-            <router-link :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
+            <router-link @click.native="editor.showDefault()" :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
         </div>
     </header>
 </template>
 
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
+import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const store = usePostStore()
+const editor = usePostEditorStore()
 </script>
 
 <style lang="scss">

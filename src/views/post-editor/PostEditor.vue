@@ -27,15 +27,26 @@
 </template>
 
 <script setup>
+import { useDebounceFn } from '@vueuse/core'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const store = usePostStore()
 const editor = usePostEditorStore()
+const router = getCurrentInstance().proxy.$router
+const route = getCurrentInstance().proxy.$route
 
 onMounted(() => {
-    const route = getCurrentInstance().proxy.$route
     store.show(route.params.id)
+})
+
+router.beforeResolve(async (to, from, next) => {
+  if (from.name === 'postBlockEditor' || from.name === 'postEditor') {
+      if (!store.isLoading) {
+        store.update()
+      }
+  }
+  next()
 })
 </script>
 

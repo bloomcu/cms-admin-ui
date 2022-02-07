@@ -2,6 +2,8 @@
     <div>
         <h1>Home</h1>
         <Hero title="test"/>
+        <VideoBackgroundHero/>
+        <Feature/>
     </div>
 </template>
 

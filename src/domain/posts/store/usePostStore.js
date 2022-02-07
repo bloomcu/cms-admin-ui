@@ -59,7 +59,7 @@ export const usePostStore = defineStore('postStore', {
                 .then(response => {
                     setTimeout(() => {
                         this.isLoading = false
-                        this.post = response.data.data
+                        // this.post = response.data.data
                     }, 500)
                 }).catch(error => {
                     this.isLoading = false
