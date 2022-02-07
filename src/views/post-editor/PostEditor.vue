@@ -27,7 +27,6 @@
 </template>
 
 <script setup>
-import { useDebounceFn } from '@vueuse/core'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
