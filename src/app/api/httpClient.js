@@ -9,8 +9,9 @@ import axios from 'axios'
  * An instance of Axios we can use for all API requests to CMS
  */
 const httpClient = axios.create({
+    baseURL: import.meta.env.VITE_BASE_URL,
     // baseURL: 'http://cms.test/api/bloomcu/website',
-    baseURL: 'https://cms-api.bloomcu.com/api/bloomcu/website',
+    // baseURL: 'https://cms-api.bloomcu.com/api/bloomcu/website',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
