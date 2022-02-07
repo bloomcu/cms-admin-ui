@@ -1,8 +1,9 @@
 <template>
     <LayoutSidebar>
-        <div class="margin-bottom-md">
-            <h1 class="text-lg">Blocks</h1>
-        </div>
+      <div class="flex flex-wrap items-center justify-between margin-bottom-md">
+          <h1 class="text-lg">Blocks</h1>
+          <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Block</RouterLink>
+      </div>
         
         <div class="app-dashboard">
             <div class="app-dashboard-column--left">
