@@ -1,5 +1,6 @@
 <template>
     <Draggable 
+        v-if="children"
         :list="children" 
         :animation="200" 
         :group="{ name: 'menu-builder' }"

@@ -30,7 +30,8 @@
                                     <p class="text-xs">{{ block.title }}</p>
                                 </div>
                                 <figure class="block-library__card-img">
-                                    <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
+                                    <!-- <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image"> -->
+                                    <img src="https://placehold.jp/f4f3f6/bbbbbb/580x200.png?text=thumb" alt="Block Image">
                                 </figure>
                             </div>
                         </Draggable>

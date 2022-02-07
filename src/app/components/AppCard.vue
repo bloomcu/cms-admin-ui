@@ -25,7 +25,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://via.placeholder.com/350x350'
+    default: 'https://placehold.jp/f4f3f6/bbbbbb/350x350.png?text=thumb'
   }
 })
 
@@ -66,7 +66,7 @@ const emit = defineEmits(['onPreview', 'onSelect'])
 
 .card__header {
     padding: var(--space-xs);
-    border-bottom: 1px solid var(--color-contrast-low);
+    border-bottom: 1px solid var(--color-contrast-lower);
 }
 
 .card__title {

@@ -10,7 +10,8 @@
                     <p class="text-xs">{{ block.title }}</p>
                 </div>
                 <figure class="outline__card__img">
-                    <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image">
+                    <!-- <img :src="'/images/blocks/' + block.component + '.jpg'" alt="Block Image"> -->
+                    <img src="https://placehold.jp/ffffff/bbbbbb/166x60.png?text=thumb" alt="Block Image">
                 </figure>
             </div>
         </Draggable>

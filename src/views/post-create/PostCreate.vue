@@ -16,7 +16,7 @@
         <div class="app-dashboard-column--right">
           <div class="grid gap-md">
             <AppCard
-              v-for="(blueprint, index) in blueprints"
+              v-for="(blueprint, index) in store.posts"
               :key="index"
               :title="blueprint.title"
               @onPreview="modalOpen = true"
@@ -30,10 +30,10 @@
 </template>
 
 <script setup>
-// import { usePostStore } from '@/domain/posts/store/usePostStore'
+import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
-// const store = usePostStore()
+const store = usePostStore()
 const categoryStore = useCategoryStore()
 
 const replicate = (id) => {
@@ -112,7 +112,7 @@ const blueprints = [
 ]
 
 onMounted(() => {
-    // store.indexBlueprints()
+    store.indexBlueprints()
     categoryStore.show(1)
 })
 </script>
