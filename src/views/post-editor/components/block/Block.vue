@@ -15,7 +15,7 @@ import {
   Feature,
   Testimonial,
   TextColumns
-} from 'vite-codytest'
+} from 'vite-component-library'
 
 export default defineComponent({
     components: {

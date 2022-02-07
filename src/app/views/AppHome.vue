@@ -1,20 +1,20 @@
 <template>
     <div>
         <h1>Home</h1>
-        <Hero title="test"/>
+        <!-- <Hero title="test"/>
         <VideoBackgroundHero/>
-        <Feature/>
+        <Feature/> -->
     </div>
 </template>
 
 <script>
-import { Hero, VideoBackgroundHero, Feature } from 'vite-codytest'
-
-export default defineComponent({
-    components: {
-        Hero,
-        VideoBackgroundHero,
-        Feature,
-    }
-})   
+// import { Hero, VideoBackgroundHero, Feature } from 'vite-component-library'
+// 
+// export default defineComponent({
+//     components: {
+//         Hero,
+//         VideoBackgroundHero,
+//         Feature,
+//     }
+// })   
 </script>

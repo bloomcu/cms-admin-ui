@@ -14,6 +14,7 @@
     "filepond": "^4.30.3",
     "pinia": "^2.0.8",
     "uuid": "^8.3.2",
+    "vite-component-library": "0.0.2",
     "vue": "^2.6.12",
     "vue-router": "^3.5.3",
     "vuedraggable": "^2.24.3"

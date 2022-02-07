@@ -3,7 +3,7 @@ import VueCompositionApi from '@vue/composition-api'
 import App from '@/App.vue'
 import { createPinia, PiniaVuePlugin } from 'pinia'
 import router from '@/router'
-import '/node_modules/vite-codytest/dist/style.css'
+import '/node_modules/vite-component-library/dist/style.css'
 
 const pinia = createPinia()
 
