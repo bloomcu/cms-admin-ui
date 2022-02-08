@@ -25,7 +25,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://placehold.jp/f4f3f6/bbbbbb/350x350.png?text=thumb'
+    default: '/static/img/Blueprint.jpg'
   }
 })
 
