@@ -111,6 +111,7 @@ export const usePostStore = defineStore('postStore', {
         replicate(id) {
             PostApi.replicate(id)
                 .then(response => {
+                    this.post = response.data.data
                     this.posts.unshift(response.data.data)
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))

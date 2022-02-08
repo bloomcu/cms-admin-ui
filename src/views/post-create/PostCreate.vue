@@ -35,10 +35,11 @@ import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
 const store = usePostStore()
 const categoryStore = useCategoryStore()
+const router = getCurrentInstance().proxy.$router
 
 const replicate = (id) => {
-  console.log('Replicating...')
-  // usePostStore.replicate(id)
+  store.replicate(id)
+  router.push({ name: 'postEditor', params: { id: store.post.id } })
 }
 
 const modalOpen = ref(false)
