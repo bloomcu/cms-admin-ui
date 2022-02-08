@@ -57,9 +57,9 @@
                 <label class="form-label margin-bottom-xxs">Variant</label>
                 <div class="select">
                     <select v-model="block.data.buttons[0].variant" name="variant" id="variant" class="select_input form-control width-100%">
-                        <option value="primary" key="primary" :selected="block.data.buttons[0].variant === 'primary'">Primary</option>
-                        <option value="accent" key="accent" :selected="block.data.buttons[0].variant === 'accent'">Accent</option>
-                        <option value="subtle" key="subtle" :selected="block.data.buttons[0].variant === 'subtle'">Subtle</option>
+                        <option value="primary" key="primary" :selected="block.data.buttons[0].variant === 'primary'">Style 1</option>
+                        <option value="accent" key="accent" :selected="block.data.buttons[0].variant === 'accent'">Style 2</option>
+                        <option value="subtle" key="subtle" :selected="block.data.buttons[0].variant === 'subtle'">Style 3</option>
                     </select>
                     <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
                 </div>

@@ -68,6 +68,26 @@ const postApi = {
     destroy(id) {
         return HttpClient.delete(`/posts/${id}`)
     },
+    
+    /**
+     * Publish a post
+     *
+     * @param Integer id [Id of the post you want to publish]
+     * @return promise
+     */
+    publish(id) {
+        return HttpClient.put(`/posts/${id}/publish`)
+    },
+    
+    /**
+     * Unpublish a post
+     *
+     * @param Integer id [Id of the post you want to unpublish]
+     * @return promise
+     */
+    unpublish(id) {
+        return HttpClient.put(`/posts/${id}/unpublish`)
+    },
 
     /**
      * Replicate a post

@@ -78,6 +78,36 @@ export const usePostStore = defineStore('postStore', {
                 })
         },
         
+        publish() {
+            this.isLoading = true
+            
+            PostApi.publish(this.post.id)
+                .then(response => {
+                    setTimeout(() => {
+                        this.isLoading = false
+                        this.post.published_at = response.data.data.published_at
+                    }, 800)
+                }).catch(error => {
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
+                })
+        },
+        
+        unpublish() {
+            this.isLoading = true
+            
+            PostApi.unpublish(this.post.id)
+                .then(response => {
+                    setTimeout(() => {
+                        this.isLoading = false
+                        this.post.published_at = null
+                    }, 800)
+                }).catch(error => {
+                    this.isLoading = false
+                    Object.values(error.response.data).forEach(error => console.log(error))
+                })
+        },
+        
         replicate(id) {
             PostApi.replicate(id)
                 .then(response => {

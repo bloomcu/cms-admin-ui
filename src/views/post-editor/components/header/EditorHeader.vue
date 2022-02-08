@@ -17,22 +17,33 @@
 
         <!-- Controls -->
         <div class="editor-header__column editor-header__column--right">
-            <span v-if="store.isLoading" class="text-xs flex items-center">
-                <div class="status-dot status-dot--success margin-right-xxxs"></div>
+            <!-- Saving -->
+            <span v-if="store.isLoading" class="text-xs flex items-center margin-right-sm">
+                <!-- <div class="status-dot status-dot--primary margin-right-xxxs"></div> -->
                 Saving
             </span>
-
-            <!-- <span v-else class="text-xs flex items-center">
+            
+            <!-- Published -->
+            <span v-if="store.post.published_at" class="text-xs flex items-center">
                 <div class="status-dot status-dot--success margin-right-xxxs"></div>
                 Published
-            </span> -->
-            
+            </span>
             <span v-else class="text-xs flex items-center">
+                <div class="status-dot margin-right-xxxs"></div>
+                Unpublished
+            </span>
+            
+            <!-- <span v-else class="text-xs flex items-center">
                 <div class="status-dot status-dot--primary margin-right-xxxs"></div>
                 Draft
-            </span>
-            <router-link :to="{name: 'postPreview'}" class="btn btn--sm btn--primary margin-left-sm">Publish</router-link>
-            <router-link @click.native="editor.showDefault()" :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</router-link>
+            </span> -->
+            
+            <!-- Publish Actions -->
+            <button v-if="store.post.published_at" @click="store.unpublish()" class="btn btn--sm margin-left-sm">Unpublish</button>
+            <button v-else @click="store.publish()" class="btn btn--sm btn--primary margin-left-sm">Publish</button>
+            
+            <!-- Preview -->
+            <RouterLink @click.native="editor.showDefault()" :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</RouterLink>
         </div>
     </header>
 </template>
@@ -80,6 +91,7 @@ const editor = usePostEditorStore()
     border-radius: 50%;
     align-self: center;
     flex-shrink: 0;
+    background-color: alpha(var(--color-contrast-higher), 0.2);
 }
 
 .status-dot--primary {

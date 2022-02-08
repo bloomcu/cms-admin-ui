@@ -30,7 +30,8 @@
                     </button>
                     
                     <!-- TODO: Hook this up to the actual status -->
-                    <div class="item__dot margin-left-sm" aria-hidden="true"></div>
+                    <div v-if="item.published_at" class="status-dot status-dot--success margin-left-sm" aria-hidden="true"></div>
+                    <div v-else class="status-dot margin-left-sm" aria-hidden="true"></div>
                 </div>
             </li>
         </ul>
@@ -118,14 +119,5 @@ const emit = defineEmits(['replicate', 'destroy'])
         background-color: currentColor;
         opacity: 0.15;
     }
-}
-
-.item__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--color-success);
-    align-self: center;
-    flex-shrink: 0;
 }
 </style>
