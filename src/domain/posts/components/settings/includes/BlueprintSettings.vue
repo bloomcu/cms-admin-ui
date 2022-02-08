@@ -37,7 +37,7 @@
             <p class="text-sm">Create a new blueprint based on this page. <a href="#">Learn More</a></p>
         </div>
         
-        <button v-if="!store.post.is_blueprint" class="btn btn--subtle">
+        <button v-if="!store.post.is_blueprint" disabled class="btn btn--subtle">
             Create New Blueprint from Page
         </button>
     </div>
