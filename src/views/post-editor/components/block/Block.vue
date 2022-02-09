@@ -13,6 +13,7 @@ import {
   BoxedHero,
   VideoBackgroundHero,
   Feature,
+  FeatureV11,
   Testimonial,
   TextColumns
 } from 'vite-component-library'
@@ -23,6 +24,7 @@ export default defineComponent({
         BoxedHero,
         VideoBackgroundHero,
         Feature,
+        FeatureV11,
         Testimonial,
         TextColumns
     }
