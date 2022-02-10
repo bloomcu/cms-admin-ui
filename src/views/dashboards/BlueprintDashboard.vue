@@ -2,7 +2,7 @@
     <LayoutSidebar>
       <div class="flex flex-wrap items-center justify-between margin-bottom-md">
           <h1 class="text-lg">Blueprints</h1>
-          <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Blueprint</RouterLink>
+          <!-- <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Blueprint</RouterLink> -->
       </div>
         
         <div class="app-dashboard">

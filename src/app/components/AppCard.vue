@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card cursor-pointer" @click="$emit('onSelect')"  >
         <div class="card__header">
             <div class="card__title">
                 <h5>{{ title }}</h5>
@@ -8,10 +8,10 @@
 
         <figure class="card__img">
             <img :src="image" alt="Card Image">
-            <div class="card__buttons">
-                <a @click="$emit('onSelect')" class="btn btn--primary margin-right-xs" href="#0">Select</a>
+            <!-- <div class="card__buttons">
+                <a @click="$emit('onSelect')" class="btn btn--primary" href="#0">Select</a>
                 <a @click="$emit('onPreview')" class="btn btn--subtle" href="#">Preview</a>
-            </div>
+            </div> -->
         </figure>
     </div>
 </template>
@@ -101,7 +101,7 @@ const emit = defineEmits(['onPreview', 'onSelect'])
     position: absolute;
     z-index: 1;
     width: 260px;
-    top: 36%;
+    top: 45%;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;

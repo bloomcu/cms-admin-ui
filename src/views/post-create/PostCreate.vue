@@ -2,7 +2,7 @@
   <LayoutDefault>
     <div class="flex flex-wrap items-center justify-between margin-bottom-md">
         <h1 class="text-lg">Select a Blueprint</h1>
-        <RouterLink :to="{ name: 'pageDashboard' }" class="btn btn--primary btn--sm">Cancel</RouterLink>
+        <a @click="back()" class="btn btn--primary btn--sm">Cancel</a>
     </div>
     
     <div class="app-dashboard">
@@ -14,7 +14,8 @@
         </div>
         
         <div class="app-dashboard-column--right">
-          <div class="grid gap-md">
+          <h4 v-if="store.isLoading">Loading...</h4>
+          <div v-else class="grid gap-md">
             <AppCard
               v-for="(blueprint, index) in store.posts"
               :key="index"
@@ -39,7 +40,13 @@ const router = getCurrentInstance().proxy.$router
 
 const replicate = (id) => {
   store.replicate(id)
-  router.push({ name: 'postEditor', params: { id: store.post.id } })
+  setTimeout(() => {
+      router.push({ name: 'postEditor', params: { id: store.post.id } })
+  }, 1000)
+}
+
+const back = () => {
+  router.go(-1)
 }
 
 const modalOpen = ref(false)

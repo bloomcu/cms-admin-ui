@@ -25,11 +25,15 @@ export const usePostStore = defineStore('postStore', {
     
     actions: {
         indexBlueprints(params = {}) {
+            this.isLoading = true
+            
             PostApi.indexBlueprints(params)
                 .then(response => {
                     this.posts = response.data.data
+                    this.isLoading = false
                 }).catch(error => {
                     console.log('Error', error.response.data)
+                    this.isLoading = false
                 })
         },
         
@@ -109,10 +113,15 @@ export const usePostStore = defineStore('postStore', {
         },
         
         replicate(id) {
+          this.isLoading = true
             PostApi.replicate(id)
                 .then(response => {
                     this.post = response.data.data
-                    this.posts.unshift(response.data.data)
+                    
+                    setTimeout(() => {
+                        this.isLoading = false
+                        this.posts.unshift(response.data.data)
+                    }, 1000)
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))
                 })
