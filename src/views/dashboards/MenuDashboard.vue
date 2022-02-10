@@ -2,7 +2,7 @@
     <LayoutSidebar>
       <div class="flex flex-wrap items-center justify-between margin-bottom-md">
           <h1 class="text-lg">Menus</h1>
-          <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Menu</RouterLink>
+          <!-- <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Menu</RouterLink> -->
       </div>
         
         <div class="app-dashboard">
