@@ -42,8 +42,8 @@
             <button v-if="store.post.published_at" @click="store.unpublish()" class="btn btn--sm margin-left-sm">Unpublish</button>
             <button v-else @click="store.publish()" class="btn btn--sm btn--primary margin-left-sm">Publish</button>
             
-            <!-- Preview -->
-            <RouterLink @click.native="editor.showDefault()" :to="{name: 'postPreview'}" class="btn btn--sm margin-left-xxs">Preview</RouterLink>
+            <!-- Preview / View Page -->
+            <a v-if="store.post.published_at" @click="store.update()" :href="`${clientSiteUrl}/${store.post.url}`" target="_blank" class="btn btn--sm btn--primary margin-left-xxs">View Page</a>
         </div>
     </header>
 </template>
@@ -54,6 +54,7 @@ import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore
 
 const store = usePostStore()
 const editor = usePostEditorStore()
+const clientSiteUrl = import.meta.env.VITE_CLIENT_SITE_URL
 </script>
 
 <style lang="scss">
