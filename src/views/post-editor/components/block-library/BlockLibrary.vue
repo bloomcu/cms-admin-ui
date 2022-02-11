@@ -9,7 +9,7 @@
               All
             </li>
             <li
-                v-for="(item, index) in categoryStore.category.children" :key="index"
+                v-for="(item, index) in menu" :key="index"
                 @click="filter(item.id)"
                 :class="activeMenu === item.id ? 'menu-item--active' : ''"
                 class="menu-item flex _align-middle"
@@ -21,7 +21,7 @@
         <AppDrawer v-if="activeMenu" @close="activeMenu = false">
             <div class="block-library__list">
                 <div class="block-library__column--left">
-                    <div v-if="store.blocks.length" class="flex flex-column">
+                    <div class="flex flex-column">
                         <Draggable
                             :list="store.blocks"
                             :group="{name: 'blocks', pull: 'clone', put: false}"
@@ -42,10 +42,6 @@
                             </div>
                         </Draggable>
                     </div>
-                    
-                    <div v-else class="padding-sm">
-                      <h4>No blocks in this category</h4>
-                    </div>
                 </div>
                 
                 <div class="block-library__column--right"></div>
@@ -59,10 +55,10 @@
 import Draggable from 'vuedraggable'
 import { v4 as uuid } from 'uuid';
 import { useBlockStore } from '@/domain/blocks/store/useBlockStore'
-import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
+// import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
 const store = useBlockStore()
-const categoryStore = useCategoryStore()
+// const categoryStore = useCategoryStore()
 
 const onClone = (original) => {
     return {...original, uuid: uuid()}
@@ -85,9 +81,23 @@ const filter = (id) => {
     })
 }
 
-onMounted(() => {
-    categoryStore.show(79)
-})
+// onMounted(() => {
+//     categoryStore.show(79)
+// })
+
+const menu = [
+    {'title': 'Heros', 'id': 80},
+    {'title': 'Features', 'id': 81},
+    {'title': 'Text', 'id': 82},
+    // {'title': 'Cards', 'id': 83},
+    // {'title': 'Details', 'id': 84},
+    // {'title': 'Steps', 'id': 85},
+    {'title': 'Tables', 'id': 86},
+    {'title': 'Testimonials', 'id': 87},
+    // {'title': 'Accordions', 'id': 88},
+    // {'title': 'Galleries', 'id': 89},
+    
+]
 </script>
 
 <style lang="scss" scoped>
