@@ -39,7 +39,7 @@ const emit = defineEmits(['close'])
     right: 0;
     height: 100%;
     width: 820px;
-    background-color: var(--color-contrast-lower);
+    background-color: #f4f3f6; // TODO: Replace with var
     box-shadow: var(--shadow-xl);
     z-index: 1;
 

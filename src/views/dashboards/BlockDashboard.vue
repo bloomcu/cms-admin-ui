@@ -35,13 +35,17 @@ import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 const store = useBlockStore()
 const categoryStore = useCategoryStore()
 
-const filter = () => {
-    // TODO: Hit post api again passing filter params
-    console.log('Filtering...')
+const filter = (id) => {
+    store.index({
+      'filter[is_blueprint]': 1,
+      'filter[categories.id]': id
+    })
 }
 
 onMounted(() => {
-    store.indexBlueprints()
-    categoryStore.show(1)
+    store.index({
+      'filter[is_blueprint]': 1,
+    })
+    categoryStore.show(79)
 })
 </script>

@@ -9,16 +9,19 @@ export const useBlockStore = defineStore('blockStore', {
     }),
     
     actions: {
-        indexBlueprints(params = {}) {
-            BlockApi.indexBlueprints(params)
+        index(params = {}) {
+            this.blocks = []
+            this.isLoading = true
+            
+            BlockApi.index(params)
                 .then(response => {
                     this.blocks = response.data.data
+                    this.isLoading = false
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    Object.values(error.response.data).forEach(error => console.log(error))
+                    this.isLoading = false
                 })
         },
-        
-        index(params = {}) {},
         
         store() {},
         

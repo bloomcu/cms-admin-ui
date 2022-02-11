@@ -7,8 +7,8 @@ const blockApi = {
      * @param Object params [Key/value params to query by]
      * @return promise
      */
-    indexBlueprints(params) {
-        return HttpClient.get(`/block/blueprints`, { params: params })
+    index(params) {
+        return HttpClient.get(`/blocks`, { params: params })
     },
     
     /**
