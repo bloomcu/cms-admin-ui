@@ -42,7 +42,7 @@ const replicate = (id) => {
   store.replicate(id)
   setTimeout(() => {
       router.push({ name: 'postEditor', params: { id: store.post.id } })
-  }, 1000)
+  }, 700)
 }
 
 const back = () => {
@@ -51,76 +51,17 @@ const back = () => {
 
 const modalOpen = ref(false)
 
-const filter = () => {
-    // TODO: Hit post api again passing filter params
-    console.log('Filtering...')
+const filter = (id) => {
+  store.index({
+    'filter[is_blueprint]': 1,
+    'filter[categories.id]': id
+  })
 }
 
-const blueprints = [
-  {
-    id: 1,
-    title: 'Blank Page'
-  },
-  {
-    id: 2,
-    title: 'Homepage'
-  },
-  {
-    id: 3,
-    title: 'Checking Account'
-  },
-  {
-    id: 4,
-    title: 'Savings Account'
-  },
-  {
-    id: 5,
-    title: 'Service Page'
-  },
-  {
-    id: 6,
-    title: 'Auto Loan'
-  },
-  {
-    id: 7,
-    title: 'Home Loan'
-  },
-  {
-    id: 8,
-    title: 'Personal Loan'
-  },
-  {
-    id: 9,
-    title: 'Business Loan'
-  },
-  {
-    id: 10,
-    title: 'Home Loan'
-  },
-  {
-    id: 11,
-    title: 'Credit Card'
-  },
-  {
-    id: 12,
-    title: 'Debit Card'
-  },
-  {
-    id: 13,
-    title: 'Online Banking'
-  },
-  {
-    id: 14,
-    title: 'Mobile Banking'
-  },
-  {
-    id: 15,
-    title: 'About Us'
-  },
-]
-
 onMounted(() => {
-    store.indexBlueprints()
+    store.index({ 
+      'filter[is_blueprint]': 1
+    })
     categoryStore.show(1)
 })
 </script>

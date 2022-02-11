@@ -35,13 +35,19 @@ import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 const store = usePostStore()
 const categoryStore = useCategoryStore()
 
-const filter = () => {
-    // TODO: Hit post api again passing filter params
-    console.log('Filtering...')
+const filter = (id) => {
+  store.index({
+    'filter[is_blueprint]': 0,
+    'filter[type]': 'article',
+    'filter[categories.id]': id
+  })
 }
 
 onMounted(() => {
-    store.index('articles')
-    categoryStore.show(1)
+  store.index({
+    'filter[is_blueprint]': 0,
+    'filter[type]': 'article',
+  })
+  categoryStore.show(72)
 })
 </script>

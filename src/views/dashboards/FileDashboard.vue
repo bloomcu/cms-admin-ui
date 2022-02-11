@@ -4,14 +4,7 @@
             <h1 class="text-lg">Files</h1>
         </div>
         
-        <div class="app-dashboard">
-            <div class="app-dashboard-column--left">
-                <AppNestedMenu 
-                    :items="categoryStore.category.children" 
-                    @selected="filter"
-                />
-            </div>
-            
+        <div class="app-dashboard">            
             <div class="app-dashboard-column--right">
                 <FileUploader/>
                 <FileGallery :files="store.files" />
@@ -22,18 +15,10 @@
 
 <script setup>
 import { useFileStore } from '@/domain/files/store/useFileStore'
-import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
 const store = useFileStore()
-const categoryStore = useCategoryStore()
-
-const filter = () => {
-    // TODO: Hit post api again passing filter params
-    console.log('Filtering...')
-}
 
 onMounted(() => {
     store.index()
-    categoryStore.show(1)
 })
 </script>

@@ -1,10 +1,17 @@
 <template>
     <div class="block-library">
         <ul class="block-library__menu">
+            <li 
+            @click="filter('all')" 
+            :class="activeMenu === 'all' ? 'menu-item--active' : ''"
+            class="menu-item flex _align-middle"
+            >
+              All
+            </li>
             <li
-                v-for="(item, index) in menu" :key="index"
-                @click="activateMenu(item.category)"
-                :class="activeMenu === item.category ? 'menu-item--active' : ''"
+                v-for="(item, index) in categoryStore.category.children" :key="index"
+                @click="filter(item.id)"
+                :class="activeMenu === item.id ? 'menu-item--active' : ''"
                 class="menu-item flex _align-middle"
             >
                 {{ item.title }}
@@ -14,7 +21,7 @@
         <AppDrawer v-if="activeMenu" @close="activeMenu = false">
             <div class="block-library__list">
                 <div class="block-library__column--left">
-                    <div class="flex flex-column">
+                    <div v-if="store.blocks.length" class="flex flex-column">
                         <Draggable
                             :list="store.blocks"
                             :group="{name: 'blocks', pull: 'clone', put: false}"
@@ -35,6 +42,10 @@
                             </div>
                         </Draggable>
                     </div>
+                    
+                    <div v-else class="padding-sm">
+                      <h4>No blocks in this category</h4>
+                    </div>
                 </div>
                 
                 <div class="block-library__column--right"></div>
@@ -48,8 +59,10 @@
 import Draggable from 'vuedraggable'
 import { v4 as uuid } from 'uuid';
 import { useBlockStore } from '@/domain/blocks/store/useBlockStore'
+import { useCategoryStore } from '@/domain/categories/store/useCategoryStore'
 
 const store = useBlockStore()
+const categoryStore = useCategoryStore()
 
 const onClone = (original) => {
     return {...original, uuid: uuid()}
@@ -57,34 +70,24 @@ const onClone = (original) => {
 
 const activeMenu = ref(false)
 // const lastActiveMenu = ref(null)
-const activateMenu = (category) => {
+
+const filter = (id) => {
     // Cache this category
     // lastActiveMenu.value = category
+    
+    activeMenu.value = id
+    
+    if (id === 'all') { id = null }
 
-    // Update menu
-    activeMenu.value = category
-
-    // Query blocks
-    if (category !== 'all') {
-        store.indexBlueprints('?category=' + category)
-    } else {
-        store.indexBlueprints('')
-    }
+    store.index({
+      'filter[is_blueprint]': 1,
+      'filter[categories.id]': id
+    })
 }
 
-const menu = [
-    {'title': 'All Blocks', 'category': 'all'},
-    {'title': 'Heros', 'category': 'heros'},
-    {'title': 'Text', 'category': 'text'},
-    {'title': 'Features', 'category': 'features'},
-    {'title': 'Cards', 'category': 'cards'},
-    {'title': 'Testimonials', 'category': 'testimonials'},
-    {'title': 'Accordions', 'category': 'accordions'},
-    {'title': 'Galleries', 'category': 'galleries'},
-    {'title': 'Details', 'category': 'details'},
-    {'title': 'Steps', 'category': 'steps'},
-    {'title': 'Tables', 'category': 'tables'},
-]
+onMounted(() => {
+    categoryStore.show(79)
+})
 </script>
 
 <style lang="scss" scoped>

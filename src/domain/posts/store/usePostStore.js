@@ -24,36 +24,33 @@ export const usePostStore = defineStore('postStore', {
     },
     
     actions: {
-        indexBlueprints(params = {}) {
+        index(params) {
+            this.posts = []
             this.isLoading = true
             
-            PostApi.indexBlueprints(params)
+            PostApi.index(params)
                 .then(response => {
                     this.posts = response.data.data
                     this.isLoading = false
                 }).catch(error => {
-                    console.log('Error', error.response.data)
+                    Object.values(error.response.data).forEach(error => console.log(error))
                     this.isLoading = false
-                })
-        },
-        
-        index(type = 'pages', params = {}) {
-            PostApi.index(type, params)
-                .then(response => {
-                    this.posts = response.data.data
-                }).catch(error => {
-                    console.log('Error', error.response.data)
                 })
         },
         
         store() {},
         
         show(id) {
+            this.post = []
+            this.isLoading = true
+            
             PostApi.show(id)
                 .then(response => {
                     this.post = response.data.data
+                    this.isLoading = false
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))
+                    this.isLoading = false
                 })
         },
         
@@ -113,15 +110,15 @@ export const usePostStore = defineStore('postStore', {
         },
         
         replicate(id) {
-          this.isLoading = true
+            this.isLoading = true
+            
             PostApi.replicate(id)
                 .then(response => {
                     this.post = response.data.data
-                    
+                    this.posts.unshift(response.data.data)
                     setTimeout(() => {
                         this.isLoading = false
-                        this.posts.unshift(response.data.data)
-                    }, 1000)
+                    }, 700)
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))
                 })

@@ -1,18 +1,6 @@
 import { httpClient as HttpClient } from '@/app/api/httpClient'
 
-const postApi = {    
-    // TODO: Let's get blueprints with a query string
-    // rather than a seperate endpoint.
-    /**
-     * List post blueprints
-     *
-     * @param Object params [Key/value params to query by]
-     * @return promise
-     */
-    indexBlueprints(params) {
-        return HttpClient.get(`/post/blueprints`, { params: params })
-    },
-    
+const postApi = {        
     /**
      * List posts
      *
@@ -20,8 +8,8 @@ const postApi = {
      * @param Object params [Key/value params to query by]
      * @return promise
      */
-    index(type, params) {
-        return HttpClient.get(`/${type}`, { params: params })
+    index(params) {
+        return HttpClient.get(`/posts`, { params: params })
     },
     
     /**
