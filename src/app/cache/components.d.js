@@ -14,6 +14,7 @@ declare module 'vue' {
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppNestedMenu: typeof import('./../components/nested-menu/AppNestedMenu.vue')['default']
     AppNestedMenuChildren: typeof import('./../components/nested-menu/AppNestedMenuChildren.vue')['default']
+    AppRadioSwitch: typeof import('./../components/AppRadioSwitch.vue')['default']
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
     AppSelect: typeof import('./../components/forms/AppSelect.vue')['default']
     AppSidebar: typeof import('./../components/AppSidebar.vue')['default']

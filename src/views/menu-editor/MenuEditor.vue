@@ -8,7 +8,7 @@
                     Back
                 </router-link>
                 
-                <button class="btn btn--sm margin-right-xs">Settings</button>
+                <!-- <button class="btn btn--sm margin-right-xs">Settings</button> -->
             </div>
 
             <!-- Status -->
@@ -30,21 +30,22 @@
         <div class="menu-editor-wrapper">
             <!-- Left -->
             <div class="menu-editor-wrapper__left app-scrollable">
+                <AppRadioSwitch @selected="filterPostType" class="margin-bottom-xs"/>
                 <AppNestedMenu 
                     :items="categoryStore.category.children" 
-                    @selected="filter"
+                    @selected="filterCategory"
                 />
             </div>
 
             <!-- Center -->
             <main class="menu-editor-wrapper__center app-scrollable">
               <!-- Deleted -->
-              <div class="bg bg-contrast-lower bg-opacity-50% text-center padding-y-md padding-x-sm radius-md margin-bottom-sm">
-                <p class="text-sm color-contrast-low">Trash</p>
+              <div class="bg bg-contrast-lower bg-opacity-50% text-center padding-x-sm radius-md margin-bottom-sm">
+                <!-- <p class="text-sm color-contrast-low">Trash</p> -->
                 <Draggable
                     :list="deleted"
                     :group="{ name: 'menu-builder' }"
-                    style="list-style: none;"
+                    class="menu-editor__trash"
                 />
               </div>
               
@@ -93,14 +94,34 @@ const onClone = (original) => {
     }
 }
 
-const filter = () => {
-    // TODO: Hit post api again passing filter params
-    console.log('Filtering...')
+const selectedPostType = ref('page')
+
+const filterPostType = (type) => {
+  selectedPostType.value = type
+  
+  if (type == 'page') categoryStore.show(1)
+  else categoryStore.show(72)
+  
+  postStore.index({
+    'filter[type]': type,
+    'filter[is_blueprint]': 0,
+  })
+}
+
+const filterCategory = (id) => {
+    postStore.index({
+      'filter[type]': selectedPostType.value,
+      'filter[is_blueprint]': 0,
+      'filter[categories.id]': id
+    })
 }
 
 onMounted(() => {
     categoryStore.show(1)
-    postStore.index('pages')
+    postStore.index({
+      'filter[type]': 'page',
+      'filter[is_blueprint]': 0,
+    })
 })
 </script>
 
@@ -153,5 +174,18 @@ because the post and block menu-editors will share many of them -->
     // background-color: var(--color-white);
     // border-radius: var(--radius-md);
     // box-shadow: var(--shadow-sm);
+}
+
+.menu-editor__trash {
+  list-style: none;
+  padding: 20px 0;
+  padding: var(--space-sm) 0;
+  
+  &:before {
+    content: 'Trash';
+    white-space: pre;
+    font-size: var(--text-sm);
+    color: var(--color-contrast-low);
+  }
 }
 </style>
