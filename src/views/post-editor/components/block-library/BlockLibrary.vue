@@ -21,7 +21,7 @@
         <AppDrawer v-if="activeMenu" @close="activeMenu = false">
             <div class="block-library__list">
                 <div class="block-library__column--left">
-                    <div class="flex flex-column">
+                    <div v-if="store.blocks.length" class="flex flex-column">
                         <Draggable
                             :list="store.blocks"
                             :group="{name: 'blocks', pull: 'clone', put: false}"
@@ -41,6 +41,10 @@
                                 </figure>
                             </div>
                         </Draggable>
+                    </div>
+                    
+                    <div v-else class="padding-sm">
+                      <h4>No blocks in this category</h4>
                     </div>
                 </div>
                 
