@@ -4,6 +4,7 @@
             :list="store.post.layout.blocks"
             :group="{name: 'layout', pull: false, put: 'blocks'}"
             :animation="200"
+            @change="onChange"
         >
             <Block
                 v-for="block in store.post.layout.blocks"
@@ -20,6 +21,10 @@ import Draggable from 'vuedraggable'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 
 const store = usePostStore()
+
+const onChange = () => {
+  store.update()
+}
 </script>
 
 <style lang="scss">
