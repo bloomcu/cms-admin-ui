@@ -8,8 +8,6 @@
             </router-link>
             
             <button @click="store.isShowingSettings = true" class="btn btn--sm">Settings</button>
-            
-            {{ store.post.layout.id }}
         </div>
 
         <!-- Status -->
@@ -40,18 +38,26 @@
                 Draft
             </span> -->
             
-            <!-- Publish Actions -->
+            <!-- Publish -->
             <!-- TODO: Add dynamic class to first button. Add color primary if page is dirty (edited) -->
-            <button v-if="store.post.published_at" @click="store.publish()" class="btn btn--sm margin-left-sm">Publish Draft</button>
-            <button v-else @click="store.publish()" class="btn btn--sm btn--primary margin-left-sm">Publish</button>
-            <!-- <button @click="store.unpublish()" class="btn btn--sm margin-left-sm">Unpublish</button> -->
+            <button 
+              v-if="store.post.published_at && store.isDirty" 
+              @click="store.publish()" 
+              class="btn btn--primary btn--sm margin-left-xxs"
+            >
+              Publish Draft
+            </button>
+            <button v-if="!store.post.published_at" @click="store.publish()" class="btn btn--primary btn--sm margin-left-xxs">Publish</button>
+            
+            <!-- Unpublish -->
+            <button v-if="store.post.published_at && !store.isDirty" @click="store.unpublish()" class="btn btn--sm margin-left-xxs">Unpublish</button>
             
             <!-- View Page / Preview -->
             <!-- TODO: Preview button should always default to preview, and "View Page" is
             is a dropdown item, unless you just published a draft, then it can change to 
             being "View Page"-->
-            <a v-if="store.post.published_at" @click="store.update()" :href="`${clientSiteUrl}/${store.post.url}`" target="_blank" class="btn btn--sm btn--primary margin-left-xxs">View Page</a>
-            <RouterLink v-else @click="store.update()" :to="{ name: 'postPreview', params: { id: store.post.id } }" class="btn btn--sm btn--primary margin-left-xxs">Preview</RouterLink>
+            <a v-if="store.post.published_at && !store.isDirty" :href="`${clientSiteUrl}/${store.post.url}`" target="_blank" class="btn btn--sm margin-left-xxs">View Page</a>
+            <RouterLink v-else @click="store.update()" :to="{ name: 'postPreview', params: { id: store.post.id } }" class="btn btn--primary btn--sm margin-left-xxs">Preview</RouterLink>
         </div>
     </header>
 </template>

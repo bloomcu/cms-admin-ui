@@ -2,36 +2,9 @@
     <div class="block-wrapper" :class="editing ? 'block-wrapper--editing' : ''">
         <BlockControls :uuid="block.uuid"/>
         
-        <!-- TODO: Change block.component to block.name -->
-        <Component :is="block.component" v-bind="block.data" />
+        <Block :block="block"/>
     </div>
 </template>
-
-<script>
-import { 
-  Hero,
-  BoxedHero,
-  VideoBackgroundHero,
-  AppTable,
-  Feature,
-  FeatureV11,
-  Testimonial,
-  TextColumns
-} from 'vite-component-library'
-
-export default defineComponent({
-    components: {
-        Hero,
-        BoxedHero,
-        VideoBackgroundHero,
-        AppTable,
-        Feature,
-        FeatureV11,
-        Testimonial,
-        TextColumns
-    }
-})    
-</script>
 
 <script setup>
 import BlockControls from '@/views/post-editor/components/block/BlockControls.vue'

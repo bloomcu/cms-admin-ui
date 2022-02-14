@@ -1,7 +1,11 @@
 <template>
-    <div>
-        Hello
-    </div>
+  <div v-if="store.post.layout">
+    <Block
+        v-for="block in store.post.layout.blocks"
+        :key="block.uuid"
+        :block="block"
+    />
+  </div>
 </template>
 
 <script setup>

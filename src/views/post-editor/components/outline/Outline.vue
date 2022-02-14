@@ -3,7 +3,8 @@
         <Draggable
             :list="store.post.layout.blocks"
             :group="{name: 'outline', pull: false, put: 'blocks'}"
-            :animation="200" 
+            :animation="200"
+            @change="onChange"
         >
             <div v-for="block in store.post.layout.blocks" :key="block.uuid" class="outline__card">
                 <div class="outline__card__title">
@@ -22,6 +23,10 @@ import Draggable from 'vuedraggable'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 
 const store = usePostStore()
+
+const onChange = () => {
+  store.update()
+}
 </script>
 
 <style lang="scss" scoped>

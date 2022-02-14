@@ -6,6 +6,7 @@ export const usePostStore = defineStore('postStore', {
     state: () => ({
         posts: [],
         post: {},
+        isDirty: false,
         isLoading: false,
         isShowingSettings: false,
     }),
@@ -43,6 +44,7 @@ export const usePostStore = defineStore('postStore', {
         show(id) {
             this.post = []
             this.isLoading = true
+            this.isDirty = false
             
             PostApi.show(id)
                 .then(response => {
@@ -56,6 +58,7 @@ export const usePostStore = defineStore('postStore', {
         
         update() {
             this.isLoading = true
+            this.isDirty = true
             
             PostApi.update(this.post.id, this.post)
                 .then(response => {

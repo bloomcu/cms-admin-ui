@@ -6,11 +6,10 @@
             :animation="200"
             @change="onChange"
         >
-            <Block
+            <BlockWrapper
                 v-for="block in store.post.layout.blocks"
                 :key="block.uuid"
                 :block="block"
-                :editing="false"
             />
         </Draggable>
     </div>
