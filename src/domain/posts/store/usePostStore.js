@@ -86,7 +86,7 @@ export const usePostStore = defineStore('postStore', {
                 .then(response => {
                     setTimeout(() => {
                         this.isLoading = false
-                        this.post.published_at = response.data.data.published_at
+                        this.show(this.post.id)
                     }, 800)
                 }).catch(error => {
                     this.isLoading = false

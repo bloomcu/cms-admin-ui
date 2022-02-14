@@ -1,5 +1,5 @@
 <template>
-    <header class="editor-header">
+    <header v-if="store.post.layout" class="editor-header">
         <!-- Left -->
         <div class="editor-header__column">
             <router-link @click.native="editor.showDefault()" v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-xxs">
@@ -8,6 +8,8 @@
             </router-link>
             
             <button @click="store.isShowingSettings = true" class="btn btn--sm">Settings</button>
+            
+            {{ store.post.layout.id }}
         </div>
 
         <!-- Status -->
@@ -39,11 +41,17 @@
             </span> -->
             
             <!-- Publish Actions -->
-            <button v-if="store.post.published_at" @click="store.unpublish()" class="btn btn--sm margin-left-sm">Unpublish</button>
+            <!-- TODO: Add dynamic class to first button. Add color primary if page is dirty (edited) -->
+            <button v-if="store.post.published_at" @click="store.publish()" class="btn btn--sm margin-left-sm">Publish Draft</button>
             <button v-else @click="store.publish()" class="btn btn--sm btn--primary margin-left-sm">Publish</button>
+            <!-- <button @click="store.unpublish()" class="btn btn--sm margin-left-sm">Unpublish</button> -->
             
-            <!-- Preview / View Page -->
+            <!-- View Page / Preview -->
+            <!-- TODO: Preview button should always default to preview, and "View Page" is
+            is a dropdown item, unless you just published a draft, then it can change to 
+            being "View Page"-->
             <a v-if="store.post.published_at" @click="store.update()" :href="`${clientSiteUrl}/${store.post.url}`" target="_blank" class="btn btn--sm btn--primary margin-left-xxs">View Page</a>
+            <RouterLink v-else @click="store.update()" :to="{ name: 'postPreview', params: { id: store.post.id } }" class="btn btn--sm btn--primary margin-left-xxs">Preview</RouterLink>
         </div>
     </header>
 </template>
