@@ -1,12 +1,12 @@
 <template>
-    <div v-if="store.post.layout" class="outline">
+    <div v-if="store.post" class="outline">
         <Draggable
-            :list="store.post.layout.blocks"
+            :list="store.post.blocks"
             :group="{name: 'outline', pull: false, put: 'blocks'}"
             :animation="200"
             @change="onChange"
         >
-            <div v-for="block in store.post.layout.blocks" :key="block.uuid" class="outline__card">
+            <div v-for="block in store.post.blocks" :key="block.uuid" class="outline__card">
                 <div class="outline__card__title">
                     <p class="text-xs">{{ block.title }}</p>
                 </div>

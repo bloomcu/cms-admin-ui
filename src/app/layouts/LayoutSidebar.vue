@@ -37,7 +37,7 @@ App Body
     width: 75rem;
     margin: 0 auto;
     position: relative;
-    padding: var(--space-md) var(--space-md) var(--space-sm) 0;
+    padding: var(--space-md) var(--space-md) var(--space-sm);
     min-height: calc(100vh - var(--app-ui-header-height));
 }
 </style>

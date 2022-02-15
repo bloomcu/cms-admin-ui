@@ -1,7 +1,7 @@
 <template>
-  <div v-if="store.post.layout">
+  <div v-if="store.post">
     <Block
-        v-for="block in store.post.layout.blocks"
+        v-for="block in store.post.blocks"
         :key="block.uuid"
         :block="block"
     />

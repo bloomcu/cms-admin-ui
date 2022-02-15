@@ -1,5 +1,5 @@
 <template>
-    <header v-if="store.post.layout" class="editor-header">
+    <header v-if="store.post" class="editor-header">
         <!-- Left -->
         <div class="editor-header__column">
             <router-link @click.native="editor.showDefault()" v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-xxs">
@@ -7,57 +7,75 @@
                 Back
             </router-link>
             
-            <button @click="store.isShowingSettings = true" class="btn btn--sm">Settings</button>
+            <button @click="store.isShowingSettings = true" class="btn btn--sm margin-right-xxs">Settings</button>
+            
+            <!-- Saving / Statuses -->
+            <!-- TODO: Show All changes saved after saving finished. See google doc -->
+            <div v-if="store.isLoading" >
+              <span class="text-xs flex items-center margin-right-sm">
+                  <div class="status-dot status-dot--success margin-right-xxxs"></div>
+                  Saving
+              </span>
+            </div>
+            <div v-else>
+              <span v-if="store.post.published && store.post.has_changes" class="text-xs flex items-center">
+                  <div class="status-dot status-dot--orange margin-right-xxxs"></div>
+                  Unpublished Changes
+              </span>
+              <span v-if="store.post.published && !store.post.has_changes" class="text-xs flex items-center">
+                  <div class="status-dot status-dot--success margin-right-xxxs"></div>
+                  Published
+              </span>
+              <span v-if="!store.post.published" class="text-xs flex items-center">
+                  <div class="status-dot margin-right-xxxs"></div>
+                  Unpublished
+              </span>
+            </div>
         </div>
 
-        <!-- Status -->
+        <!-- Center -->
         <div class="editor-header__column editor-header__column--center">
-            <p class="text-bold">{{ store.post.title }}</p>
+            <p class="text-bold text-sm">{{ store.post.title }}</p>
         </div>
 
-        <!-- Controls -->
+        <!-- Right -->
         <div class="editor-header__column editor-header__column--right">
-            <!-- Saving -->
-            <span v-if="store.isLoading" class="text-xs flex items-center margin-right-sm">
-                <!-- <div class="status-dot status-dot--primary margin-right-xxxs"></div> -->
-                Saving
-            </span>
-            
-            <!-- Published -->
-            <span v-if="store.post.published_at" class="text-xs flex items-center">
-                <div class="status-dot status-dot--success margin-right-xxxs"></div>
-                Published
-            </span>
-            <span v-else class="text-xs flex items-center">
-                <div class="status-dot margin-right-xxxs"></div>
-                Unpublished
-            </span>
-            
-            <!-- <span v-else class="text-xs flex items-center">
-                <div class="status-dot status-dot--primary margin-right-xxxs"></div>
-                Draft
-            </span> -->
-            
-            <!-- Publish -->
-            <!-- TODO: Add dynamic class to first button. Add color primary if page is dirty (edited) -->
+            <!-- Publish / Publish Changes -->
             <button 
-              v-if="store.post.published_at && store.isDirty" 
+              v-if="!store.post.published" 
               @click="store.publish()" 
               class="btn btn--primary btn--sm margin-left-xxs"
             >
-              Publish Draft
+              Publish
             </button>
-            <button v-if="!store.post.published_at" @click="store.publish()" class="btn btn--primary btn--sm margin-left-xxs">Publish</button>
+            <button 
+              v-if="store.post.published" 
+              @click="store.publish()" 
+              class="btn btn--primary btn--sm margin-left-xxs"
+              :class="{ 'app-disabled': !store.post.has_changes }"
+            >
+              Publish Changes
+            </button>
             
             <!-- Unpublish -->
-            <button v-if="store.post.published_at && !store.isDirty" @click="store.unpublish()" class="btn btn--sm margin-left-xxs">Unpublish</button>
+            <!-- TODO: Move this to an elipses -->
+            <!-- <button v-if="store.post.published_at && !store.isDirty" @click="store.unpublish()" class="btn btn--primary btn--sm margin-left-xxs">Unpublish</button> -->
             
-            <!-- View Page / Preview -->
-            <!-- TODO: Preview button should always default to preview, and "View Page" is
-            is a dropdown item, unless you just published a draft, then it can change to 
-            being "View Page"-->
-            <a v-if="store.post.published_at && !store.isDirty" :href="`${clientSiteUrl}/${store.post.url}`" target="_blank" class="btn btn--sm margin-left-xxs">View Page</a>
-            <RouterLink v-else @click="store.update()" :to="{ name: 'postPreview', params: { id: store.post.id } }" class="btn btn--primary btn--sm margin-left-xxs">Preview</RouterLink>
+            <!-- Preview / View Page -->
+            <RouterLink 
+              :to="{ name: 'postPreview' }" 
+              class="btn btn--primary btn--sm margin-left-xxs"
+            >
+              Preview
+            </RouterLink>
+            <a 
+              :href="`${clientSiteUrl}/${store.post.url}`" 
+              :class="{ 'app-disabled': !store.post.published }"
+              class="btn btn--primary btn--sm margin-left-xxs"
+              target="_blank" 
+            >
+              View Page
+            </a>
         </div>
     </header>
 </template>
@@ -65,6 +83,10 @@
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
+
+// import dayjs from 'dayjs'
+// import relativeTime from 'dayjs/plugin/relativeTime'
+// dayjs.extend(relativeTime)
 
 const store = usePostStore()
 const editor = usePostEditorStore()
@@ -81,7 +103,7 @@ const clientSiteUrl = import.meta.env.VITE_CLIENT_SITE_URL
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
     background-color: var(--color-white);
     box-shadow: var(--shadow-xs);
 }
@@ -115,5 +137,9 @@ const clientSiteUrl = import.meta.env.VITE_CLIENT_SITE_URL
 
 .status-dot--success {
     background-color: var(--color-success);
+}
+
+.status-dot--orange {
+    background-color: orange;
 }
 </style>

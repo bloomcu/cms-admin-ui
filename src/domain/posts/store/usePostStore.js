@@ -6,7 +6,6 @@ export const usePostStore = defineStore('postStore', {
     state: () => ({
         posts: [],
         post: {},
-        isDirty: false,
         isLoading: false,
         isShowingSettings: false,
     }),
@@ -18,7 +17,7 @@ export const usePostStore = defineStore('postStore', {
         
         // TODO: Move this the block store? 
         getBlockByUUID: (state) => {
-            return (uuid) => state.post.layout.blocks.find(
+            return (uuid) => state.post.blocks.find(
                 block => block.uuid === uuid
             )
         }
@@ -44,7 +43,6 @@ export const usePostStore = defineStore('postStore', {
         show(id) {
             this.post = []
             this.isLoading = true
-            this.isDirty = false
             
             PostApi.show(id)
                 .then(response => {
@@ -58,14 +56,13 @@ export const usePostStore = defineStore('postStore', {
         
         update() {
             this.isLoading = true
-            this.isDirty = true
             
             PostApi.update(this.post.id, this.post)
                 .then(response => {
                     setTimeout(() => {
                         this.isLoading = false
-                        // this.post = response.data.data
-                    }, 1500)
+                        this.post.has_changes = true
+                    }, 800)
                 }).catch(error => {
                     this.isLoading = false
                     Object.values(error.response.data).forEach(error => console.log(error))
@@ -121,7 +118,7 @@ export const usePostStore = defineStore('postStore', {
                     this.posts.unshift(response.data.data)
                     setTimeout(() => {
                         this.isLoading = false
-                    }, 700)
+                    }, 800)
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))
                 })
@@ -130,7 +127,8 @@ export const usePostStore = defineStore('postStore', {
         destroyBlock(uuid) {
             BlockApi.destroy(uuid)
                 .then(response => {
-                    this.post.layout.blocks = this.post.layout.blocks.filter((block) => block.uuid !== uuid)
+                    this.post.blocks = this.post.blocks.filter((block) => block.uuid !== uuid)
+                    this.post.has_changes = true
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))
                 })

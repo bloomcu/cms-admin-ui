@@ -51,6 +51,11 @@ Title: Utility Classes
 Descr: App-wide utility classes
 
 -------------------------------- */
+.app-disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+
 .app-lock-scroll {
     overflow: hidden;
 }

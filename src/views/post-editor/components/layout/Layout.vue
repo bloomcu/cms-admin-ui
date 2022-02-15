@@ -1,13 +1,13 @@
 <template>
-    <div v-if="store.post.layout" class="layout">
+    <div v-if="store.post.blocks" class="layout">
         <Draggable
-            :list="store.post.layout.blocks"
+            :list="store.post.blocks"
             :group="{name: 'layout', pull: false, put: 'blocks'}"
             :animation="200"
             @change="onChange"
         >
             <BlockWrapper
-                v-for="block in store.post.layout.blocks"
+                v-for="block in store.post.blocks"
                 :key="block.uuid"
                 :block="block"
             />

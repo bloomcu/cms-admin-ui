@@ -15,6 +15,7 @@
 
             <!-- Center -->
             <main class="editor-wrapper__center app-scrollable">
+              {{ store.post.has_changes }}
                 <Layout/>
             </main>
 
@@ -40,7 +41,7 @@ onMounted(() => {
 })
 
 router.beforeResolve(async (to, from, next) => {
-  if (from.name === 'postBlockEditor' || from.name === 'postEditor') {
+  if (from.name === 'postBlockEditor') {
       if (!store.isLoading) {
         store.update()
       }
@@ -67,7 +68,7 @@ because the menu and block editors will share many of them -->
     display: flex;
     flex-grow: 1;
     flex-direction: row;
-    margin: var(--space-sm) var(--space-md);
+    margin: var(--space-sm) var(--space-sm);
     min-height: 0;
 }
 

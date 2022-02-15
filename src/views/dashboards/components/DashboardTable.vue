@@ -29,8 +29,9 @@
                         </svg>
                     </button>
                     
-                    <!-- TODO: Hook this up to the actual status -->
-                    <div v-if="item.published_at" class="status-dot status-dot--success margin-left-sm" aria-hidden="true"></div>
+                    <!-- Status -->
+                    <div v-if="item.published && item.has_changes" class="status-dot status-dot--orange margin-left-sm" aria-hidden="true"></div>
+                    <div v-else-if="item.published" class="status-dot status-dot--success margin-left-sm" aria-hidden="true"></div>
                     <div v-else class="status-dot margin-left-sm" aria-hidden="true"></div>
                 </div>
             </li>
