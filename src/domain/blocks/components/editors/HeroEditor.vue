@@ -74,11 +74,10 @@
             </div>
         </div>
 
-        <!-- Button One -->
-        <div class="margin-bottom-md">
+        <!-- Button Two -->
+        <!-- <div class="margin-bottom-md">
             <p class="margin-bottom-xxs">Button Two</p>
             
-            <!-- Variant -->
             <div class="form-group margin-bottom-xxxs">
                 <label class="form-label margin-bottom-xxs">Variant</label>
                 <div class="select">
@@ -98,7 +97,7 @@
                 <label class="form-label margin-bottom-xxs">URL</label>
                 <input v-model="block.data.buttons[1].href" class="form-control width-100%" type="text">
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 

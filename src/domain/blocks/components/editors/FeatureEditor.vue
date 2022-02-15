@@ -48,11 +48,11 @@
         </div>
 
         <!-- Button Two -->
-        <div class="margin-bottom-md">
+        <!-- <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Button Two</label>
             <input v-model="block.data.buttons[1].text" class="form-control width-100% margin-bottom-xxxs" type="text">
             <input v-model="block.data.buttons[1].href" class="form-control width-100%" type="text">
-        </div>
+        </div> -->
     </div>
 </template>
 
