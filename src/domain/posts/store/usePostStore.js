@@ -128,7 +128,7 @@ export const usePostStore = defineStore('postStore', {
             BlockApi.destroy(uuid)
                 .then(response => {
                     this.post.blocks = this.post.blocks.filter((block) => block.uuid !== uuid)
-                    this.post.has_changes = true
+                    this.update()
                 }).catch(error => {
                     Object.values(error.response.data).forEach(error => console.log(error))
                 })
