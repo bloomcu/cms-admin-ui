@@ -15,7 +15,6 @@
 
             <!-- Center -->
             <main class="editor-wrapper__center app-scrollable">
-              {{ store.post.has_changes }}
                 <Layout/>
             </main>
 
