@@ -52,29 +52,35 @@
         <div class="margin-bottom-md">
           <label class="form-label margin-bottom-xxs">Buttons</label>
           
-          <div v-for="(button, index) in block.data.buttons" class="bg border border-2 radius-md padding-sm margin-bottom-xs" style="cursor: move;">
-            <div class="form-group margin-bottom-xxxs">
-                <label class="form-label margin-bottom-xxs">Variant</label>
-                <div class="select">
-                    <select v-model="block.data.buttons[index].variant" name="variant" id="variant" class="select_input form-control width-100%">
-                        <option value="primary" key="primary" :selected="block.data.buttons[index].variant === 'primary'">Style 1</option>
-                        <option value="accent" key="accent" :selected="block.data.buttons[index].variant === 'accent'">Style 2</option>
-                        <option value="subtle" key="subtle" :selected="block.data.buttons[index].variant === 'subtle'">Style 3</option>
-                    </select>
-                    <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
-                </div>
+          <Draggable
+              :list="block.data.buttons"
+              :group="{name: 'buttons'}"
+              :animation="200"
+          >
+            <div v-for="(button, index) in block.data.buttons" class="bg border border-2 radius-md padding-sm margin-bottom-xs" style="cursor: move;">
+              <div class="form-group margin-bottom-xxxs">
+                  <label class="form-label margin-bottom-xxs">Variant</label>
+                  <div class="select">
+                      <select v-model="block.data.buttons[index].variant" name="variant" id="variant" class="select_input form-control width-100%">
+                          <option value="primary" key="primary" :selected="block.data.buttons[index].variant === 'primary'">Style 1</option>
+                          <option value="accent" key="accent" :selected="block.data.buttons[index].variant === 'accent'">Style 2</option>
+                          <option value="subtle" key="subtle" :selected="block.data.buttons[index].variant === 'subtle'">Style 3</option>
+                      </select>
+                      <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                  </div>
+              </div>
+              
+              <div class="margin-bottom-md">
+                  <label class="form-label margin-bottom-xxs">Text</label>
+                  <input v-model="block.data.buttons[index].text" class="form-control width-100% margin-bottom-xxxs" type="text">
+                  
+                  <label class="form-label margin-bottom-xxs">URL</label>
+                  <input v-model="block.data.buttons[index].href" class="form-control width-100%" type="text">
+              </div>
+              
+              <button @click="deleteButton(index)" class="btn btn--sm">Delete</button>
             </div>
-            
-            <div class="margin-bottom-md">
-                <label class="form-label margin-bottom-xxs">Text</label>
-                <input v-model="block.data.buttons[index].text" class="form-control width-100% margin-bottom-xxxs" type="text">
-                
-                <label class="form-label margin-bottom-xxs">URL</label>
-                <input v-model="block.data.buttons[index].href" class="form-control width-100%" type="text">
-            </div>
-            
-            <button @click="deleteButton(index)" class="btn btn--sm">Delete</button>
-          </div>
+          </Draggable>
           
           <!-- Add button -->
           <button @click="addButton()" class="btn btn--primary btn--small">Add Button</button>
@@ -83,6 +89,7 @@
 </template>
 
 <script setup>
+import Draggable from 'vuedraggable'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 
 const editor = usePostEditorStore()
