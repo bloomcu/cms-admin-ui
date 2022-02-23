@@ -48,7 +48,7 @@
             <div class="form-group margin-bottom-xxxs">
                 <label class="form-label margin-bottom-xxs">Variant</label>
                 <div class="select">
-                    <select v-model="block.data.buttons[0].variant" name="variant" id="variant" class="select_input form-control width-100%">
+                    <select v-model="block.data.buttons[index].variant" name="variant" id="variant" class="select_input form-control width-100%">
                         <option value="primary" key="primary" :selected="block.data.buttons[index].variant === 'primary'">Style 1</option>
                         <option value="accent" key="accent" :selected="block.data.buttons[index].variant === 'accent'">Style 2</option>
                         <option value="subtle" key="subtle" :selected="block.data.buttons[index].variant === 'subtle'">Style 3</option>
