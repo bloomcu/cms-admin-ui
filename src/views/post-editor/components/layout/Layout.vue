@@ -10,6 +10,7 @@
                 v-for="block in store.post.blocks"
                 :key="block.uuid"
                 :block="block"
+                :id="block.uuid"
             />
         </Draggable>
     </div>

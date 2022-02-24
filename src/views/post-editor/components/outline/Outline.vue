@@ -6,7 +6,12 @@
             :animation="200"
             @change="onChange"
         >
-            <div v-for="block in store.post.blocks" :key="block.uuid" class="outline__card">
+            <div 
+              v-for="block in store.post.blocks" 
+              :key="block.uuid" 
+              @click="scrollToElement(block.uuid)"
+              class="outline__card"
+            >
                 <div class="outline__card__title">
                     <p class="text-xs">{{ block.title }}</p>
                 </div>
@@ -21,6 +26,7 @@
 <script setup>
 import Draggable from 'vuedraggable'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
+import { scrollToElement } from '@/App/composables/useScroll'
 
 const store = usePostStore()
 
