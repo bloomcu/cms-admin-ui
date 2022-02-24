@@ -26,7 +26,7 @@
 <script setup>
 import Draggable from 'vuedraggable'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
-import { scrollToElement } from '@/App/composables/useScroll'
+import { scrollToElement } from '@/app/composables/useScroll'
 
 const store = usePostStore()
 
