@@ -4,7 +4,7 @@
             v-for="(file, index) in store.files"
             :key="index"
             @click="select(file)"
-            :style="{ backgroundImage: 'url(' + `https://d25r5txdw1c9o7.cloudfront.net/fit-in/350x350/${file.path}` + ')' }"
+            :style="{ backgroundImage: 'url(' + `https://d25r5txdw1c9o7.cloudfront.net/fit-in/350x350/${file.src}` + ')' }"
             class="files-gallery__item col-4"
         />
     </div>
