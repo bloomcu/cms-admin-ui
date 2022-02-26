@@ -79,8 +79,14 @@
               :animation="200"
           >
             <div v-for="(button, index) in block.data.buttons" class="bg border border-2 radius-md padding-sm margin-bottom-xs" style="cursor: move;">
-              <div class="form-group margin-bottom-xxxs">
-                  <label class="form-label margin-bottom-xxs">Variant</label>
+              <label class="form-label margin-bottom-xxs">Text</label>
+              <input v-model="block.data.buttons[index].text" class="form-control width-100% margin-bottom-xxxs" type="text">
+              
+              <label class="form-label margin-bottom-xxs">URL</label>
+              <input v-model="block.data.buttons[index].href" class="form-control width-100% margin-bottom-xxxs" type="text">
+              
+              <div class="form-group margin-bottom-sm">
+                  <label class="form-label margin-bottom-xxs">Style</label>
                   <div class="select">
                       <select v-model="block.data.buttons[index].variant" name="variant" id="variant" class="select_input form-control width-100%">
                           <option value="primary" key="primary" :selected="block.data.buttons[index].variant === 'primary'">Style 1</option>
@@ -89,14 +95,6 @@
                       </select>
                       <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
                   </div>
-              </div>
-              
-              <div class="margin-bottom-md">
-                  <label class="form-label margin-bottom-xxs">Text</label>
-                  <input v-model="block.data.buttons[index].text" class="form-control width-100% margin-bottom-xxxs" type="text">
-                  
-                  <label class="form-label margin-bottom-xxs">URL</label>
-                  <input v-model="block.data.buttons[index].href" class="form-control width-100%" type="text">
               </div>
               
               <button @click="deleteButton(index)" class="btn btn--sm">Delete</button>
