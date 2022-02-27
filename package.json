@@ -1,6 +1,6 @@
 {
   "name": "vue2-vite",
-  "version": "0.0.7",
+  "version": "0.0.6",
   "scripts": {
     "dev": "vite --port 8080",
     "build": "vite build",
@@ -11,8 +11,8 @@
     "@vueuse/core": "^7.5.5",
     "axios": "^0.25.0",
     "codyhouse-framework": "^3.0.4",
-    "dayjs": "^1.10.7",
     "filepond": "^4.30.3",
+    "firebase": "^9.6.7",
     "pinia": "^2.0.8",
     "uuid": "^8.3.2",
     "vite-component-library": "0.0.6",
