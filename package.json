@@ -12,6 +12,7 @@
     "axios": "^0.25.0",
     "codyhouse-framework": "^3.0.4",
     "filepond": "^4.30.3",
+    "firebase": "^9.6.7",
     "pinia": "^2.0.8",
     "uuid": "^8.3.2",
     "vite-component-library": "0.0.6",

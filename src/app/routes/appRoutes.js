@@ -10,6 +10,7 @@ export default [
     {
         path: "/",
         name: "appHome",
+        // component: AppHome,
         redirect: "/pages"
     },
     {
