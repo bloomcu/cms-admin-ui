@@ -42,8 +42,6 @@
         <div class="margin-bottom-md">
           <p class="margin-bottom-xxs">Columns</p>
           
-          <!-- <ContentComponentEditor v-model="block.data.columns[0]"/> -->
-          
           <Draggable
               :list="block.data.columns"
               :group="{name: 'columns'}"
@@ -58,8 +56,12 @@
               
               <label class="form-label margin-bottom-xxs">Body</label>
               <textarea v-model="block.data.columns[index].body" class="form-control width-100% margin-bottom-xxxs" type="text" rows="3"></textarea>
+              
+              <button @click="deleteColumn(index)" class="btn btn--sm">Delete</button>
             </div>
           </Draggable>
+          
+          <button @click="addColumn()" class="btn btn--primary btn--small">Add Column</button>
         </div>
         
     </div>
@@ -75,5 +77,15 @@ const props = defineProps({
     block: { type: Object, required: true } 
 })
 
-const thelabel = ref('yolo')
+const addColumn = () => {
+  props.block.data.columns.push({
+    label: 'Label',
+    title: 'New Column',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sem lorem, eleifend eget eros id, vulputate.',
+  })
+}
+
+const deleteColumn = (index) => {
+  props.block.data.columns.splice(index, 1);
+}
 </script>

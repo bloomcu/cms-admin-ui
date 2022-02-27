@@ -115,7 +115,6 @@
             </div>
           </Draggable>
           
-          <!-- Add button -->
           <button @click="addButton()" class="btn btn--primary btn--small">Add Button</button>
         </div>
     </div>
@@ -128,6 +127,10 @@ import { usePostStore } from '@/domain/posts/store/usePostStore'
 
 const editor = usePostEditorStore()
 const postStore = usePostStore()
+
+const props = defineProps({ 
+    block: { type: Object, required: true } 
+})
 
 onMounted(() => {
     postStore.index({
@@ -153,8 +156,4 @@ const addButton = () => {
 const deleteButton = (index) => {
   props.block.data.buttons.splice(index, 1);
 }
-
-const props = defineProps({ 
-    block: { type: Object, required: true } 
-})
 </script>
