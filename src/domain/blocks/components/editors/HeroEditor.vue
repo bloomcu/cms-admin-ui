@@ -2,12 +2,6 @@
     <!-- TODO: We should dynamically generate the editor fields right here.
     Perhaps generate based on the properties of block.data -->
     <div>
-        <!-- Center -->
-        <div class="margin-bottom-md">
-            <input v-model="block.data.center" type="checkbox" class="margin-right-xxs" id="center">
-            <label class="form-label" for="center">Center</label>
-        </div>
-
         <!-- Fullscreen -->
         <div class="margin-bottom-md">
             <input v-model="block.data.fullscreen" type="checkbox" class="margin-right-xxs" id="fullscreen">
@@ -23,7 +17,19 @@
         <!-- Title -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Title</label>
-            <textarea v-model="block.data.title" class="form-control width-100%" type="text"></textarea>
+            <textarea v-model="block.data.title" class="form-control width-100% margin-bottom-xxs" type="text"></textarea>
+            
+            <!-- Size -->
+            <div class="select">
+                <select v-model="block.data.config.headingSize" name="align" id="align" class="select_input form-control width-100%">
+                    <option value="lg" key="lg" :selected="block.data.config.headingSize === 'lg'">Size 1</option>
+                    <option value="xl" key="xl" :selected="block.data.config.headingSize === 'xl'">Size 2</option>
+                    <option value="xxl" key="xxl" :selected="block.data.config.headingSize === 'xxl'">Size 3</option>
+                    <option value="xxxl" key="xxxl" :selected="block.data.config.headingSize === 'xxxl'">Size 4</option>
+                    <option value="xxxxl" key="xxxxl" :selected="block.data.config.headingSize === 'xxxxl'">Size 5</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
         </div>
 
         <!-- Subtitle -->
@@ -116,6 +122,18 @@
           </Draggable>
           
           <button @click="addButton()" class="btn btn--primary btn--small">Add Button</button>
+        </div>
+        
+        <!-- Align -->
+        <div class="form-group margin-bottom-sm">
+            <label class="form-label margin-bottom-xxs">Align</label>
+            <div class="select">
+                <select v-model="block.data.align" name="align" id="align" class="select_input form-control width-100%">
+                    <option value="left" key="left" :selected="block.data.align === 'left'">Left</option>
+                    <option value="center" key="center" :selected="block.data.align === 'center'">Center</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
         </div>
     </div>
 </template>

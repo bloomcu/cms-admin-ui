@@ -1,9 +1,15 @@
 <template>
     <div>
-        <!-- Invert -->
-        <div class="margin-bottom-md">
-            <input v-model="block.data.invert" type="checkbox" class="margin-right-xxs" id="invert">
-            <label class="form-label" for="invert">Invert</label>
+        <!-- Orientation -->
+        <div class="form-group margin-bottom-sm">
+            <label class="form-label margin-bottom-xxs">Orientation</label>
+            <div class="select">
+                <select v-model="block.data.orientation" name="orientation" id="orientation" class="select_input form-control width-100%">
+                    <option value="left" key="left" :selected="block.data.orientation === 'left'">Left</option>
+                    <option value="right" key="right" :selected="block.data.orientation === 'right'">Right</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
         </div>
 
         <!-- Label -->
@@ -15,7 +21,19 @@
         <!-- Title -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Title</label>
-            <textarea v-model="block.data.title" class="form-control width-100%" type="text"></textarea>
+            <textarea v-model="block.data.title" class="form-control width-100% margin-bottom-xxs" type="text"></textarea>
+            
+            <!-- Size -->
+            <div class="select">
+                <select v-model="block.data.config.headingSize" name="align" id="align" class="select_input form-control width-100%">
+                    <option value="lg" key="lg" :selected="block.data.config.headingSize === 'lg'">Size: Smallest</option>
+                    <option value="xl" key="xl" :selected="block.data.config.headingSize === 'xl'">Size: Small</option>
+                    <option value="xxl" key="xxl" :selected="block.data.config.headingSize === 'xxl'">Size: Default</option>
+                    <option value="xxxl" key="xxxl" :selected="block.data.config.headingSize === 'xxxl'">Size: Large</option>
+                    <option value="xxxxl" key="xxxxl" :selected="block.data.config.headingSize === 'xxxxl'">Size: Largest</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
         </div>
 
         <!-- Subtitle -->

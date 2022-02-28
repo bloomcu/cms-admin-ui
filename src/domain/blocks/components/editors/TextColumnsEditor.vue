@@ -2,18 +2,17 @@
     <!-- TODO: We should dynamically generate the editor fields right here.
     Perhaps generate based on the properties of block.data -->
     <div>
-        <!-- Gap Width -->
+        <!-- Heading Size -->
         <div class="margin-bottom-md">
             <div class="form-group">
-                <label class="form-label margin-bottom-xxs">Gap Width</label>
+                <label class="form-label margin-bottom-xxs">Heading Size</label>
                 <div class="select">
-                    <select v-model="block.data.gap" name="gap" id="gap" class="select_input form-control width-100%">
-                        <option value="xxs" key="xxs" :selected="block.data.gap === 'xxs'">Smallest</option>
-                        <option value="xs" key="xs" :selected="block.data.gap === 'xs'">Extra Small</option>
-                        <option value="sm" key="sm" :selected="block.data.gap === 'sm'">Small</option>
-                        <option value="md" key="md" :selected="block.data.gap === 'md'">Medium</option>
-                        <option value="lg" key="lg" :selected="block.data.gap === 'lg'">Large</option>
-                        <option value="xl" key="xl" :selected="block.data.gap === 'xl'">Largest</option>
+                    <select v-model="block.data.config.headingSize" name="align" id="align" class="select_input form-control width-100%">
+                        <option value="lg" key="lg" :selected="block.data.config.headingSize === 'lg'">Size 1</option>
+                        <option value="xl" key="xl" :selected="block.data.config.headingSize === 'xl'">Size 2</option>
+                        <option value="xxl" key="xxl" :selected="block.data.config.headingSize === 'xxl'">Size 3</option>
+                        <option value="xxxl" key="xxxl" :selected="block.data.config.headingSize === 'xxxl'">Size 4</option>
+                        <option value="xxxxl" key="xxxxl" :selected="block.data.config.headingSize === 'xxxxl'">Size 5</option>
                     </select>
                     <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
                 </div>
@@ -32,6 +31,24 @@
                         <option value="4" key="4" :selected="block.data.cols === '4'">4</option>
                         <option value="6" key="6" :selected="block.data.cols === '6'">6</option>
                         <option value="12" key="12" :selected="block.data.cols === '12'">12</option>
+                    </select>
+                    <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gap Width -->
+        <div class="margin-bottom-md">
+            <div class="form-group">
+                <label class="form-label margin-bottom-xxs">Gap Width</label>
+                <div class="select">
+                    <select v-model="block.data.gap" name="gap" id="gap" class="select_input form-control width-100%">
+                        <option value="xxs" key="xxs" :selected="block.data.gap === 'xxs'">Smallest</option>
+                        <option value="xs" key="xs" :selected="block.data.gap === 'xs'">Extra Small</option>
+                        <option value="sm" key="sm" :selected="block.data.gap === 'sm'">Small</option>
+                        <option value="md" key="md" :selected="block.data.gap === 'md'">Medium</option>
+                        <option value="lg" key="lg" :selected="block.data.gap === 'lg'">Large</option>
+                        <option value="xl" key="xl" :selected="block.data.gap === 'xl'">Largest</option>
                     </select>
                     <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
                 </div>

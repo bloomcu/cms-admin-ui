@@ -2,18 +2,6 @@
     <!-- TODO: We should dynamically generate the editor fields right here.
     Perhaps generate based on the properties of block.data -->
     <div>
-        <!-- Center -->
-        <div class="margin-bottom-md">
-            <input v-model="block.data.center" type="checkbox" class="margin-right-xxs" id="center">
-            <label class="form-label" for="center">Center</label>
-        </div>
-
-        <!-- Fullscreen -->
-        <div class="margin-bottom-md">
-            <input v-model="block.data.fullscreen" type="checkbox" class="margin-right-xxs" id="fullscreen">
-            <label class="form-label" for="fullscreen">Fullscreen</label>
-        </div>
-
         <!-- Label -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Label</label>

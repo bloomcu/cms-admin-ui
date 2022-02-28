@@ -3,19 +3,19 @@
         <!-- Testimonial -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Testimonial</label>
-            <textarea v-model="block.data.testimonial" class="form-control width-100%" type="text"></textarea>
+            <textarea v-model="block.data.testimonial" class="form-control width-100%" rows="5" type="text"></textarea>
         </div>
 
         <!-- Title -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Title</label>
-            <textarea v-model="block.data.title" class="form-control width-100%" type="text"></textarea>
+            <input v-model="block.data.title" class="form-control width-100%" type="text"/>
         </div>
 
         <!-- Subtitle -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Subtitle</label>
-            <textarea v-model="block.data.subtitle" class="form-control width-100%" rows="3" type="text"></textarea>
+            <input v-model="block.data.subtitle" class="form-control width-100%" type="text"/>
         </div>
         
         <!-- Image -->
