@@ -19,8 +19,6 @@ declare module 'vue' {
     AppSelect: typeof import('./../components/forms/AppSelect.vue')['default']
     AppSidebar: typeof import('./../components/AppSidebar.vue')['default']
     ArticleDashboard: typeof import('./../../views/dashboards/ArticleDashboard.vue')['default']
-    BakLogin: typeof import('./../../views/auth/BakLogin.vue')['default']
-    BAKRegister: typeof import('./../../views/auth/BAKRegister.vue')['default']
     Block: typeof import('./../../domain/blocks/components/Block.vue')['default']
     BlockControls: typeof import('./../../views/post-editor/components/block/BlockControls.vue')['default']
     BlockDashboard: typeof import('./../../views/dashboards/BlockDashboard.vue')['default']
