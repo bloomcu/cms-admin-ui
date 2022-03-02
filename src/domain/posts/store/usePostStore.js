@@ -81,7 +81,7 @@ export const usePostStore = defineStore('postStore', {
         },
         
         publish() {
-          this.update().then(result => {
+          this.update().then(() => {
             this.isLoading = true
             
             PostApi.publish(this.post.id)
