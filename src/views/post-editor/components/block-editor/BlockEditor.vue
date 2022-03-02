@@ -62,7 +62,7 @@ const setFile = (file) => {
     
     // TODO: I don't like this at all. We need a better way to communitcate the
     // selected file out to the block being edited. Look into a higher level event bus.
-    block.data.image.id = file.id
+    block.data.image.file_id = file.id
     block.data.image.name = file.name
     block.data.image.src = file.src
 }
