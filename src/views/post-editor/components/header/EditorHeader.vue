@@ -2,7 +2,7 @@
     <header v-if="store.post" class="editor-header">
         <!-- Left -->
         <div class="editor-header__column">
-            <router-link @click.native="editor.showDefault()" v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" class="btn btn--sm margin-right-xxs">
+            <router-link v-if="store.post.type" :to="{ name: `${store.post.type}Dashboard` }" @click.native="editor.showDefault()" class="btn btn--sm margin-right-xxs">
                 <svg class="icon margin-right-xs" viewBox="0 0 24 24"><g fill="none"><path d="M9 19l1.41-1.41L5.83 13H22v-2H5.83l4.59-4.59L9 5l-7 7 7 7z" fill="#212121"></path></g></svg>
                 Back
             </router-link>
@@ -43,7 +43,7 @@
             <!-- Publish / Publish Changes -->
             <button 
               v-if="!store.post.published" 
-              @click="store.publish()" 
+              @click="store.publish()"
               class="btn btn--primary btn--sm margin-left-xxs"
             >
               Publish
@@ -64,6 +64,7 @@
             <!-- Preview / View Page -->
             <RouterLink 
               :to="{ name: 'postPreview' }" 
+              @click.native="editor.showDefault()"
               class="btn btn--primary btn--sm margin-left-xxs"
             >
               Preview
