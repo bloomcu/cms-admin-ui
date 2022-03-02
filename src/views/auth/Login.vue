@@ -23,9 +23,9 @@
         <div class="margin-bottom-sm">
           <div class="flex justify-between margin-bottom-xxxs">
             <label class="form-label" for="input-password">Password</label> 
-            <span class="text-sm">
+            <!-- <span class="text-sm">
               <RouterLink :to="{ name: 'forgotPassword' }">Forgot?</RouterLink>
-            </span>
+            </span> -->
           </div>
 
           <input 
