@@ -80,7 +80,7 @@ export const usePostStore = defineStore('postStore', {
                 })
         },
         
-        publish() {
+        async publish() {
           this.update().then(() => {
             this.isLoading = true
             

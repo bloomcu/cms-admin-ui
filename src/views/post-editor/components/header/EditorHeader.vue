@@ -43,16 +43,16 @@
             <!-- Publish / Publish Changes -->
             <button 
               v-if="!store.post.published" 
-              @click="store.publish()"
+              @click="publish()" 
               class="btn btn--primary btn--sm margin-left-xxs"
             >
               Publish
             </button>
             <button 
               v-if="store.post.published" 
-              @click="store.publish()" 
-              class="btn btn--primary btn--sm margin-left-xxs"
+              @click="publish()" 
               :class="{ 'app-disabled': !store.post.has_changes }"
+              class="btn btn--primary btn--sm margin-left-xxs"
             >
               Publish Changes
             </button>
@@ -62,19 +62,12 @@
             <!-- <button v-if="store.post.published_at && !store.isDirty" @click="store.unpublish()" class="btn btn--primary btn--sm margin-left-xxs">Unpublish</button> -->
             
             <!-- Preview / View Page -->
-            <!-- <RouterLink 
-              :to="{ name: 'postPreview' }" 
-              @click.native="editor.showDefault()"
+            <button 
+              @click="preview()"
               class="btn btn--primary btn--sm margin-left-xxs"
             >
               Preview
-            </RouterLink> -->
-            <a 
-              @click.prevent="preview()"
-              class="btn btn--primary btn--sm margin-left-xxs"
-            >
-              Preview
-            </a>
+            </button>
             <a 
               :href="`${clientSiteUrl}/${store.post.url}`" 
               :class="{ 'app-disabled': !store.post.published }"
@@ -99,6 +92,12 @@ const store = usePostStore()
 const editor = usePostEditorStore()
 const router = getCurrentInstance().proxy.$router
 const clientSiteUrl = import.meta.env.VITE_CLIENT_SITE_URL
+
+const publish = () => {
+  store.publish().then(() => {
+    editor.showDefault()
+  })
+}
 
 const preview = () => {
   store.update().then(() => {
