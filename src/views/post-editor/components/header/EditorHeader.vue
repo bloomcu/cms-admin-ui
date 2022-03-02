@@ -62,13 +62,19 @@
             <!-- <button v-if="store.post.published_at && !store.isDirty" @click="store.unpublish()" class="btn btn--primary btn--sm margin-left-xxs">Unpublish</button> -->
             
             <!-- Preview / View Page -->
-            <RouterLink 
+            <!-- <RouterLink 
               :to="{ name: 'postPreview' }" 
               @click.native="editor.showDefault()"
               class="btn btn--primary btn--sm margin-left-xxs"
             >
               Preview
-            </RouterLink>
+            </RouterLink> -->
+            <a 
+              @click.prevent="preview()"
+              class="btn btn--primary btn--sm margin-left-xxs"
+            >
+              Preview
+            </a>
             <a 
               :href="`${clientSiteUrl}/${store.post.url}`" 
               :class="{ 'app-disabled': !store.post.published }"
@@ -91,7 +97,15 @@ import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore
 
 const store = usePostStore()
 const editor = usePostEditorStore()
+const router = getCurrentInstance().proxy.$router
 const clientSiteUrl = import.meta.env.VITE_CLIENT_SITE_URL
+
+const preview = () => {
+  store.update().then(() => {
+    editor.showDefault()
+    router.replace({ name: 'postPreview' })
+  })
+}
 </script>
 
 <style lang="scss">
