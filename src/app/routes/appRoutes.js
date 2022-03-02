@@ -8,14 +8,20 @@ export default [
     //     component: AppHome,
     // },
     {
-        path: "/",
-        name: "appHome",
+        path: '/',
+        name: 'appHome',
         // component: AppHome,
-        redirect: "/pages"
+        redirect: '/pages',
+        meta: {
+          authRequired: true,
+        },
     },
     {
-        path: "/:path(.*)",
-        name: "app404",
+        path: '/:path(.*)',
+        name: 'app404',
         component: App404,
+        meta: {
+          authRequired: true,
+        },
     } 
 ]

@@ -6,6 +6,9 @@ export default [
         name: "postEditor",
         component: PostEditor,
         props: true,
+        meta: {
+          authRequired: true,
+        },
         // beforeUpdate: (to, from, next) => {
         //     // TODO: Consider abstract this route guard so it's more reusable
         //     // Use beforeEach to open close the block editor.
@@ -22,6 +25,9 @@ export default [
         name: "postBlockEditor",
         component: PostEditor,
         props: true,
+        meta: {
+          authRequired: true,
+        },
         // beforeEnter: (to, from, next) => {
         //     // TODO: This route guard will can allow us to have the block editor
         //     // open if you visit this route in your address bar. For example, if

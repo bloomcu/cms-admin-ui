@@ -5,5 +5,8 @@ export default [
         path: "/post-create",
         name: "postCreate",
         component: PostCreate,
+        meta: {
+          authRequired: true,
+        },
     }
 ]

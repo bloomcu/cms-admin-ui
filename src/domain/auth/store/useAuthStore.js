@@ -1,28 +1,29 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
+import { auth } from '@/firebase.js'
 
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
-      loggedIn: false,
-      uid: '',
-      displayName: '',
-      email: '',
+      user: null
     }),
     
+    getters: {
+      getUser: (state) => state.user
+    },
+    
     actions: {
-        fetchUser(user) {
-          this.loggedIn = user !== null
-          
-          if (user) {
-            this.uid = user.uid
-            this.displayName = user.displayName
-            this.email = user.email
-            
+      fetchUser() {
+        auth.onAuthStateChanged(async user => {
+          if (user === null) {
+            this.user = null
           } else {
-            this.uid = ''
-            this.displayName = ''
-            this.email = ''
+            this.user = user
+
+            // if (router.isReady() && router.currentRoute.value.path === '/login') {
+            //   router.push('/')
+            // }
           }
-        }
+        })
+      }
     }
 })
 
