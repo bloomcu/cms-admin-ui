@@ -87,9 +87,12 @@ const deleted = ref([])
 const onClone = (original) => {
     return {
       title: original.title,
-      location: null,
       component: 'menu-link',
-      href: original.url,
+      data: {
+        type: 'internal',
+        post_id: original.id,
+        text: original.title,
+      },
       children: [],
     }
 }
