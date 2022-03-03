@@ -47,7 +47,24 @@ import { usePostStore } from '@/domain/posts/store/usePostStore'
 const store = usePostStore()
 const route = getCurrentInstance().proxy.$route
 
+setTimeout(() => {
+  const links = document.querySelectorAll('a:not(.editor-header__column > .btn)')
+
+  links.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault()
+      alert('Sorry, buttons are disabled while previewing.')
+    })
+  })
+}, 500)
+
 onMounted(() => {    
     store.show(route.params.id)
 })
 </script>
+
+<style>
+.disabled-button {
+  pointer-events: none;
+}
+</style>
