@@ -59,7 +59,6 @@ export const usePostStore = defineStore('postStore', {
             
             await PostApi.update(this.post.id, this.post)
                 .then(response => {
-                    console.log('Updated', response)
                     setTimeout(() => {
                         this.isLoading = false
                         this.post.has_changes = true
@@ -87,7 +86,6 @@ export const usePostStore = defineStore('postStore', {
             PostApi.publish(this.post.id)
               .then(response => {
                   setTimeout(() => {
-                      console.log('Published')
                       this.isLoading = false
                       this.show(this.post.id)
                   }, 800)
