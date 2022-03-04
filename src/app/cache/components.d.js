@@ -55,6 +55,7 @@ declare module 'vue' {
     Register: typeof import('./../../views/auth/Register.vue')['default']
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
+    TableEditor: typeof import('./../../views/TableEditor.vue')['default']
     TestimonialEditor: typeof import('./../../domain/blocks/components/editors/TestimonialEditor.vue')['default']
     TextColumnsEditor: typeof import('./../../domain/blocks/components/editors/TextColumnsEditor.vue')['default']
     VideoBackgroundHeroEditor: typeof import('./../../domain/blocks/components/editors/VideoBackgroundHeroEditor.vue')['default']

@@ -22,6 +22,17 @@
                 <FileGallery @selected="setFile"/>
             </div>
         </div>
+        
+        <div v-if="editor.show.tableEditor" class="block-editor">
+            <div class="block-editor__header">
+                <h5>Table Editor</h5>
+                <button @click="editor.showBlockEditor()" class="btn btn--sm btn--primary">Done</button>
+            </div>
+            
+            <div class="block-editor__body app-scrollable">
+                <TableEditor @saved="setTable"/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -48,6 +59,7 @@ export default defineComponent({
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
+import TableEditor from '@/views/TableEditor.vue'
 
 const store = usePostStore()
 const editor = usePostEditorStore()
@@ -65,6 +77,10 @@ const setFile = (file) => {
     block.data.image.file_id = file.id
     block.data.image.name = file.name
     block.data.image.src = file.src
+}
+
+const setTable = (table) => {
+  console.log(table)
 }
 </script>
 

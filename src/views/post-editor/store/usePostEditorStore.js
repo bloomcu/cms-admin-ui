@@ -6,6 +6,7 @@ export const usePostEditorStore = defineStore('usePostEditorStore', {
             overview: true,
             blockEditor: false,
             files: false,
+            tableEditor: false,
             blocks: true,
         },
     }),
@@ -16,6 +17,7 @@ export const usePostEditorStore = defineStore('usePostEditorStore', {
                 overview: true,
                 blockEditor: false,
                 files: false,
+                tableEditor: false,
                 blocks: true,
             }
         },
@@ -25,12 +27,17 @@ export const usePostEditorStore = defineStore('usePostEditorStore', {
                 overview: false,
                 blockEditor: true,
                 files: false,
+                tableEditor: false,
                 blocks: false,
             }
         },
 
         showFiles() {
             this.show.files = true
+        },
+        
+        showTableEditor() {
+            this.show.tableEditor = true
         }
     }
 })
