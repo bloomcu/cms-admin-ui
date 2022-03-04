@@ -56,7 +56,13 @@
                     :sort="false"
                     :clone="onClone"
                 >
-                    <div v-for="(post, index) in postStore.posts" :key="index" class="flex justify-between bg shadow-xs radius-md padding-xs margin-bottom-xxs" style="cursor: move;">
+                    <div 
+                      v-for="(post, index) in postStore.posts"
+                      v-if="post.was_published"
+                      :key="index"
+                      class="flex justify-between bg shadow-xs radius-md padding-xs margin-bottom-xxs"
+                      style="cursor: move;"
+                    >
                         <p class="text-sm">{{ post.title }}</p>
                         <div class="item__dot margin-left-sm" aria-hidden="true"></div>
                     </div>

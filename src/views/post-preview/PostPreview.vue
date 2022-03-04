@@ -17,15 +17,15 @@
 
         <!-- Right -->
         <div class="editor-header__column editor-header__column--right">
-          <span v-if="store.post.published && store.post.has_changes" class="text-xs flex items-center">
+          <span v-if="store.post.was_published && store.post.has_changes" class="text-xs flex items-center">
               <div class="status-dot status-dot--orange margin-right-xxxs"></div>
               Unpublished Changes
           </span>
-          <span v-if="store.post.published && !store.post.has_changes" class="text-xs flex items-center">
+          <span v-if="store.post.was_published && !store.post.has_changes" class="text-xs flex items-center">
               <div class="status-dot status-dot--success margin-right-xxxs"></div>
               Published
           </span>
-          <span v-if="!store.post.published" class="text-xs flex items-center">
+          <span v-if="!store.post.was_published" class="text-xs flex items-center">
               <div class="status-dot margin-right-xxxs"></div>
               Unpublished
           </span>

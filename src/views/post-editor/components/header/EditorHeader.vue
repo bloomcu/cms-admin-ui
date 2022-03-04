@@ -18,15 +18,15 @@
               </span>
             </div>
             <div v-else>
-              <span v-if="store.post.published && store.post.has_changes" class="text-xs flex items-center">
+              <span v-if="store.post.was_published && store.post.has_changes" class="text-xs flex items-center">
                   <div class="status-dot status-dot--orange margin-right-xxxs"></div>
                   Unpublished Changes
               </span>
-              <span v-if="store.post.published && !store.post.has_changes" class="text-xs flex items-center">
+              <span v-if="store.post.was_published && !store.post.has_changes" class="text-xs flex items-center">
                   <div class="status-dot status-dot--success margin-right-xxxs"></div>
                   Published
               </span>
-              <span v-if="!store.post.published" class="text-xs flex items-center">
+              <span v-if="!store.post.was_published" class="text-xs flex items-center">
                   <div class="status-dot margin-right-xxxs"></div>
                   Unpublished
               </span>
@@ -42,14 +42,14 @@
         <div class="editor-header__column editor-header__column--right">
             <!-- Publish / Publish Changes -->
             <button 
-              v-if="!store.post.published" 
+              v-if="!store.post.was_published" 
               @click="publish()" 
               class="btn btn--primary btn--sm margin-left-xxs"
             >
               Publish
             </button>
             <button 
-              v-if="store.post.published" 
+              v-if="store.post.was_published" 
               @click="publish()" 
               :class="{ 'app-disabled': !store.post.has_changes }"
               class="btn btn--primary btn--sm margin-left-xxs"
@@ -59,7 +59,7 @@
             
             <!-- Unpublish -->
             <!-- TODO: Move this to an elipses -->
-            <!-- <button v-if="store.post.published_at && !store.isDirty" @click="store.unpublish()" class="btn btn--primary btn--sm margin-left-xxs">Unpublish</button> -->
+            <!-- <button v-if="store.post.was_published && !store.isDirty" @click="store.unpublish()" class="btn btn--primary btn--sm margin-left-xxs">Unpublish</button> -->
             
             <!-- Preview / View Page -->
             <button 
@@ -70,7 +70,7 @@
             </button>
             <a 
               :href="`${clientSiteUrl}/${store.post.url}`" 
-              :class="{ 'app-disabled': !store.post.published }"
+              :class="{ 'app-disabled': !store.post.was_published }"
               class="btn btn--primary btn--sm margin-left-xxs"
               target="_blank" 
             >

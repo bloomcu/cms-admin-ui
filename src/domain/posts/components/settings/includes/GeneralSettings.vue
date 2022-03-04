@@ -14,13 +14,13 @@
         <div class="form-group margin-bottom-sm">
             <div class="grid gap-xs">
                 <!-- Path -->
-                <div class="col-6@md">
+                <!-- <div class="col-6@md">
                     <label class="form-label margin-bottom-xxs">Path</label>
                     <input v-model="store.post.path" type="text" class="form-control width-100%">
-                </div>
+                </div> -->
                 
                 <!-- Slug -->
-                <div class="col-6@md">
+                <div class="_col-6@md">
                     <label class="form-label margin-bottom-xxs">Slug</label>
                     <input v-model="store.post.slug" type="text" class="form-control width-100%">
                 </div>
@@ -39,9 +39,9 @@
         <!-- <div class="form-group margin-bottom-sm">
             <label class="form-label margin-bottom-xxs">Status</label>
             <div class="select">
-                <select v-model="store.post.is_published" name="status" id="status" class="select_input form-control width-100%">
-                    <option value="true" key="published" :selected="store.post.is_published === true">Published</option>
-                    <option value="false" key="draft" :selected="store.post.is_published === false">Draft</option>
+                <select v-model="store.post.was_published" name="status" id="status" class="select_input form-control width-100%">
+                    <option value="true" key="published" :selected="store.post.was_published === true">Published</option>
+                    <option value="false" key="draft" :selected="store.post.was_published === false">Draft</option>
                 </select>
                 <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
             </div>
