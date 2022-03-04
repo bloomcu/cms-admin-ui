@@ -88,6 +88,7 @@
                       <select v-model="block.data.buttons[index].post_id" name="variant" id="variant" class="select_input form-control width-100%">
                           <option 
                             v-for="post in postStore.posts"
+                            v-if="post.was_published"
                             :key="post.id"
                             :value="post.id" 
                             :selected="block.data.buttons[index].post_id === post.id"
@@ -172,12 +173,12 @@ import Draggable from 'vuedraggable'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 
-const editor = usePostEditorStore()
-const postStore = usePostStore()
-
 const props = defineProps({ 
     block: { type: Object, required: true } 
 })
+
+const editor = usePostEditorStore()
+const postStore = usePostStore()
 
 onMounted(() => {
     postStore.index({

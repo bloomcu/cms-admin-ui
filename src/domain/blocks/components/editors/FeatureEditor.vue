@@ -69,12 +69,48 @@
               :animation="200"
           >
             <div v-for="(button, index) in block.data.buttons" class="bg border border-2 radius-md padding-sm margin-bottom-xs" style="cursor: move;">
+              <!-- Text -->
               <label class="form-label margin-bottom-xxs">Text</label>
               <input v-model="block.data.buttons[index].text" class="form-control width-100% margin-bottom-xxxs" type="text">
               
-              <label class="form-label margin-bottom-xxs">URL</label>
-              <input v-model="block.data.buttons[index].href" class="form-control width-100% margin-bottom-xxxs" type="text">
+              <!-- Type -->
+              <div class="form-group margin-bottom-xxs">
+                <input v-model="block.data.buttons[index].type" value="internal" type="radio" class="margin-right-xxxs" :id="`internal-${index}`">
+                <label class="form-label margin-right-sm" :for="`internal-${index}`">Internal</label>
+                
+                <input v-model="block.data.buttons[index].type" value="external" type="radio" class="margin-right-xxxs" :id="`external-${index}`">
+                <label class="form-label margin-right-sm" :for="`external-${index}`">External</label>
+                
+                <!-- <input v-model="block.data.buttons[index].type" value="trigger" type="radio" class="margin-right-xxxs" :id="`trigger-${index}`">
+                <label class="form-label margin-right-sm" :for="`trigger-${index}`">Trigger</label> -->
+              </div>
               
+              <!-- Internal: Post -->
+              <div v-if="block.data.buttons[index].type == 'internal'" class="form-group margin-bottom-sm">
+                  <label class="form-label margin-bottom-xxs">Page / Article</label>
+                  <div class="select">
+                      <select v-model="block.data.buttons[index].post_id" name="variant" id="variant" class="select_input form-control width-100%">
+                          <option 
+                            v-for="post in postStore.posts"
+                            v-if="post.was_published"
+                            :key="post.id"
+                            :value="post.id" 
+                            :selected="block.data.buttons[index].post_id === post.id"
+                          >
+                            {{ post.title }}
+                          </option>
+                      </select>
+                      <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                  </div>
+              </div>
+              
+              <!-- External: Url -->
+              <div v-if="block.data.buttons[index].type == 'external'">
+                <label class="form-label margin-bottom-xxs">URL</label>
+                <input v-model="block.data.buttons[index].href" class="form-control width-100% margin-bottom-xxxs" type="text">
+              </div>
+              
+              <!-- Variant -->
               <div class="form-group margin-bottom-sm">
                   <label class="form-label margin-bottom-xxs">Style</label>
                   <div class="select">
@@ -91,7 +127,6 @@
             </div>
           </Draggable>
           
-          <!-- Add button -->
           <button @click="addButton()" class="btn btn--primary btn--small">Add Button</button>
         </div>
         
@@ -127,22 +162,37 @@
 <script setup>
 import Draggable from 'vuedraggable'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
+import { usePostStore } from '@/domain/posts/store/usePostStore'
+
+const props = defineProps({ 
+    block: { type: Object, required: true } 
+})
 
 const editor = usePostEditorStore()
+const postStore = usePostStore()
+
+onMounted(() => {
+    postStore.index({
+      'filter[is_blueprint]': 0,
+      // 'filter[type]': 'page',
+    })
+})
 
 const addButton = () => {
   props.block.data.buttons.push({
+    type: 'internal',
+    post_id: null,
+    post_url: '',
     variant: 'accent',
     text: 'Button',
     href: '',
+    size: '',
+    trigger: '',
+    target: '',
   })
 }
 
 const deleteButton = (index) => {
   props.block.data.buttons.splice(index, 1);
 }
-
-const props = defineProps({ 
-    block: { type: Object, required: true } 
-})
 </script>
