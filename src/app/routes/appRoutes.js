@@ -1,12 +1,7 @@
 import AppHome from '@/app/views/AppHome.vue';
 import App404 from '@/app/views/App404.vue';
-import TableEditor from '@/views/TableEditor.vue';
 
 export default [
-    {
-        path: "/table",
-        component: TableEditor,
-    },
     // {
     //     path: "/",
     //     name: "appHome",

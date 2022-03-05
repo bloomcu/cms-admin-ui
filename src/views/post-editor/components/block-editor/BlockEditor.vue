@@ -22,36 +22,25 @@
                 <FileGallery @selected="setFile"/>
             </div>
         </div>
-        
-        <div v-if="editor.show.tableEditor" class="block-editor">
-            <div class="block-editor__header">
-                <h5>Table Editor</h5>
-                <button @click="editor.showBlockEditor()" class="btn btn--sm btn--primary">Done</button>
-            </div>
-            
-            <div class="block-editor__body app-scrollable">
-                <TableEditor @saved="setTable"/>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
-// TODO: For some reason, I can use dynamic components this way in <script setup>
-// Look into how to accomplish this in <script setup>
-import HeroEditor from '@/domain/blocks/components/editors/HeroEditor.vue'
-import VideoBackgroundHeroEditor from '@/domain/blocks/components/editors/VideoBackgroundHeroEditor.vue'
 import FeatureEditor from '@/domain/blocks/components/editors/FeatureEditor.vue'
+import HeroEditor from '@/domain/blocks/components/editors/HeroEditor.vue'
+import TableEditor from '@/domain/blocks/components/editors/TableEditor.vue'
 import TestimonialEditor from '@/domain/blocks/components/editors/TestimonialEditor.vue'
 import TextColumnsEditor from '@/domain/blocks/components/editors/TextColumnsEditor.vue'
+import VideoBackgroundHeroEditor from '@/domain/blocks/components/editors/VideoBackgroundHeroEditor.vue'
 
 export default defineComponent({
     components: {
-        HeroEditor,
-        VideoBackgroundHeroEditor,
-        FeatureEditor,
-        TestimonialEditor,
-        TextColumnsEditor,
+      FeatureEditor,
+      HeroEditor,
+      TableEditor,
+      TestimonialEditor,
+      TextColumnsEditor,
+      VideoBackgroundHeroEditor,
     }
 })  
 </script>
@@ -59,7 +48,6 @@ export default defineComponent({
 <script setup>
 import { usePostStore } from '@/domain/posts/store/usePostStore'
 import { usePostEditorStore } from '@/views/post-editor/store/usePostEditorStore'
-import TableEditor from '@/views/TableEditor.vue'
 
 const store = usePostStore()
 const editor = usePostEditorStore()

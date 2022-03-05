@@ -120,6 +120,8 @@ const preview = () => {
     padding: 0 var(--space-sm);
     background-color: var(--color-white);
     box-shadow: var(--shadow-xs);
+    
+    z-index: 3;
 }
 
 .editor-header__column {

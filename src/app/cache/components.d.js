@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    _TableContentEditor: typeof import('./../../domain/blocks/components/editors/includes/_TableContentEditor.vue')['default']
     App: typeof import('./../../App.vue')['default']
     App404: typeof import('./../views/App404.vue')['default']
     AppCard: typeof import('./../components/AppCard.vue')['default']
@@ -14,6 +15,7 @@ declare module 'vue' {
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppNestedMenu: typeof import('./../components/nested-menu/AppNestedMenu.vue')['default']
     AppNestedMenuChildren: typeof import('./../components/nested-menu/AppNestedMenuChildren.vue')['default']
+    AppPanel: typeof import('./../components/AppPanel.vue')['default']
     AppRadioSwitch: typeof import('./../components/AppRadioSwitch.vue')['default']
     AppSaveButton: typeof import('./../components/AppSaveButton.vue')['default']
     AppSelect: typeof import('./../components/forms/AppSelect.vue')['default']
@@ -55,7 +57,8 @@ declare module 'vue' {
     Register: typeof import('./../../views/auth/Register.vue')['default']
     SEOSettings: typeof import('./../../domain/posts/components/settings/includes/SEOSettings.vue')['default']
     SocialMediaSettings: typeof import('./../../domain/posts/components/settings/includes/SocialMediaSettings.vue')['default']
-    TableEditor: typeof import('./../../views/TableEditor.vue')['default']
+    TableContentEditor: typeof import('./../../domain/blocks/components/editors/includes/TableContentEditor.vue')['default']
+    TableEditor: typeof import('./../../domain/blocks/components/editors/TableEditor.vue')['default']
     TestimonialEditor: typeof import('./../../domain/blocks/components/editors/TestimonialEditor.vue')['default']
     TextColumnsEditor: typeof import('./../../domain/blocks/components/editors/TextColumnsEditor.vue')['default']
     VideoBackgroundHeroEditor: typeof import('./../../domain/blocks/components/editors/VideoBackgroundHeroEditor.vue')['default']
