@@ -28,14 +28,13 @@
         <!-- Table -->
         <div class="margin-bottom-md">
             <label class="form-label block margin-bottom-xxs">Table</label>
-            <div class="block-editor__file">
-                <div
-                    :style="{ 'background-color': 'red' }"
-                    class="block-editor__file__thumbnail"
-                />
+            <div @click="toggle()" class="block-editor__file">
+                <div class="block-editor__file__thumbnail block-editor__file__icon">
+                  <svg class="icon" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="round" class="nc-icon-wrapper"><line x1="2" y1="8" x2="22" y2="8" data-cap="butt"></line><line x1="2" y1="15" x2="22" y2="15" data-cap="butt"></line><line x1="8" y1="2" x2="8" y2="22" data-cap="butt"></line><path d="M20,22H4a2,2,0,0,1-2-2V4A2,2,0,0,1,4,2H20a2,2,0,0,1,2,2V20A2,2,0,0,1,20,22Z"></path></g></svg>
+                </div>
                 <div class="block-editor__file__description">
                     <p class="text-sm">Table</p>
-                    <button @click="toggle()" class="btn btn--primary btn--sm">Edit Table</button>
+                    <span class="btn btn--primary btn--sm">Edit Table</span>
                 </div>
             </div>
         </div>

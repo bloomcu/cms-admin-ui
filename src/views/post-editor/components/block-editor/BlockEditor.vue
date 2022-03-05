@@ -116,6 +116,17 @@ const setTable = (table) => {
             box-shadow:inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
         }
     }
+    
+    &__icon {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      
+      .icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
 
     &__description {
         p {
