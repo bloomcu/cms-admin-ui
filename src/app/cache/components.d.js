@@ -4,7 +4,6 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    _TableContentEditor: typeof import('./../../domain/blocks/components/editors/includes/_TableContentEditor.vue')['default']
     App: typeof import('./../../App.vue')['default']
     App404: typeof import('./../views/App404.vue')['default']
     AppCard: typeof import('./../components/AppCard.vue')['default']

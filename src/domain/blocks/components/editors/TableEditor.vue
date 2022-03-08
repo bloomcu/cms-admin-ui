@@ -44,6 +44,18 @@
           <TableContentEditor :block="block"/>
         </AppPanel>
         
+        <!-- Align -->
+        <div class="form-group margin-bottom-sm">
+            <label class="form-label margin-bottom-xxs">Align</label>
+            <div class="select">
+                <select v-model="block.data.align" name="align" id="align" class="select_input form-control width-100%">
+                    <option value="left" key="left" :selected="block.data.align === 'left'">Left</option>
+                    <option value="center" key="center" :selected="block.data.align === 'center'">Center</option>
+                </select>
+                <svg class="select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+        </div>
+        
         <!-- Padding -->
         <div class="form-group margin-bottom-sm">
             <label class="form-label margin-bottom-xxs">Padding</label>

@@ -21,13 +21,13 @@
     
     <table class="table table--loaded table--expanded position-relative z-index-1 width-100% text-unit-em text-sm">
       <thead class="table__header">
-        <Draggable
+        <!-- <Draggable
           tag="tr"
           :list="block.data.columns"
           :group="{name: 'columns'}"
           :animation="200"
           class="table__row"
-        >
+        > -->
           <th
             v-for="(column, index) in block.data.columns" 
             :key="index"
@@ -38,14 +38,14 @@
               <input v-model="column.content" placeholder="New Column" class="form-control width-100%">
             </template>
             <template v-else>
-              {{ column.content ? column.content : 'New Column' }}
+              {{ column.content ? column.content : '' }}
             </template>
             
             <div @click="deleteColumn(index)" class="table__action table__action--columns">
               <svg class="icon" viewBox="0 0 32 32"><g stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="round" class="nc-icon-wrapper"><line x1="23" y1="16" x2="9" y2="16"></line></g></svg>
             </div>
           </th>
-        </Draggable>
+        <!-- </Draggable> -->
       </thead>
       
       <Draggable
@@ -61,7 +61,7 @@
               <input v-model="cell.content" placeholder="New Cell" class="form-control width-100%">
             </template>
             <template v-else>
-              {{ cell.content ? cell.content : 'New Cell' }}
+              {{ cell.content ? cell.content : '' }}
             </template>
           </td>
           
@@ -90,7 +90,7 @@ const editing = ref(false)
 
 function Cell() {
   return {
-    content: '', 
+    content: '',
     key: Math.random().toString(36).substr(2, 9),
   }
 }
