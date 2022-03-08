@@ -3,6 +3,11 @@
     <h4 class="margin-bottom-sm">Table Editor</h4>
     
     <div class="flex flex-row items-center gap-xs margin-bottom-lg">
+      <button @click="editing = !editing" class="btn btn--sm btn--primary">
+        {{ editing ? 'Done' : 'Edit Cells' }}
+        <svg class="icon margin-left-xxs" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="round" class="nc-icon-wrapper"><line data-cap="butt" x1="14.328" y1="4.672" x2="19.328" y2="9.672"></line> <path d="M8,21,2,22l1-6L16.414,2.586a2,2,0,0,1,2.828,0l2.172,2.172a2,2,0,0,1,0,2.828Z"></path></g></svg>
+      </button>
+      
       <button @click="addColumn()" class="btn btn--sm btn--subtle">
         Add Column
         <svg class="icon margin-left-xxs" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="round" class="nc-icon-wrapper"><line x1="5" y1="7" x2="5" y2="17"></line> <rect x="1" y="3" width="22" height="18"></rect></g></svg>
@@ -11,11 +16,6 @@
       <button @click="addRow()" class="btn btn--sm btn--subtle">
         Add Row
         <svg class="icon margin-left-xxs" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="round" class="nc-icon-wrapper"><rect x="1" y="3" width="22" height="18"></rect> <line x1="19" y1="7" x2="5" y2="7"></line></g></svg>
-      </button>
-      
-      <button @click="editing = !editing" class="btn btn--sm btn--primary">
-        {{ editing ? 'Done' : 'Edit' }}
-        <svg class="icon margin-left-xxs" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" stroke-linejoin="round" class="nc-icon-wrapper"><line data-cap="butt" x1="14.328" y1="4.672" x2="19.328" y2="9.672"></line> <path d="M8,21,2,22l1-6L16.414,2.586a2,2,0,0,1,2.828,0l2.172,2.172a2,2,0,0,1,0,2.828Z"></path></g></svg>
       </button>
     </div>
     
