@@ -1,5 +1,11 @@
 <template>
     <div>
+        <!-- Label -->
+        <div class="margin-bottom-md">
+            <label class="form-label margin-bottom-xxs">Label</label>
+            <input v-model="block.data.label" class="form-control width-100%" type="text">
+        </div>
+      
         <!-- Title -->
         <div class="margin-bottom-md">
             <label class="form-label margin-bottom-xxs">Title</label>
