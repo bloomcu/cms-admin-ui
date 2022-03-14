@@ -1,5 +1,9 @@
 <template>
     <LayoutSidebar>
+      <template v-slot:sidebar>
+        <AppSidebar/>
+      </template>
+      
       <div class="flex flex-wrap items-center justify-between margin-bottom-md">
           <h1 class="text-lg">Blueprints</h1>
           <!-- <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Blueprint</RouterLink> -->

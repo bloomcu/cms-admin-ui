@@ -3,7 +3,7 @@
         <AppNavbar/>
 
         <div class="app__wrapper">
-            <AppSidebar/>
+            <slot name="sidebar"></slot>
 
             <main class="app__body">
                 <slot/>

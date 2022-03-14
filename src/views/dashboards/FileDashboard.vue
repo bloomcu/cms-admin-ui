@@ -1,5 +1,9 @@
 <template>
     <LayoutSidebar>
+        <template v-slot:sidebar>
+          <AppSidebar/>
+        </template>
+      
         <div class="margin-bottom-md">
             <h1 class="text-lg">Files</h1>
         </div>
