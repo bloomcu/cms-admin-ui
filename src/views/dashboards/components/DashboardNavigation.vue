@@ -60,30 +60,17 @@
             </li>
         </ul>
 
-        <!-- <ul class="sidenav__list">
+        <ul class="sidenav__list">
             <li class="sidenav__item">
-                <router-link :to="{ name: 'appHome' }" class="sidenav__link">
+                <router-link :to="{ name: 'people' }" class="sidenav__link">
                     <svg class="icon sidenav__icon" fill="#212121" stroke="#212121" viewBox="0 0 24 24"><g stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" stroke-miterlimit="10"><circle data-color="color-2" cx="8" cy="12" r="3" fill="none"></circle><path d="M8,5h8a7,7,0,0,1,7,7h0a7,7,0,0,1-7,7H8a7,7,0,0,1-7-7H1A7,7,0,0,1,8,5Z" fill="none" stroke="#212121"></path></g></svg>
                     <span class="sidenav__text">Settings</span>
                 </router-link>
             </li>
-        </ul> -->
+        </ul>
 
     </nav>
 </template>
-
-<script setup>
-// TODO: Generate menu from array
-// const menu = [
-//     { title: 'Pages', name: 'pageDashboard' },
-//     { title: 'Articles', name: 'articleDashboard' },
-//     { title: 'Blueprints', name: 'blueprintDashboard' },
-//     { title: 'Blocks', name: 'pageDashboard' },
-//     { title: 'Files', name: 'pageDashboard' },
-//     { title: 'Menus', name: 'pageDashboard' },
-//     { title: 'Settings', name: 'pageDashboard' },
-// ]
-</script>
 
 <style lang="scss">
 :root {

@@ -1,5 +1,5 @@
 <template>
-    <LayoutSidebar>
+    <DashboardLayout>
         <template v-slot:sidebar>
           <AppSidebar/>
         </template>
@@ -14,7 +14,7 @@
                 <FileGallery :files="store.files" />
             </div>
         </div>
-    </LayoutSidebar>
+    </DashboardLayout>
 </template>
 
 <script setup>

@@ -43,7 +43,7 @@
           </p>
         </div>
         
-        <p class="text-center margin-y-sm">or</p>
+        <!-- <p class="text-center margin-y-sm">or</p>
 
         <div class="grid gap-xs">
           <div class="col-6@xs">
@@ -59,7 +59,7 @@
               <span>Register with Microsoft</span>
             </a>
           </div>
-        </div>
+        </div> -->
         
       </form>
     </div>

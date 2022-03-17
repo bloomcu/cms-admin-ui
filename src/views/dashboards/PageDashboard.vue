@@ -1,5 +1,5 @@
 <template>
-    <LayoutSidebar>
+    <DashboardLayout>
         <template v-slot:sidebar>
           <AppSidebar/>
         </template>
@@ -27,7 +27,7 @@
                 />
             </div>
         </div>
-    </LayoutSidebar>
+    </DashboardLayout>
 </template>
 
 <script setup>
