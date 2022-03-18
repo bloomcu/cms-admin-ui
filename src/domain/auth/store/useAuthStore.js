@@ -1,9 +1,10 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { auth } from '@/firebase.js'
+import { authApi as AuthApi } from '@/domain/auth/api/authApi'
 
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
-      user: null
+      user: null,
+      isLoading: false,
     }),
     
     getters: {
@@ -11,19 +12,47 @@ export const useAuthStore = defineStore('authStore', {
     },
     
     actions: {
-      fetchUser() {
-        auth.onAuthStateChanged(async user => {
-          if (user === null) {
-            this.user = null
-          } else {
-            this.user = user
-
-            // if (router.isReady() && router.currentRoute.value.path === '/login') {
-            //   router.push('/')
-            // }
-          }
-        })
-      }
+      register(credentials) {
+          this.isLoading = true
+          
+          AuthApi.register(credentials)
+              .then(response => {
+                  console.log(response)
+                  // this.posts = response.data.data
+                  this.isLoading = false
+              }).catch(error => {
+                  Object.values(error.response.data).forEach(error => console.log(error))
+                  this.isLoading = false
+              })
+      },
+      
+      login(credentials) {
+          this.isLoading = true
+          
+          AuthApi.login(credentials)
+              .then(response => {
+                  console.log(response)
+                  // this.posts = response.data.data
+                  this.isLoading = false
+              }).catch(error => {
+                  Object.values(error.response.data).forEach(error => console.log(error))
+                  this.isLoading = false
+              })
+      },
+      
+      me() {
+          this.isLoading = true
+          
+          AuthApi.me()
+              .then(response => {
+                  console.log(response)
+                  // this.posts = response.data.data
+                  this.isLoading = false
+              }).catch(error => {
+                  Object.values(error.response.data).forEach(error => console.log(error))
+                  this.isLoading = false
+              })
+      },
     }
 })
 

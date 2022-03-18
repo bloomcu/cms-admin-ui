@@ -21,7 +21,6 @@ declare module 'vue' {
     ArticleDashboard: typeof import('./../../views/dashboards/ArticleDashboard.vue')['default']
     AuthLayout: typeof import('./../../views/auth/layout/AuthLayout.vue')['default']
     AuthNavigation: typeof import('./../../views/auth/components/AuthNavigation.vue')['default']
-    AuthSidebar: typeof import('./../../domain/auth/components/AuthSidebar.vue')['default']
     Block: typeof import('./../../domain/blocks/components/Block.vue')['default']
     BlockControls: typeof import('./../../views/post-editor/components/block/BlockControls.vue')['default']
     BlockDashboard: typeof import('./../../views/dashboards/BlockDashboard.vue')['default']

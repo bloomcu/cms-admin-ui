@@ -10,11 +10,12 @@ import axios from 'axios'
  */
 const httpClient = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
-    withCredentials: false,
+    withCredentials: true,
     headers: {
         Accept: 'application/json',
         // 'Authorization': `Basic ${token}`
-        'Content-Type': 'application/json'
+        // 'X-Requested-With': 'XMLHttpRequest',
+        // 'Content-Type': 'application/json'
     }
 })
 

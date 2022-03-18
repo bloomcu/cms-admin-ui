@@ -7,11 +7,24 @@
         </div>
         
         <div class="margin-bottom-xs">
+          <label class="form-label margin-bottom-xxxs" for="input-name">Name</label>
+          <input 
+            v-model="inputs.name" 
+            required
+            autofocus 
+            placeholder="First Last"
+            class="form-control width-100%" 
+            type="text" 
+            name="input-name" 
+            id="input-name" 
+          >
+        </div>
+        
+        <div class="margin-bottom-xs">
           <label class="form-label margin-bottom-xxxs" for="input-email">Email</label>
           <input 
             v-model="inputs.email" 
             required
-            autofocus 
             placeholder="email@email.com"
             class="form-control width-100%" 
             type="email" 
@@ -29,6 +42,18 @@
             type="password" 
             name="input-password" 
             id="input-password"
+          >
+        </div>
+        
+        <div class="margin-bottom-sm">
+          <label class="form-label margin-bottom-xxxs" for="input-password_confirmation">Confirm Password</label> 
+          <input 
+            v-model="inputs.password_confirmation"
+            required
+            class="form-control width-100%" 
+            type="password" 
+            name="input-password_confirmation" 
+            id="input-password_confirmation"
           >
         </div>
 
@@ -67,31 +92,21 @@
 </template>
 
 <script setup>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { useAuthStore } from '@/domain/auth/store/useAuthStore'
 
 const router = getCurrentInstance().proxy.$router
 
-const inputs = ref({
-  email: '',
-  password: ''
-})
+const authStore = useAuthStore()
 
 const error = ref(null)
-
-const auth = getAuth()
-
-const submit = () => {
-  createUserWithEmailAndPassword(auth, inputs.value.email, inputs.value.password)
-    .then((userCredential) => {
-      // Signed in 
-      router.replace({ name: 'pageDashboard' })
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode)
-      console.log(errorMessage)
-      // ..
-    });
+const inputs = ref({
+  name: 'Ryan Harmon',
+  email: 'ryan@bloomcu.com',
+  password: 'password',
+  password_confirmation: 'password'
+})
+    
+const submit = async () => {
+  authStore.register(inputs.value)
 }
 </script>

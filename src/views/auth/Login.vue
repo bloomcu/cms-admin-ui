@@ -73,38 +73,20 @@
 </template>
 
 <script setup>
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
 import { useAuthStore } from '@/domain/auth/store/useAuthStore'
 
 const router = getCurrentInstance().proxy.$router
 
 const authStore = useAuthStore()
-const auth = getAuth()
-
-onAuthStateChanged(auth, (user) => {  
-  if (user) {
-    router.replace({ name: 'pageDashboard' })
-  }
-})
 
 const error = ref(null)
 const inputs = ref({
-  email: '',
-  password: ''
+  email: 'seed@email.test',
+  password: 'password'
 })
     
-const submit = () => {
-  const auth = getAuth();
-  
-  signInWithEmailAndPassword(auth, inputs.value.email, inputs.value.password)
-    .then((userCredential) => {
-      router.replace({ name: 'pageDashboard' })
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode)
-      console.log(errorMessage)
-    });
+const submit = async () => {
+  authStore.login(inputs.value)
+  authStore.me()
 }
 </script>
