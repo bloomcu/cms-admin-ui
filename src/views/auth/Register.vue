@@ -1,7 +1,15 @@
 <template>
   <LayoutDefault>
     <div class="container max-width-xs">
-      <form class="login-form" action="#" @submit.prevent="submit">
+      <div v-if="isRegistering" class="flex justify-center items-center" style="height: 80vh;">
+        <div class="text-component text-center margin-bottom-sm">
+          <AppLoader/>
+          <h3>One moment, please</h3>
+          <p>{{ registrationStatus }}</p>
+        </div>
+      </div>
+      
+      <form v-else class="login-form" action="#" @submit.prevent="submit">
         <div class="text-component text-center margin-bottom-sm">
           <h1>Register</h1>
         </div>
@@ -30,6 +38,20 @@
             type="email" 
             name="input-email" 
             id="input-email" 
+          >
+        </div>
+        
+        <div class="margin-bottom-xs">
+          <label class="form-label margin-bottom-xxxs" for="input-name">Organization Name</label>
+          <input 
+            v-model="inputs.organization" 
+            required
+            autofocus 
+            placeholder="BloomCU"
+            class="form-control width-100%" 
+            type="text" 
+            name="input-organization" 
+            id="input-organization" 
           >
         </div>
 
@@ -99,14 +121,24 @@ const router = getCurrentInstance().proxy.$router
 const authStore = useAuthStore()
 
 const error = ref(null)
+
 const inputs = ref({
   name: 'Ryan Harmon',
   email: 'ryan@bloomcu.com',
+  organization: 'BloomCU',
   password: 'password',
   password_confirmation: 'password'
 })
-    
+
+const isRegistering = ref(false)
+const registrationStatus = ref('1 of 3: Creating your profile')
+
 const submit = async () => {
-  authStore.register(inputs.value)
+  // authStore.register(inputs.value)
+  
+  isRegistering.value = true
+  setTimeout(() => { registrationStatus.value = '2 of 3: Creating your organization' }, 2000)
+  setTimeout(() => { registrationStatus.value = '3 of 3: Creating your first property' }, 4000)
+  setTimeout(() => { window.location.replace('/pages') }, 6000)
 }
 </script>

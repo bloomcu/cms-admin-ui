@@ -19,7 +19,7 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .btn .btn__content-a {
     display: inline-flex;
 }

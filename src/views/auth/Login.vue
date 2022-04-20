@@ -81,12 +81,19 @@ const authStore = useAuthStore()
 
 const error = ref(null)
 const inputs = ref({
-  email: 'seed@email.test',
+  email: 'super@bloomcu.com',
   password: 'password'
 })
     
-const submit = async () => {
+const submit = () => {
   authStore.login(inputs.value)
-  authStore.me()
+  
+  // authStore.login(inputs.value)
+  //   .then(() => {
+  //     // window.location.replace('/pages')
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
 }
 </script>

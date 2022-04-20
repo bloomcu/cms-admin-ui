@@ -4,7 +4,7 @@
           <AppSidebar/>
         </template>
       
-        <div class="flex flex-wrap items-center justify-between margin-bottom-md">
+        <!-- <div class="flex flex-wrap items-center justify-between margin-bottom-md">
             <h1 class="text-lg">Pages</h1>
             <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Page</RouterLink>
         </div>
@@ -26,7 +26,7 @@
                     @destroy="store.destroy"
                 />
             </div>
-        </div>
+        </div> -->
     </DashboardLayout>
 </template>
 
@@ -46,10 +46,10 @@ const filter = (id) => {
 }
 
 onMounted(() => {
-    store.index({
-      'filter[is_blueprint]': 0,
-      'filter[type]': 'page',
-    })
-    categoryStore.show(1)
+    // store.index({
+    //   'filter[is_blueprint]': 0,
+    //   'filter[type]': 'page',
+    // })
+    // categoryStore.show(1)
 })
 </script>

@@ -3,37 +3,67 @@ import { authApi as AuthApi } from '@/domain/auth/api/authApi'
 
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
+      token: localStorage.getItem('access_token') || null,
       user: null,
       isLoading: false,
     }),
     
     getters: {
+      loggedIn: (state) => state.token != null,
       getUser: (state) => state.user
     },
     
     actions: {
-      register(credentials) {
+      async register(credentials) {
           this.isLoading = true
           
-          AuthApi.register(credentials)
+          await AuthApi.register(credentials)
               .then(response => {
                   console.log(response)
-                  // this.posts = response.data.data
+                  
+                  const token = response.data.data.access_token
+                  localStorage.setItem('access_token', token)
+                  this.token = token
                   this.isLoading = false
+                  
+                  window.location.replace('/pages')
               }).catch(error => {
                   Object.values(error.response.data).forEach(error => console.log(error))
                   this.isLoading = false
               })
       },
       
-      login(credentials) {
+      async login(credentials) {
           this.isLoading = true
           
-          AuthApi.login(credentials)
+          await AuthApi.login(credentials)
               .then(response => {
                   console.log(response)
-                  // this.posts = response.data.data
+                  
+                  const token = response.data.data.access_token
+                  localStorage.setItem('access_token', token)
+                  this.token = token
                   this.isLoading = false
+                  
+                  window.location.replace('/pages')
+              }).catch(error => {
+                  Object.values(error.response.data).forEach(error => console.log(error))
+                  this.isLoading = false
+              })
+      },
+      
+      async logout() {
+          this.isLoading = true
+          
+          await AuthApi.logout()
+              .then(response => {
+                  console.log(response)
+                  
+                  localStorage.removeItem('access_token')
+                  this.token = null
+                  this.isLoading = false
+                  
+                  window.location.replace('/login')
               }).catch(error => {
                   Object.values(error.response.data).forEach(error => console.log(error))
                   this.isLoading = false
@@ -45,8 +75,7 @@ export const useAuthStore = defineStore('authStore', {
           
           AuthApi.me()
               .then(response => {
-                  console.log(response)
-                  // this.posts = response.data.data
+                  this.user = response.data.data
                   this.isLoading = false
               }).catch(error => {
                   Object.values(error.response.data).forEach(error => console.log(error))

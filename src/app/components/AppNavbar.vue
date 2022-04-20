@@ -6,7 +6,7 @@
             </RouterLink>
 
             <nav class="flex flex-row flex-center gap-md">
-                <a @click.prevent="signUserOut" class="btn btn--sm">Sign out</a>
+                <a @click.prevent="logout()" class="btn btn--sm">Logout</a>
             </nav>
         </div>
     </header>
@@ -14,23 +14,14 @@
 
 <script setup>
 import { useAuthStore } from '@/domain/auth/store/useAuthStore'
-import { getAuth, signOut } from "firebase/auth"
 
 const router = getCurrentInstance().proxy.$router
 const authStore = useAuthStore()  
-const auth = getAuth()
 
-const signUserOut = () => {
-  signOut(auth)
-    .then(() => {
-      router.replace({ name: 'login' })
-      // Sign out successfull
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode)
-      console.log(errorMessage)
-    })
+const logout = async () => {
+  authStore.logout().then(() => {
+    window.location.replace('/login')
+  })
 }
 </script>
 

@@ -10,6 +10,7 @@ declare module 'vue' {
     AppDrawer: typeof import('./../components/AppDrawer.vue')['default']
     AppHome: typeof import('./../views/AppHome.vue')['default']
     AppInput: typeof import('./../components/forms/AppInput.vue')['default']
+    AppLoader: typeof import('./../components/AppLoader.vue')['default']
     AppModal: typeof import('./../components/AppModal.vue')['default']
     AppNavbar: typeof import('./../components/AppNavbar.vue')['default']
     AppNestedMenu: typeof import('./../components/nested-menu/AppNestedMenu.vue')['default']

@@ -3,9 +3,12 @@ import axios from 'axios'
 
 const authApi = {
     register(credentials) {
-      let { name, email, password, password_confirmation } = credentials
-    
-      axios.get(`http://cms.test/sanctum/csrf-cookie`)
+      let { 
+        name, 
+        email, 
+        password, 
+        password_confirmation 
+      } = credentials
       
       return HttpClient.post(`/auth/register`, {
         name: name,
@@ -16,9 +19,10 @@ const authApi = {
     },
     
     login(credentials) {
-      let { email, password } = credentials
-    
-      axios.get(`http://cms.test/sanctum/csrf-cookie`)
+      let { 
+        email, 
+        password 
+      } = credentials
       
       return HttpClient.post(`/auth/login`, {
         email: email,
@@ -26,9 +30,11 @@ const authApi = {
       })
     },
     
+    logout() {
+      return HttpClient.post(`/auth/logout`)
+    },
+    
     me() {
-      axios.get(`http://cms.test/sanctum/csrf-cookie`)
-      
       return HttpClient.get(`/auth/me`)
     },
 }

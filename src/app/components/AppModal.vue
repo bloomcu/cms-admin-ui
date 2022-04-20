@@ -27,7 +27,7 @@ onClickOutside(target, (event) => emit('close'))
 const emit = defineEmits(['close'])
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .modal {
     // Flexbox
     display: flex;

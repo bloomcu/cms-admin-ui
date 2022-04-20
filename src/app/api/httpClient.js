@@ -1,8 +1,4 @@
 import axios from 'axios'
-// import useAuth from '@/app/composables/useAuth'
-
-// TODO: Add token to all requests
-// const { token } = useAuth()
 
 /**
  * CMS API Client
@@ -13,9 +9,7 @@ const httpClient = axios.create({
     withCredentials: true,
     headers: {
         Accept: 'application/json',
-        // 'Authorization': `Basic ${token}`
-        // 'X-Requested-With': 'XMLHttpRequest',
-        // 'Content-Type': 'application/json'
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
     }
 })
 
