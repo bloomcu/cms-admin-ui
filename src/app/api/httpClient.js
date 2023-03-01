@@ -6,10 +6,10 @@ import axios from 'axios'
  */
 const httpClient = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
-    withCredentials: true,
+    // withCredentials: true,
     headers: {
         Accept: 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+        // 'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
     }
 })
 

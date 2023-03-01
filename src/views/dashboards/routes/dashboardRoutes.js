@@ -10,48 +10,48 @@ export default [
         path: "/pages",
         name: "pageDashboard",
         component: PageDashboard,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     },
     {
         path: "/articles",
         name: "articleDashboard",
         component: ArticleDashboard,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     },
     {
         path: "/blueprints",
         name: "blueprintDashboard",
         component: BlueprintDashboard,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     },
     {
         path: "/blocks",
         name: "blockDashboard",
         component: BlockDashboard,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     },
     {
         path: "/files",
         name: "fileDashboard",
         component: FileDashboard,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     },
     {
         path: "/menus",
         name: "menuDashboard",
         component: MenuDashboard,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     }
 ]

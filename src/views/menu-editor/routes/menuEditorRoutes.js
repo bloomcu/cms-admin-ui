@@ -6,8 +6,8 @@ export default [
         name: "menuEditor",
         component: MenuEditor,
         props: true,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     }
 ]

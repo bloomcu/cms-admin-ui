@@ -9,7 +9,8 @@ export default [
     {
         path: "/login",
         name: "login",
-        component: Login,
+        redirect: '/pages',
+        // component: Login,
     },
     {
         path: "/register",
@@ -25,24 +26,24 @@ export default [
         path: "/people",
         name: "people",
         component: People,
-        meta: {
-          authRequired: true,
-        }
+        // meta: {
+        //   authRequired: true,
+        // }
     },
     {
         path: "/organization",
         name: "organization",
         component: Organization,
-        meta: {
-          authRequired: true,
-        }
+        // meta: {
+        //   authRequired: true,
+        // }
     },
     {
         path: "/property",
         name: "property",
         component: Property,
-        meta: {
-          authRequired: true,
-        }
+        // meta: {
+        //   authRequired: true,
+        // }
     },  
 ]
