@@ -12,16 +12,16 @@ export default [
         name: 'appHome',
         // component: AppHome,
         redirect: '/pages',
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     },
     {
         path: '/:path(.*)',
         name: 'app404',
         component: App404,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     } 
 ]

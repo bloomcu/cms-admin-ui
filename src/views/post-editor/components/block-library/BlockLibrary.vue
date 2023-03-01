@@ -18,7 +18,7 @@
             </li>
         </ul>
         
-        <AppDrawer v-if="activeMenu" @close="activeMenu = false">
+        <AppDrawer v-if="activeMenu" @close="activeMenu = false" class="block-library__drawer">
             <div class="block-library__list">
                 <div class="block-library__column--left">
                     <div v-if="store.blocks.length" class="flex flex-column">
@@ -104,7 +104,27 @@ const menu = [
 ]
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.block-library__drawer {
+  .drawer {
+    top: 58px;
+  }
+  
+  .drawer__close-btn {
+    top: 68px;
+    right: 820px;
+    left: auto;
+    border-radius: 12px 0 0 12px;
+    width: 32px;
+    height: 38px;
+    
+    svg {
+      height: 14px;
+      width: 14px;
+    }
+  }
+}
+
 .block-library {
     &__column--left {
         width: 100%;
