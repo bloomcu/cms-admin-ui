@@ -1,9 +1,31 @@
 <template>
   <LayoutDefault>
     <div class="container max-width-xs">
-      <form class="login-form" action="#" @submit.prevent="submit">
+      <div v-if="isRegistering" class="flex justify-center items-center" style="height: 80vh;">
+        <div class="text-component text-center margin-bottom-sm">
+          <AppLoader/>
+          <h3>One moment, please</h3>
+          <p>{{ registrationStatus }}</p>
+        </div>
+      </div>
+      
+      <form v-else class="login-form" action="#" @submit.prevent="submit">
         <div class="text-component text-center margin-bottom-sm">
           <h1>Register</h1>
+        </div>
+        
+        <div class="margin-bottom-xs">
+          <label class="form-label margin-bottom-xxxs" for="input-name">Name</label>
+          <input 
+            v-model="inputs.name" 
+            required
+            autofocus 
+            placeholder="First Last"
+            class="form-control width-100%" 
+            type="text" 
+            name="input-name" 
+            id="input-name" 
+          >
         </div>
         
         <div class="margin-bottom-xs">
@@ -11,12 +33,25 @@
           <input 
             v-model="inputs.email" 
             required
-            autofocus 
             placeholder="email@email.com"
             class="form-control width-100%" 
             type="email" 
             name="input-email" 
             id="input-email" 
+          >
+        </div>
+        
+        <div class="margin-bottom-xs">
+          <label class="form-label margin-bottom-xxxs" for="input-name">Organization Name</label>
+          <input 
+            v-model="inputs.organization" 
+            required
+            autofocus 
+            placeholder="BloomCU"
+            class="form-control width-100%" 
+            type="text" 
+            name="input-organization" 
+            id="input-organization" 
           >
         </div>
 
@@ -31,6 +66,18 @@
             id="input-password"
           >
         </div>
+        
+        <div class="margin-bottom-sm">
+          <label class="form-label margin-bottom-xxxs" for="input-password_confirmation">Confirm Password</label> 
+          <input 
+            v-model="inputs.password_confirmation"
+            required
+            class="form-control width-100%" 
+            type="password" 
+            name="input-password_confirmation" 
+            id="input-password_confirmation"
+          >
+        </div>
 
         <div class="margin-bottom-sm">
           <button class="btn btn--primary btn--md width-100%">Register</button>
@@ -43,7 +90,7 @@
           </p>
         </div>
         
-        <p class="text-center margin-y-sm">or</p>
+        <!-- <p class="text-center margin-y-sm">or</p>
 
         <div class="grid gap-xs">
           <div class="col-6@xs">
@@ -59,7 +106,7 @@
               <span>Register with Microsoft</span>
             </a>
           </div>
-        </div>
+        </div> -->
         
       </form>
     </div>
@@ -67,31 +114,31 @@
 </template>
 
 <script setup>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { useAuthStore } from '@/domain/auth/store/useAuthStore'
 
 const router = getCurrentInstance().proxy.$router
 
-const inputs = ref({
-  email: '',
-  password: ''
-})
+const authStore = useAuthStore()
 
 const error = ref(null)
 
-const auth = getAuth()
+const inputs = ref({
+  name: 'Ryan Harmon',
+  email: 'ryan@bloomcu.com',
+  organization: 'BloomCU',
+  password: 'password',
+  password_confirmation: 'password'
+})
 
-const submit = () => {
-  createUserWithEmailAndPassword(auth, inputs.value.email, inputs.value.password)
-    .then((userCredential) => {
-      // Signed in 
-      router.replace({ name: 'pageDashboard' })
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode)
-      console.log(errorMessage)
-      // ..
-    });
+const isRegistering = ref(false)
+const registrationStatus = ref('1 of 3: Creating your profile')
+
+const submit = async () => {
+  // authStore.register(inputs.value)
+  
+  isRegistering.value = true
+  setTimeout(() => { registrationStatus.value = '2 of 3: Creating your organization' }, 2000)
+  setTimeout(() => { registrationStatus.value = '3 of 3: Creating your first property' }, 4000)
+  setTimeout(() => { window.location.replace('/pages') }, 6000)
 }
 </script>

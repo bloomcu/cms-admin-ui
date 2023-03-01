@@ -3,9 +3,37 @@
 
 /* --------------------------------
 
+Title: App Layout
+Descr: App-wide layout
+
+-------------------------------- */
+.app {
+    // background-color: var(--color-contrast-lower);
+    // background-color: #fafafa;
+}
+
+.app__wrapper {
+    display: flex;
+}
+
+.app__body {
+    display: flex;
+    flex-direction: column;
+    width: 55rem;
+    margin: 0 auto;
+    position: relative;
+    padding: var(--space-md) var(--space-md) var(--space-sm);
+    min-height: calc(100vh - var(--app-ui-header-height));
+}
+
+.app__body--wide {
+    width: 75rem;
+}
+
+/* --------------------------------
+
 Title: Dashbaord classes
 Descr: App-wide utility classes
-TODO: This should just belong to a layout
 
 -------------------------------- */
 .app-dashboard {

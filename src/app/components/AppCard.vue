@@ -1,9 +1,10 @@
 <template>
     <div class="card cursor-pointer" @click="$emit('onSelect')"  >
         <div class="card__header">
-            <div class="card__title">
+            <div class="card__title margin-bottom-xxs">
                 <h5>{{ title }}</h5>
             </div>
+            <p v-if="subtitle" class="text-sm">{{ subtitle }}</p>
         </div>
 
         <figure class="card__img">
@@ -22,6 +23,9 @@ const props = defineProps({
   title: {
     type: String,
     default: 'Card Title'
+  },
+  subtitle: {
+    type: String
   },
   image: {
     type: String,

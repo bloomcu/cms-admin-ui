@@ -6,8 +6,8 @@ export default [
         name: "postPreview",
         component: PostPreview,
         props: true,
-        meta: {
-          authRequired: true,
-        },
+        // meta: {
+        //   authRequired: true,
+        // },
     }
 ]

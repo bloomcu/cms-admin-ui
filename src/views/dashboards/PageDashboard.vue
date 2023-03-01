@@ -1,5 +1,9 @@
 <template>
-    <LayoutSidebar>
+    <DashboardLayout>
+        <template v-slot:sidebar>
+          <AppSidebar/>
+        </template>
+      
         <div class="flex flex-wrap items-center justify-between margin-bottom-md">
             <h1 class="text-lg">Pages</h1>
             <RouterLink :to="{ name: 'postCreate' }" class="btn btn--primary btn--sm">New Page</RouterLink>
@@ -23,7 +27,7 @@
                 />
             </div>
         </div>
-    </LayoutSidebar>
+    </DashboardLayout>
 </template>
 
 <script setup>
